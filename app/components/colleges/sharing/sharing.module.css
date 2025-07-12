@@ -1,0 +1,1926 @@
+/* ==========================================================================
+   COLLEGES SHARED COMPONENTS - ADVANCED THEME SYSTEM
+   ========================================================================== */
+
+/* ==========================================================================
+   GEOMETRIC SHAPES SYSTEM
+   ========================================================================== */
+
+.geometric-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  z-index: 0;
+  transition: all 0.8s ease;
+  will-change: transform;
+}
+
+.shape-circle {
+  border-radius: 50%;
+}
+
+.shape-square {
+  border-radius: 4px;
+}
+
+.shape-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.shape-1 {
+  background: linear-gradient(135deg, var(--color-blue-500), var(--color-blue-600));
+}
+
+.shape-2 {
+  background: linear-gradient(135deg, var(--color-purple-500), var(--color-purple-600));
+}
+
+.shape-3 {
+  background: linear-gradient(135deg, var(--color-emerald-500), var(--color-emerald-600));
+}
+
+/* حركات مخصصة لكل قسم */
+.about-shapes .shape {
+  animation: floatAbout 15s infinite ease-in-out;
+}
+
+.dean-shapes .shape {
+  animation: floatDean 18s infinite ease-in-out;
+}
+
+.hero-shapes .shape {
+  animation: floatHero 20s infinite ease-in-out;
+}
+
+.majors-shapes .shape {
+  animation: floatMajors 22s infinite ease-in-out;
+}
+
+.stats-shapes .shape {
+  animation: floatStats 16s infinite ease-in-out;
+}
+
+@keyframes floatAbout {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes floatDean {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-8deg);
+  }
+}
+
+@keyframes floatHero {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  33% {
+    transform: translateY(-25px) rotate(10deg);
+  }
+  66% {
+    transform: translateY(15px) rotate(-5deg);
+  }
+}
+
+@keyframes floatMajors {
+  0%, 100% {
+    transform: translateY(0) rotate(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) rotate(8deg) scale(1.05);
+  }
+}
+
+@keyframes floatStats {
+  0%, 100% {
+    transform: translateY(0) rotate(0) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) rotate(3deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(10px) rotate(-3deg) scale(0.98);
+  }
+}
+
+/* تخصيص الأشكال حسب نوع القسم */
+.about-shapes .shape-1 {
+  filter: drop-shadow(0 8px 24px rgba(59, 130, 246, 0.15));
+}
+
+.dean-shapes .shape-2 {
+  filter: drop-shadow(0 8px 24px rgba(147, 51, 234, 0.15));
+}
+
+.hero-shapes .shape-3 {
+  filter: drop-shadow(0 8px 24px rgba(16, 185, 129, 0.15));
+}
+
+.majors-shapes .shape {
+  filter: drop-shadow(0 6px 20px rgba(59, 130, 246, 0.12));
+}
+
+.stats-shapes .shape {
+  filter: drop-shadow(0 4px 16px rgba(147, 51, 234, 0.18));
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.heroSection {
+  position: relative;
+  height: 80vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-navy-900);
+  z-index: 2;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+.heroContent {
+    position: relative;
+  z-index: 3;
+    text-align: center;
+  max-width: 800px;
+    padding: 2rem;
+  color: #ffffff;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+  animation: fadeInUp 1s ease-out;
+  color: #ffffff !important; /* تعيين اللون الأبيض بشكل إجباري */
+}
+
+/* تأكيد اللون الأبيض في الوضع النهاري */
+[data-theme="light"] .heroTitle {
+  color: #ffffff !important;
+}
+
+/* تأكيد اللون الأبيض في الوضع الليلي */
+[data-theme="dark"] .heroTitle {
+  color: #ffffff !important;
+}
+
+.heroSubtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+    margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+  opacity: 0.95;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.scrollText {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.scrollArrow {
+  font-size: 1.5rem;
+  color: #ffffff;
+  animation: bounce 2s infinite;
+}
+
+.heroDecorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heroShape1,
+.heroShape2,
+.heroShape3 {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.heroShape1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 5%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.heroShape2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 10%;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+.heroShape3 {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  left: 15%;
+  animation: float 10s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   ABOUT SECTION
+   ========================================================================== */
+
+.aboutSection {
+  padding: 6rem 0;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.aboutSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.sectionContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionHeader {
+    text-align: center;
+  margin-bottom: 4rem;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.titleIcon {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-blue-600);
+  animation: float 3s ease-in-out infinite;
+}
+
+.sectionTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.titleSubtext {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: center;
+  opacity: 0.85;
+  letter-spacing: 0.5px;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.titleDivider {
+  width: 80px;
+    height: 4px;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-navy-600));
+    margin: 0 auto;
+  border-radius: 2px;
+  animation: slideIn 0.8s ease-out;
+}
+
+.aboutContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.aboutText {
+    text-align: center;
+  margin-bottom: 3rem;
+}
+
+.aboutTextPara {
+  font-size: 1.15rem;
+    line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.aboutTextPara.slideInUp {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contentSeparator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.separatorLine {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-base), transparent);
+}
+
+.separatorIcon {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  border: 2px solid var(--border-base);
+}
+
+/* ==========================================================================
+   STATISTICS SECTION
+   ========================================================================== */
+
+.statsSection {
+  padding: 4rem 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.statsGrid {
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.statCard {
+  background: var(--surface-base);
+  border-radius: 16px;
+    padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-base);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.statCard.countUp {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+.statCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--color-blue-600);
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-navy-600));
+}
+
+.statCardInner {
+  position: relative;
+  z-index: 1;
+}
+
+.statIconWrapper {
+  margin-bottom: 1rem;
+}
+
+.statIcon {
+    font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-blue-600);
+    margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 1rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   DEAN SECTION
+   ========================================================================== */
+
+.deanSection {
+  padding: 8rem 0;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.deanContent {
+    display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.deanImageContainer {
+  position: relative;
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.deanImageContainer.slideInRight {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.deanImageWrapper {
+  position: relative;
+    text-align: center;
+}
+
+.imageFrame {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 0 auto 2rem;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(45deg, var(--color-blue-600), var(--color-navy-600));
+  padding: 4px;
+}
+
+.deanImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.deanImage.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.imageDecorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.decoration1,
+.decoration2 {
+  position: absolute;
+  border: 2px solid var(--color-blue-600);
+  border-radius: 25px;
+  opacity: 0.3;
+}
+
+.decoration1 {
+  width: 320px;
+  height: 420px;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: rotate 20s linear infinite;
+}
+
+.decoration2 {
+  width: 340px;
+  height: 440px;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: rotate 30s linear infinite reverse;
+}
+
+.deanInfo {
+    text-align: center;
+}
+
+.deanName {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.deanTitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.deanContacts {
+    display: flex;
+    justify-content: center;
+  gap: 1rem;
+}
+
+.contactIcon {
+    font-size: 1.5rem;
+  padding: 0.5rem;
+  background: var(--surface-base);
+  border-radius: 50%;
+  border: 1px solid var(--border-base);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contactIcon:hover {
+  background: var(--color-blue-600);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.deanMessageContainer {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.deanMessageContainer.slideInLeft {
+  animation: slideInLeft 0.8s ease-out 0.3s forwards;
+}
+
+.deanCard {
+  background: var(--surface-base);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-base);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  min-height: 400px;
+}
+
+.deanCard::before {
+    content: '';
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-navy-600));
+}
+
+.quoteIcon {
+  font-size: 4rem;
+  color: var(--color-blue-600);
+  opacity: 0.2;
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  font-family: serif;
+}
+
+.messageContent {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.deanMessage {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.deanMessage.fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.signature {
+    display: flex;
+    align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.signatureLine {
+  flex: 1;
+  height: 2px;
+  background: var(--border-base);
+}
+
+.signatureText {
+    display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.signatureName {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.signatureTitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.collegeButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.collegeButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--surface-base);
+  border: 2px solid #000000;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.collegeButton:hover {
+  background: var(--color-blue-600);
+  color: #ffffff;
+  border-color: var(--color-blue-600);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.collegeButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.collegeButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.buttonIcon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.collegeButton:hover .buttonIcon {
+  transform: scale(1.1);
+}
+
+.buttonText {
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* أنماط المحتوى الجديد */
+.contentHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-base);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.contentIcon {
+  font-size: 3rem;
+  color: var(--color-blue-600);
+}
+
+.contentTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.contentBody {
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.contentText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: justify;
+  margin: 0;
+}
+
+.contentList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contentListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  padding: 0.75rem;
+  background: var(--surface-elevated);
+  border-radius: 12px;
+  border: 1px solid var(--border-base);
+  transition: all 0.3s ease;
+}
+
+.contentListItem:hover {
+  background: var(--color-blue-50);
+  border-color: var(--color-blue-200);
+  transform: translateX(4px);
+}
+
+.listIcon {
+  color: var(--color-blue-600);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 0.1rem;
+}
+
+.backButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-base);
+  animation: fadeInUp 0.7s ease-out 0.2s both;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--surface-elevated);
+  border: 2px solid var(--color-blue-600);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-blue-600);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+.backButton:hover {
+  background: var(--color-blue-600);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.backButton:active {
+  transform: translateY(0);
+}
+
+.backIcon {
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.backButton:hover .backIcon {
+  transform: translateX(-3px);
+}
+
+.backText {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.backgroundDecorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgShape1,
+.bgShape2,
+.bgShape3 {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--color-blue-600), var(--color-navy-600));
+  opacity: 0.05;
+}
+
+.bgShape1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  right: -100px;
+  animation: float 15s ease-in-out infinite;
+}
+
+.bgShape2 {
+  width: 200px;
+  height: 200px;
+  bottom: 20%;
+  left: -50px;
+  animation: float 20s ease-in-out infinite reverse;
+}
+
+.bgShape3 {
+    width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 20%;
+  animation: float 12s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   DARK MODE ENHANCEMENTS
+   ========================================================================== */
+
+[data-theme="dark"] .aboutSection::before {
+  background: none;
+}
+
+[data-theme="dark"] .titleIcon {
+  color: var(--color-blue-400);
+}
+
+[data-theme="dark"] .sectionTitle {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .titleSubtext {
+  color: var(--text-secondary);
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .aboutTextPara {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .statCard {
+  box-shadow: var(--shadow-elevated);
+}
+
+[data-theme="dark"] .statCard:hover {
+  box-shadow: var(--shadow-strong);
+}
+
+[data-theme="dark"] .statLabel {
+  color: var(--text-tertiary);
+}
+
+[data-theme="dark"] .deanName {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .deanTitle {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .deanMessage {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .signatureName {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .signatureTitle {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .collegeButton {
+  background: var(--surface-elevated);
+  border-color: var(--color-blue-400);
+  color: var(--text-primary);
+  box-shadow: 0 2px 4px rgba(96, 165, 250, 0.2);
+}
+
+[data-theme="dark"] .collegeButton:hover {
+  background: var(--color-blue-400);
+  color: var(--text-primary);
+  border-color: var(--color-blue-400);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.5);
+}
+
+[data-theme="dark"] .collegeButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+}
+
+[data-theme="dark"] .collegeButton:focus {
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.4);
+}
+
+[data-theme="dark"] .contentIcon {
+  color: var(--color-blue-400);
+}
+
+[data-theme="dark"] .contentTitle {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .contentText {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .contentListItem {
+  background: var(--surface-base);
+  border-color: var(--border-elevated);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .contentListItem:hover {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: var(--color-blue-400);
+}
+
+[data-theme="dark"] .listIcon {
+  color: var(--color-blue-400);
+}
+
+[data-theme="dark"] .backButton {
+  background: var(--surface-base);
+  border-color: var(--color-blue-400);
+  color: var(--color-blue-400);
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
+}
+
+[data-theme="dark"] .backButton:hover {
+  background: var(--color-blue-400);
+  color: var(--text-primary);
+  box-shadow: 0 6px 20px rgba(96, 165, 250, 0.4);
+}
+
+/* تحسينات خاصة بالوضع الليلي للأشكال */
+[data-theme="dark"] .shape-1 {
+  background: linear-gradient(135deg, var(--color-blue-400), var(--color-blue-500));
+  opacity: 0.25 !important;
+  filter: drop-shadow(0 8px 24px rgba(96, 165, 250, 0.2));
+}
+
+[data-theme="dark"] .shape-2 {
+  background: linear-gradient(135deg, var(--color-purple-400), var(--color-purple-500));
+  opacity: 0.25 !important;
+  filter: drop-shadow(0 8px 24px rgba(168, 85, 247, 0.2));
+}
+
+[data-theme="dark"] .shape-3 {
+  background: linear-gradient(135deg, var(--color-emerald-400), var(--color-emerald-500));
+  opacity: 0.25 !important;
+  filter: drop-shadow(0 8px 24px rgba(52, 211, 153, 0.2));
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .titleIcon {
+    font-size: 3.2rem;
+  }
+
+  .sectionTitle {
+    font-size: 3rem;
+  }
+
+  .titleSubtext {
+    font-size: 1.15rem;
+  }
+
+  .deanContent {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .deanImageContainer {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    height: 60vh;
+    min-height: 500px;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .aboutSection,
+  .deanSection {
+    padding: 4rem 0;
+  }
+  
+  .sectionContainer {
+    padding: 0 1rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .statCard {
+    padding: 1.5rem;
+  }
+  
+  .statNumber {
+    font-size: 2rem;
+  }
+  
+  .deanContent {
+    gap: 2rem;
+  }
+  
+  .imageFrame {
+    width: 250px;
+    height: 330px;
+  }
+  
+  .decoration1 {
+    width: 270px;
+    height: 350px;
+  }
+  
+  .decoration2 {
+    width: 290px;
+    height: 370px;
+}
+
+.deanCard {
+    padding: 2rem;
+  }
+  
+  .quoteIcon {
+    font-size: 3rem;
+    top: 0.5rem;
+    left: 1rem;
+  }
+
+  .collegeButtons {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .collegeButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .collegeButton:hover {
+    transform: translateY(-3px);
+  }
+
+  .buttonIcon {
+    font-size: 1rem;
+  }
+
+  .buttonText {
+    font-size: 0.85rem;
+  }
+
+  .contentHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contentIcon {
+    font-size: 2.5rem;
+  }
+
+  .contentTitle {
+    font-size: 1.5rem;
+  }
+
+  .contentText {
+    font-size: 1rem;
+  }
+
+  .contentListItem {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .listIcon {
+    font-size: 1.1rem;
+  }
+
+  .backButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .backIcon {
+    font-size: 1.1rem;
+  }
+  .backText {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 480px) {
+  .heroSection {
+    height: 50vh;
+    min-height: 400px;
+  }
+  
+  .heroContent {
+    padding: 1rem;
+  }
+  
+  .scrollIndicator {
+    bottom: 1rem;
+  }
+  
+  .aboutSection,
+  .deanSection {
+    padding: 3rem 0;
+  }
+  
+  .titleIcon {
+    font-size: 3rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+
+  .titleSubtext {
+    font-size: 1.1rem;
+  }
+  
+  .aboutTextPara {
+    font-size: 1rem;
+  }
+  
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .imageFrame {
+    width: 200px;
+    height: 260px;
+  }
+  
+  .deanCard {
+    padding: 1.5rem;
+}
+
+.deanMessage {
+    font-size: 1rem;
+  }
+  
+  .signature {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .signatureText {
+    text-align: center;
+  }
+
+  .collegeButtons {
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-direction: column;
+  }
+
+  .collegeButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .collegeButton:hover {
+    transform: translateY(-2px);
+  }
+
+  .buttonIcon {
+    font-size: 0.9rem;
+  }
+
+  .buttonText {
+    font-size: 0.8rem;
+  }
+
+  .contentHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .contentIcon {
+    font-size: 2rem;
+  }
+
+  .contentTitle {
+    font-size: 1.3rem;
+  }
+
+  .contentText {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .contentListItem {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    transform: none;
+  }
+
+  .contentListItem:hover {
+    transform: none;
+  }
+
+  .listIcon {
+    font-size: 1rem;
+  }
+
+  .backButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .backIcon {
+    font-size: 1rem;
+  }
+
+  .backText {
+    font-size: 0.85rem;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & PERFORMANCE
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .heroShape1,
+  .heroShape2,
+  .heroShape3,
+  .bgShape1,
+  .bgShape2,
+  .bgShape3,
+  .decoration1,
+  .decoration2,
+  .shape,
+  .about-shapes .shape,
+  .dean-shapes .shape,
+  .hero-shapes .shape,
+  .majors-shapes .shape,
+  .stats-shapes .shape {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .collegeButton {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease !important;
+  }
+  
+  .collegeButton:hover {
+    transform: none !important;
+  }
+  
+  .backButton {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease !important;
+  }
+  
+  .backButton:hover {
+    transform: none !important;
+  }
+  
+  .contentListItem:hover {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .statCard,
+  .deanCard {
+    border: 2px solid var(--text-primary);
+  }
+  
+  .sectionTitle {
+    font-weight: 800;
+  }
+  
+  .statNumber {
+    font-weight: 800;
+  }
+}
+
+/* Print styles */
+@media print {
+  .heroSection {
+    height: auto;
+    background: white !important;
+    color: black !important;
+    padding: 2rem 0;
+  }
+  
+  .heroDecorations,
+  .backgroundDecorations,
+  .imageDecorations {
+    display: none;
+  }
+  
+  .aboutSection,
+  .deanSection {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .statCard,
+  .deanCard {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+/* ==========================================================================
+   MAJORS/SPECIALTIES SECTION
+   ========================================================================== */
+
+.specialtiesSection {
+  padding: 8rem 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.sectionSubtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.specialtiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.specialtyCard {
+  background: var(--surface-base);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-medium);
+  border: 2px solid #000000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+    position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.specialtyCard.fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.specialtyCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-elevated);
+  border-color: #000000;
+}
+
+.specialtyCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-navy-600));
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.iconWrapper {
+  background: linear-gradient(45deg, var(--color-blue-600), var(--color-navy-600));
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.specialtyIcon {
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.cardBadge {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--color-blue-600);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cardContent {
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.specialtyName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.majorStats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-base);
+  border-bottom: 1px solid var(--border-base);
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statIcon {
+  font-size: 1.2rem;
+}
+
+.statText {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.featuresItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.featureIcon {
+  color: var(--color-blue-600);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.featureText {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.cardFooter {
+    display: flex;
+  justify-content: space-between;
+    align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-base);
+}
+
+.learnMore {
+  color: var(--color-blue-600);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.arrowIcon {
+  color: var(--color-blue-600);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.specialtyCard:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+/* Old decorations removed - now using CollegeGeometricShapes */
+
+/* Loading states for majors */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--border-base);
+  border-top: 4px solid var(--color-blue-600);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+.loadingText {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.errorContainer {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+  margin: 2rem 0;
+}
+
+.errorText {
+  color: #e74c3c;
+  font-size: 1.1rem;
+  margin: 0 0 1rem 0;
+}
+
+.retryButton {
+  background: var(--color-blue-600);
+  color: var(--btn-primary-text);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retryButton:hover {
+  background: var(--color-blue-700);
+  transform: translateY(-2px);
+}
+
+/* Dark mode for majors section */
+[data-theme="dark"] .specialtiesSection {
+  background: var(--section-bg-primary);
+}
+
+[data-theme="dark"] .sectionSubtitle {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .specialtyCard {
+  box-shadow: var(--shadow-elevated);
+  border-color: #ffffff;
+}
+
+[data-theme="dark"] .specialtyCard:hover {
+  box-shadow: var(--shadow-strong);
+  border-color: #ffffff;
+}
+
+[data-theme="dark"] .specialtyName {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .statText {
+  color: var(--text-tertiary);
+}
+
+[data-theme="dark"] .featuresItem {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .errorContainer {
+  background: rgba(231, 76, 60, 0.15);
+  border-color: rgba(231, 76, 60, 0.4);
+}
+
+/* Responsive design for majors */
+@media (max-width: 768px) {
+  .titleIcon {
+    font-size: 3rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+
+  .titleSubtext {
+    font-size: 1.1rem;
+  }
+
+  .specialtiesSection {
+    padding: 4rem 0;
+  }
+  
+  .specialtiesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .specialtyCard {
+    padding: 1.5rem;
+  }
+  
+  .cardHeader {
+    margin-bottom: 1rem;
+  }
+  
+  .iconWrapper {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .specialtyIcon {
+    font-size: 1.5rem;
+  }
+  
+  .specialtyName {
+        font-size: 1.3rem;
+    }
+    
+  .majorStats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titleIcon {
+    font-size: 2.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .titleSubtext {
+    font-size: 1rem;
+  }
+
+  .specialtyCard {
+    padding: 1.25rem;
+  }
+  
+  .specialtyName {
+    font-size: 1.2rem;
+  }
+  
+  .cardBadge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .featuresList {
+    gap: 0.5rem;
+  }
+  
+  .featuresItem {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,81 @@
+
+.editorContainer {
+  padding: 1.5rem;
+  background-color: #fff; /* Assuming content areas have a white background like other dashboard parts */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: 100%; /* Ensure it takes available height */
+}
+
+.pageHeader {
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e9ecef; /* Standard separator */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageTitle {
+  font-size: 1.75rem; /* Consistent title size */
+  font-weight: 600;
+  color: #343a40; /* Darker color for titles */
+  margin: 0;
+}
+
+.editorContent {
+  /* This will wrap the actual content or placeholder */
+}
+
+.placeholderContent {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f8f9fa; /* Light background for placeholder */
+  border-radius: 6px;
+  border: 1px dashed #ced4da;
+  color: #6c757d; /* Muted text color */
+}
+
+.placeholderContent h3 {
+  font-size: 1.5rem;
+  color: #495057;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.placeholderContent p {
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.placeholderContent ul {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  padding-right: 20px; /* For list-style-position: inside with text-align: right */
+  text-align: right; /* Ensure list items are also right-aligned if needed */
+  list-style-position: inside;
+}
+
+.addButton {
+  background-color: #e63946; /* Primary action color from theme (seen in Dashboard.module.css) */
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.addButton:hover {
+  background-color: #c02d39; /* Darker shade of primary */
+}

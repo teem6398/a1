@@ -1,0 +1,202 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.loading, .error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #000000;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.retryButton {
+  padding: 0.5rem 1rem;
+  background-color: #609bc2;
+  color: rgb(215, 202, 202);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.retryButton:hover {
+  background-color: #000000;
+}
+
+.header {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.profileImage {
+  flex-shrink: 0;
+}
+
+.image {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.profileInfo {
+  flex-grow: 1;
+}
+
+.name {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem;
+  color: #2c3e50;
+}
+
+.position {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin: 0 0 0.25rem;
+}
+
+.company {
+  font-size: 1.25rem;
+  color: #7f8c8d;
+  margin: 0 0 1rem;
+}
+
+.education {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #4e4f54;
+  border-radius: 8px;
+}
+
+.education p {
+  margin: 0.5rem 0;
+  color: #ffffff;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.socialLinks a {
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #ddd9d9;
+  transition: background-color 0.2s;
+}
+
+.socialLinks a:hover {
+  background-color: #e9ecef;
+}
+
+.content {
+  margin-top: 2rem;
+}
+
+.summary, .story, .achievements, .gallery {
+  margin-bottom: 3rem;
+}
+
+.summary h2, .story h2, .achievements h2, .gallery h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+.storyContent p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: #000000;
+}
+
+.achievementsList {
+  display: grid;
+  gap: 1rem;
+}
+
+.achievementItem {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #4e4f54;
+  border-radius: 8px;
+}
+
+.achievementYear {
+  font-weight: bold;
+  color: #ffffff;
+  min-width: 60px;
+}
+
+.achievementText {
+  margin: 0;
+  color: #eef5fd;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.galleryItem {
+  position: relative;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.imageCaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profileImage {
+    margin-bottom: 1.5rem;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+
+  .achievementItem {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .achievementYear {
+    margin-bottom: 0.5rem;
+  }
+} 

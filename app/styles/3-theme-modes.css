@@ -1,0 +1,168 @@
+/* ===== أوضاع الألوان والثيمات ===== */
+
+/* ===== الوضع النهاري (افتراضي) ===== */
+:root,
+[data-theme="light"] {
+  /* خلفيات - بيضاء للوضع النهاري */
+  --bg-primary: #ffffff;                     /* ✅ أبيض خالص للخلفية الأساسية */
+  --bg-secondary: var(--color-gray-50);      /* ✅ رمادي فاتح جداً للخلفية الثانوية */
+  --bg-tertiary: var(--color-gray-100);      /* ✅ رمادي فاتح للخلفية الثالثية */
+  --bg-accent: var(--color-primary-50);      /* ✅ لون مميز شفاف */
+  
+  /* نصوص - إصلاح المشكلة */
+  --text-primary: var(--color-gray-900);     /* ✅ أسود للعناوين */
+  --text-secondary: var(--color-gray-700);   /* ✅ رمادي داكن للنصوص العادية */
+  --text-tertiary: var(--color-gray-600);    /* ✅ رمادي متوسط للنصوص الثانوية */
+  --text-inverse: #ffffff;                   /* ✅ أبيض للنصوص على الخلفيات الداكنة */
+  --text-color: var(--color-gray-900);       /* ✅ نص أسود للوضع العادي */
+  
+  /* حدود */
+  --border-primary: var(--color-gray-300);
+  --border-secondary: var(--color-gray-200);
+  --border-accent: var(--color-primary-300);
+  --border-color: var(--color-gray-300);     /* ✅ حدود افتراضية */
+  
+  /* أسطح - بيضاء للوضع النهاري */
+  --surface-primary: #ffffff;                /* ✅ سطح أساسي أبيض */
+  --surface-secondary: #ffffff;              /* ✅ سطح ثانوي أبيض */
+  --surface-raised: #ffffff;                 /* ✅ سطح مرتفع أبيض */
+  
+  /* نافبار */
+  --navbar-background: rgba(255, 255, 255, 0.95);
+  --navbar-text: var(--color-gray-900);
+  --navbar-text-hover: var(--color-primary-600);
+  --navbar-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --card-background: #ffffff;
+  --dropdown-text: var(--color-gray-700);
+  --dropdown-text-hover: var(--color-primary-600);
+  
+  /* تفاعلية */
+  --interactive-primary: var(--color-primary-500);
+  --interactive-primary-hover: var(--color-primary-600);
+  --interactive-primary-active: var(--color-primary-700);
+  --interactive-secondary: var(--color-secondary-500);
+  --interactive-secondary-hover: var(--color-secondary-600);
+  --primary-color: var(--color-primary-500);    /* ✅ لون أساسي للتوافق */
+  
+  /* حالات */
+  --state-success: var(--color-success-500);
+  --state-warning: var(--color-warning-500);
+  --state-danger: var(--color-danger-500);
+  --state-info: var(--color-info-500);
+  
+  /* ظلال افتراضية للوضع النهاري */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== الوضع الليلي ===== */
+[data-theme="dark"],
+.dark-mode {
+  /* خلفيات - كحلية غامقة للأقسام */
+  --bg-primary: var(--color-navy-900);       /* كحلي غامق للخلفية الأساسية */
+  --bg-secondary: var(--color-navy-800);     /* كحلي أفتح قليلاً للخلفية الثانوية */
+  --bg-tertiary: var(--color-navy-700);      /* كحلي متوسط للخلفية الثالثية */
+  --bg-accent: rgba(20, 185, 240, 0.1);       /* لون مميز شفاف */
+  
+  /* نصوص */
+  --text-primary: #f8fafc;
+  --text-secondary: #e2e8f0;
+  --text-tertiary: #cbd5e1;
+  --text-inverse: #0a0e1a;                   /* ✅ داكن للنصوص على الخلفيات المشعة */
+  --text-color: #f8fafc;                     /* ✅ نص أبيض للوضع الليلي */
+  
+  /* حدود */
+  --border-primary: var(--color-navy-600);
+  --border-secondary: var(--color-navy-500);
+  --border-accent: #f6dede;
+  --border-color: var(--color-navy-600);     /* ✅ حدود كحلية للوضع الليلي */
+  
+  /* أسطح - كحلية غامقة */
+  --surface-primary: var(--color-navy-800);  /* سطح أساسي كحلي غامق */
+  --surface-secondary: var(--color-navy-700); /* سطح ثانوي كحلي أفتح */
+  --surface-raised: var(--color-navy-600);   /* سطح مرتفع كحلي متوسط */
+  
+  /* نافبار - كحلي غامق */
+  --navbar-background: rgba(var(--color-navy-900-rgb), 0.95);
+  --navbar-text: #f8fafc;
+  --navbar-text-hover: #00bfff;
+  --navbar-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  --card-background: var(--color-navy-800);
+  --dropdown-text: #e2e8f0;
+  --dropdown-text-hover: #00bfff;
+  
+  /* تفاعلية - ألوان مشعة */
+  --interactive-primary: #cfa4a3;
+  --interactive-primary-hover: #42d4ff;
+  --interactive-primary-active: #0099cc;
+  --interactive-secondary: #10b981;
+  --interactive-secondary-hover: #34d399;
+  --primary-color: #ffffff;                      /* ✅ لون أساسي للوضع الليلي */
+  
+  /* حالات */
+  --state-success: #10b981;
+  --state-warning: #f59e0b;
+  --state-danger: #ef4444;
+  --state-info: #ffffff;
+  
+  /* تأثيرات مضيئة */
+  --glow-primary: 0 0 20px rgba(0, 191, 255, 0.4);
+  --glow-secondary: 0 0 15px rgba(66, 212, 255, 0.3);
+  
+  /* ظلال محسنة للوضع الليلي */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== التبديل التلقائي ===== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-primary: var(--color-navy-900);
+    --text-primary: #f8fafc;
+    --text-inverse: var(--color-navy-900);
+    --interactive-primary: #00bfff;
+    --surface-primary: var(--color-navy-800);
+    --text-color: #f8fafc;
+    --primary-color: #00bfff;
+  }
+}
+
+/* ===== التباين العالي ===== */
+@media (prefers-contrast: high) {
+  :root {
+    --border-primary: var(--color-gray-900);
+    --text-primary: var(--color-gray-900);
+    --text-secondary: var(--color-gray-800);
+    --text-color: var(--color-gray-900);
+    --primary-color: var(--color-primary-600);
+  }
+  
+  [data-theme="dark"] {
+    --border-primary: #ffffff;
+    --text-primary: #ffffff;
+    --text-secondary: #f0f0f0;
+    --interactive-primary: #42d4ff;
+    --text-color: #ffffff;
+    --primary-color: #42d4ff;
+  }
+}
+
+/* ===== تقليل الحركة ===== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --glow-primary: none;
+    --glow-secondary: none;
+  }
+} 

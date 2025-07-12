@@ -1,0 +1,88 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  direction: rtl;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #333;
+  font-size: 32px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 12px 24px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background-color: #e8f4ff;
+}
+
+.tab.active {
+  background-color: #0070f3;
+  color: white;
+}
+
+.content {
+  margin-top: 30px;
+}
+
+.chatContainer {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.chatInfo {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.chatInfo h2 {
+  margin-top: 0;
+  color: #0070f3;
+}
+
+.chatInfo ul {
+  padding-right: 20px;
+}
+
+.chatInfo li {
+  margin-bottom: 10px;
+}
+
+.chatDemo {
+  flex: 1;
+  min-height: 500px;
+  position: relative;
+}
+
+/* تكيف مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .chatContainer {
+    flex-direction: column;
+  }
+  
+  .chatDemo {
+    width: 100%;
+    margin-top: 30px;
+  }
+} 

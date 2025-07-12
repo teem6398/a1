@@ -1,0 +1,543 @@
+/* قسم الأنشطة الرئيسي */
+.activitiesSection {
+  padding: var(--space-20) 0;
+  background: var(--section-bg-primary);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-theme);
+}
+
+/* زخارف هندسية للخلفية */
+.activitiesSection::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-300) 0%, var(--color-primary-500) 100%);
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.activitiesSection::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-secondary-300) 0%, var(--color-secondary-500) 100%);
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* عنوان القسم */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--space-12);
+  position: relative;
+  padding: var(--space-4) 0;
+}
+
+.sectionHeader::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary-500), var(--color-primary-700));
+  border-radius: var(--radius-full);
+}
+
+.sectionTitle {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--interactive-primary);
+  margin-bottom: var(--space-6);
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    var(--color-primary-300) 20%,
+    var(--color-primary-300) 80%,
+    transparent 100%
+  );
+  opacity: 0.6;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: var(--space-6) auto 0;
+  line-height: 1.6;
+  padding: 0 var(--space-4);
+}
+
+/* تحسينات الوضع الليلي للعناوين */
+[data-theme="dark"] .sectionTitle {
+  color: var(--text-primary);
+  text-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+}
+
+[data-theme="dark"] .sectionTitle::after {
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(0, 191, 255, 0.3) 20%,
+    rgba(0, 191, 255, 0.3) 80%,
+    transparent 100%
+  );
+}
+
+[data-theme="dark"] .sectionSubtitle {
+  color: var(--text-secondary);
+}
+
+/* تحسينات للشاشات المختلفة */
+@media (max-width: 1024px) {
+  .activitiesSection {
+    padding: var(--space-16) 0;
+  }
+  
+  .sectionTitle {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-5);
+  }
+  
+  .sectionSubtitle {
+    margin-top: var(--space-5);
+  }
+}
+
+@media (max-width: 768px) {
+  .activitiesSection {
+    padding: var(--space-12) 0;
+  }
+  
+  .sectionHeader {
+    margin-bottom: var(--space-10);
+    padding: var(--space-3) 0;
+  }
+
+  .sectionTitle {
+    font-size: 2.2rem;
+    margin-bottom: var(--space-4);
+  }
+  
+  .sectionSubtitle {
+    font-size: 1rem;
+    margin-top: var(--space-4);
+  }
+}
+
+@media (max-width: 640px) {
+  .activitiesSection {
+    padding: var(--space-8) 0;
+  }
+  
+  .container {
+    padding: 0 var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionHeader {
+    margin-bottom: var(--space-8);
+    padding: var(--space-2) 0;
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: var(--space-3);
+  }
+  
+  .sectionSubtitle {
+    font-size: 0.95rem;
+    margin-top: var(--space-3);
+    padding: 0 var(--space-2);
+  }
+}
+
+/* شبكة الأنشطة */
+.activitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* بطاقة النشاط */
+.activityCard {
+  background-color: var(--color-background-50);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--index) * 0.1s);
+  opacity: 0;
+  transform: translateY(20px);
+  border: 2px solid #2563eb;
+}
+
+/* تأثير التحويم */
+.activityCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: #3b82f6;
+  border-width: 3px;
+}
+
+/* تأثير الظهور التدريجي */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+  border-bottom: 2px solid var(--color-primary-500);
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.activityImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: brightness(0.95);
+}
+
+.activityCard:hover .activityImage {
+  transform: scale(1.08);
+  filter: brightness(1);
+}
+
+/* شارة التصنيف */
+.categoryBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: white;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+}
+
+/* محتوى البطاقة */
+.contentContainer {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    to bottom,
+    var(--color-background-50) 0%,
+    var(--color-background-100) 100%
+  );
+}
+
+/* معلومات النشاط */
+.metaInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-500);
+}
+
+.location, .organizer {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.location svg, .organizer svg {
+  flex-shrink: 0;
+  stroke: var(--color-primary-500);
+}
+
+/* عنوان النشاط */
+.activityTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-900);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+/* وصف النشاط */
+.activityDescription {
+  color: var(--color-text-700);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: var(--font-size-sm);
+  flex-grow: 1;
+}
+
+/* زر عرض التفاصيل */
+.viewDetailsButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--color-primary-500);
+  color: white;
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.3s ease;
+  margin-top: auto;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.viewDetailsButton:hover {
+  background-color: var(--color-primary-600);
+  transform: translateX(-5px);
+}
+
+.arrowIcon {
+  transition: transform 0.3s ease;
+}
+
+.viewDetailsButton:hover .arrowIcon {
+  transform: translateX(-5px);
+}
+
+/* زر عرض جميع الأنشطة */
+.viewAllWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.viewAllButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border: 2px solid var(--color-primary-600);
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.viewAllButton:hover {
+  background-color: var(--color-primary-600);
+  color: white;
+}
+
+.buttonIcon {
+  transition: transform 0.3s ease;
+}
+
+.viewAllButton:hover .buttonIcon {
+  transform: translateX(-5px);
+}
+
+/* حالات التحميل والخطأ */
+.loadingContainer, .errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--color-background-50);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border-100);
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(var(--color-primary-rgb), 0.2);
+  border-radius: 50%;
+  border-top-color: var(--color-primary-500);
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.errorMessage {
+  color: var(--color-error-500);
+  font-weight: var(--font-weight-medium);
+}
+
+/* تحسينات الوضع الليلي */
+@media (prefers-color-scheme: dark) {
+  .activityCard {
+    background-color: var(--color-background-800);
+    border-color: #1d4ed8;
+  }
+  
+  .activityCard:hover {
+    border-color: #3b82f6;
+    border-width: 3px;
+    box-shadow: var(--shadow-lg-dark),
+                0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  
+  .contentContainer {
+    background: linear-gradient(
+      to bottom,
+      var(--color-background-800) 0%,
+      var(--color-background-900) 100%
+    );
+  }
+  
+  .activityTitle {
+    color: var(--color-text-50);
+  }
+  
+  .activityDescription {
+    color: var(--color-text-300);
+  }
+  
+  .metaInfo {
+    color: var(--color-text-400);
+  }
+  
+  .location svg,
+  .organizer svg {
+    stroke: var(--color-primary-400);
+  }
+  
+  .viewDetailsButton {
+    background-color: var(--color-primary-600);
+    border-color: var(--color-primary-700);
+  }
+  
+  .viewDetailsButton:hover {
+    background-color: var(--color-primary-700);
+    border-color: var(--color-primary-600);
+  }
+  
+  .viewAllButton {
+    color: var(--color-primary-400);
+    border-color: var(--color-primary-400);
+  }
+  
+  .viewAllButton:hover {
+    background-color: var(--color-primary-400);
+    color: var(--color-background-900);
+  }
+  
+  .loadingContainer,
+  .errorContainer {
+    background-color: var(--color-background-800);
+    border-color: var(--color-border-800);
+  }
+  
+  .loadingSpinner {
+    border-color: rgba(var(--color-primary-rgb), 0.1);
+    border-top-color: var(--color-primary-400);
+  }
+
+  .imageContainer {
+    border-bottom: 2px solid #1d4ed8;
+  }
+}
+
+.dateStrip {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.75rem;
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  min-width: 70px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  z-index: 2;
+}
+
+.dateDay {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-600);
+  line-height: 1.2;
+}
+
+.dateMonth {
+  font-size: 0.85rem;
+  color: var(--color-text-600);
+  font-weight: 500;
+}
+
+/* تأثير التدرج على الصورة */
+.imageContainer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* تحسينات الوضع الليلي */
+[data-theme="dark"] .dateStrip {
+  background: rgba(45, 45, 45, 0.95);
+}
+
+[data-theme="dark"] .dateDay {
+  color: var(--color-primary-400);
+}
+
+[data-theme="dark"] .dateMonth {
+  color: var(--color-text-400);
+} 

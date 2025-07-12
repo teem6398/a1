@@ -1,0 +1,218 @@
+/* ===== قواعد خاصة بأقسام الصفحة الرئيسية ===== */
+/* هذا الملف يحتوي على قواعد CSS محددة لأقسام الصفحة الرئيسية
+   لتجنب التضارب مع نظام التصميم الأساسي */
+
+/* ===== متغيرات خلفيات الأقسام ===== */
+:root {
+  /* الوضع النهاري - خلفيات بيضاء */
+  --section-bg-primary: #ffffff;                /* ✅ أبيض خالص */
+  --section-bg-secondary: #ffffff;              /* ✅ أبيض خالص */
+  --section-bg-tertiary: #ffffff;               /* ✅ أبيض خالص */
+}
+
+[data-theme="light"] {
+  /* تأكيد الوضع النهاري - خلفيات بيضاء */
+  --section-bg-primary: #ffffff;
+  --section-bg-secondary: #ffffff;
+  --section-bg-tertiary: #ffffff;
+}
+
+[data-theme="dark"],
+.dark-mode {
+  /* الوضع الليلي - خلفيات كحلية غامقة */
+  --section-bg-primary: var(--color-navy-900);  /* ✅ كحلي غامق */
+  --section-bg-secondary: var(--color-navy-800); /* ✅ كحلي متوسط */
+  --section-bg-tertiary: var(--color-navy-700);  /* ✅ كحلي أفتح */
+}
+
+/* ===== قواعد مشتركة للأقسام ===== */
+.home-section {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-20) 0;
+  transition: var(--transition-theme);
+}
+
+/* ===== تخصيص قسم Hero ===== */
+/* تحسينات محددة لقسم Hero بدون تكرار المتغيرات الأساسية */
+.hero-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+/* إضافة تأثير مضيء للعناوين في الوضع الليلي */
+[data-theme="dark"] .hero-heading,
+.dark-mode .hero-heading {
+  color: var(--text-primary);
+  text-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+}
+
+/* ===== تخصيص قسم About ===== */
+.about-section .section-title {
+  color: var(--text-primary);
+}
+
+.about-section .section-subtitle {
+  color: var(--text-secondary);
+}
+
+/* تحسينات الوضع الليلي لقسم About */
+[data-theme="dark"] .about-section .feature-card,
+.dark-mode .about-section .feature-card {
+  background: var(--surface-primary);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md), var(--glow-primary);
+}
+
+/* ===== تخصيص قسم Navbar ===== */
+.navbar-container {
+  background-color: var(--surface-primary);
+  border-bottom: 1px solid var(--border-primary);
+  transition: var(--transition-theme);
+}
+
+/* تحسينات الوضع الليلي للقائمة */
+[data-theme="dark"] .navbar-container,
+.dark-mode .navbar-container {
+  background-color: var(--surface-primary);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+}
+
+/* ===== تخصيص قسم AlumniStories ===== */
+/* تحسين الوضع الليلي للعنوان الرئيسي في قسم Alumni */
+.alumni-section .section-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .alumni-section .section-title,
+.dark-mode .alumni-section .section-title {
+  color: var(--text-primary);
+  text-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+}
+
+/* ===== تخصيص قسم News ===== */
+.news-section .news-card {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-primary);
+  transition: var(--transition-theme);
+}
+
+.news-section .news-title {
+  color: var(--text-primary);
+}
+
+/* تحسينات الوضع الليلي لقسم الأخبار */
+[data-theme="dark"] .news-section .news-card,
+.dark-mode .news-section .news-card {
+  background: var(--surface-primary);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md), var(--glow-primary);
+}
+
+/* ===== تخصيص قسم Footer ===== */
+.footer {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-primary);
+  transition: var(--transition-theme);
+}
+
+.footer h4 {
+  color: var(--text-primary);
+}
+
+/* تحسينات الوضع الليلي للتذييل */
+[data-theme="dark"] .footer,
+.dark-mode .footer {
+  background-color: var(--bg-primary);
+  border-color: var(--border-accent);
+}
+
+/* ===== قواعد متجاوبة مشتركة ===== */
+@media (max-width: 1024px) {
+  .home-section {
+    padding: var(--space-16) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    padding: var(--space-12) 0;
+  }
+  
+  .hero-section {
+    min-height: 60vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-section {
+    padding: var(--space-8) 0;
+  }
+}
+
+/* ===== تطبيق خلفيات الأقسام ===== */
+/* خلفيات بيضاء في الوضع النهاري، كحلية غامقة في الوضع الليلي */
+
+/* قسم Hero */
+.hero-section {
+  background: var(--section-bg-primary);
+}
+
+/* قسم About */
+.about-section {
+  background: var(--section-bg-primary);
+}
+
+/* قسم News */
+.news-section {
+  background: var(--section-bg-secondary);
+}
+
+/* قسم Alumni */
+.alumni-section {
+  background: var(--section-bg-tertiary);
+}
+
+/* قسم Footer */
+.footer {
+  background: var(--section-bg-primary);
+}
+
+/* الصفحة الرئيسية الكاملة */
+.home-container {
+  background: var(--section-bg-primary);
+}
+
+/* تحسينات إضافية للوضع الليلي */
+[data-theme="dark"] .home-section,
+.dark-mode .home-section {
+  background: var(--section-bg-primary);
+}
+
+[data-theme="dark"] .hero-section,
+.dark-mode .hero-section {
+  background: var(--section-bg-primary);
+}
+
+[data-theme="dark"] .about-section,
+.dark-mode .about-section {
+  background: var(--section-bg-primary);
+}
+
+[data-theme="dark"] .news-section,
+.dark-mode .news-section {
+  background: var(--section-bg-secondary);
+}
+
+[data-theme="dark"] .alumni-section,
+.dark-mode .alumni-section {
+  background: var(--section-bg-tertiary);
+}
+
+[data-theme="dark"] .footer,
+.dark-mode .footer {
+  background: var(--section-bg-primary);
+} 

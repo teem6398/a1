@@ -1,0 +1,773 @@
+/* ==========================================================================
+   ENHANCED COLLEGE PAGES STYLES
+   أنماط محسنة لصفحات الكليات مع الأشكال الهندسية والأزرار
+   ========================================================================== */
+
+/* ===== إعادة تعيين الخلفيات القديمة ===== */
+.college-section {
+  background: var(--surface-base) !important;
+  background-image: none !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.college-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    var(--surface-base) 0%,
+    var(--surface-secondary) 100%
+  );
+  z-index: -1;
+}
+
+/* ===== قسم عن الكلية المحسن ===== */
+.about-college-section {
+  padding: var(--space-16) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-college-container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  position: relative;
+  z-index: 2;
+}
+
+.about-college-title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--space-12);
+  position: relative;
+}
+
+.about-college-title::after {
+  content: '';
+  position: absolute;
+  bottom: -var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-blue-500), var(--color-purple-500));
+  border-radius: var(--radius-full);
+}
+
+/* ===== الأزرار الأربعة المحسنة ===== */
+.college-tabs-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+  flex-wrap: wrap;
+}
+
+.college-tab-btn {
+  background: var(--surface-base);
+  color: var(--text-primary);
+  border: 2px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  transition: all var(--duration-300) var(--ease-out);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-width: 180px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.college-tab-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--color-blue-500-rgb), 0.1),
+    transparent
+  );
+  transition: left var(--duration-500) var(--ease-out);
+}
+
+.college-tab-btn:hover::before {
+  left: 100%;
+}
+
+.college-tab-btn:hover {
+  background: var(--color-blue-500);
+  color: var(--surface-base);
+  border-color: var(--color-blue-500);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.college-tab-btn.active {
+  background: var(--color-blue-600);
+  color: var(--surface-base);
+  border-color: var(--color-blue-600);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.college-tab-btn.active::before {
+  display: none;
+}
+
+/* تصميم خاص لكل زر */
+.college-tab-btn:nth-child(1) {
+  border-color: var(--color-blue-500);
+}
+
+.college-tab-btn:nth-child(1):hover,
+.college-tab-btn:nth-child(1).active {
+  background: var(--color-blue-500);
+  border-color: var(--color-blue-500);
+}
+
+.college-tab-btn:nth-child(2) {
+  border-color: var(--color-purple-500);
+}
+
+.college-tab-btn:nth-child(2):hover,
+.college-tab-btn:nth-child(2).active {
+  background: var(--color-purple-500);
+  border-color: var(--color-purple-500);
+}
+
+.college-tab-btn:nth-child(3) {
+  border-color: var(--color-emerald-500);
+}
+
+.college-tab-btn:nth-child(3):hover,
+.college-tab-btn:nth-child(3).active {
+  background: var(--color-emerald-500);
+  border-color: var(--color-emerald-500);
+}
+
+.college-tab-btn:nth-child(4) {
+  border-color: var(--color-orange-500);
+}
+
+.college-tab-btn:nth-child(4):hover,
+.college-tab-btn:nth-child(4).active {
+  background: var(--color-orange-500);
+  border-color: var(--color-orange-500);
+}
+
+/* ===== محتوى الأقسام ===== */
+.college-tab-content {
+  background: var(--surface-base);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-secondary);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--duration-300) var(--ease-out);
+  max-height: 0;
+  overflow: hidden;
+}
+
+.college-tab-content.active {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 1000px;
+}
+
+.college-tab-content h3 {
+  color: var(--text-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.college-tab-content p {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.college-tab-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.college-tab-content li {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-2);
+  position: relative;
+  padding-right: var(--space-6);
+}
+
+.college-tab-content li::before {
+  content: '✓';
+  position: absolute;
+  right: 0;
+  color: var(--color-emerald-500);
+  font-weight: var(--font-bold);
+}
+
+/* ===== قسم العميد المحسن ===== */
+.dean-section {
+  padding: var(--space-16) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.dean-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    var(--surface-base) 0%,
+    var(--surface-secondary) 50%,
+    var(--surface-base) 100%
+  );
+  z-index: -1;
+}
+
+.dean-container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  position: relative;
+  z-index: 2;
+}
+
+.dean-card {
+  background: var(--surface-base);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-12);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-secondary);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-12);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dean-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(var(--color-blue-500-rgb), 0.02) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.dean-image-container {
+  position: relative;
+  text-align: center;
+}
+
+.dean-image {
+  width: 250px;
+  height: 250px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 6px solid var(--surface-base);
+  box-shadow: var(--shadow-2xl);
+  transition: transform var(--duration-300) var(--ease-out);
+}
+
+.dean-image:hover {
+  transform: scale(1.05);
+}
+
+.dean-image-container::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 270px;
+  height: 270px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    45deg,
+    var(--color-blue-500),
+    var(--color-purple-500),
+    var(--color-emerald-500)
+  );
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.dean-content {
+  padding: var(--space-4);
+}
+
+.dean-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  text-align: center;
+}
+
+.dean-name {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-blue-600);
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.dean-message {
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  text-align: justify;
+  margin-bottom: var(--space-4);
+}
+
+.dean-signature {
+  text-align: left;
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--border-secondary);
+}
+
+.dean-signature-name {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.dean-signature-title {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ===== نظام الأشكال الهندسية المتقدم ===== */
+.geometric-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  z-index: 0;
+  transition: all 0.8s ease;
+  will-change: transform;
+}
+
+.shape-circle {
+  border-radius: 50%;
+}
+
+.shape-square {
+  border-radius: 4px;
+}
+
+.shape-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.shape-1 {
+  background: linear-gradient(135deg, var(--color-blue-500), var(--color-blue-600));
+}
+
+.shape-2 {
+  background: linear-gradient(135deg, var(--color-purple-500), var(--color-purple-600));
+}
+
+.shape-3 {
+  background: linear-gradient(135deg, var(--color-emerald-500), var(--color-emerald-600));
+}
+
+/* حركات مخصصة لكل قسم */
+.about-shapes .shape {
+  animation: floatAbout 15s infinite ease-in-out;
+}
+
+.dean-shapes .shape {
+  animation: floatDean 18s infinite ease-in-out;
+}
+
+.hero-shapes .shape {
+  animation: floatHero 20s infinite ease-in-out;
+}
+
+.majors-shapes .shape {
+  animation: floatMajors 22s infinite ease-in-out;
+}
+
+.stats-shapes .shape {
+  animation: floatStats 16s infinite ease-in-out;
+}
+
+.alumni-shapes .shape {
+  animation: floatAlumni 19s infinite ease-in-out;
+}
+
+.news-shapes .shape {
+  animation: floatNews 17s infinite ease-in-out;
+}
+
+/* تعريف الحركات */
+@keyframes floatAbout {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes floatDean {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-8deg);
+  }
+}
+
+@keyframes floatHero {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  33% {
+    transform: translateY(-25px) rotate(10deg);
+  }
+  66% {
+    transform: translateY(15px) rotate(-5deg);
+  }
+}
+
+@keyframes floatMajors {
+  0%, 100% {
+    transform: translateY(0) rotate(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) rotate(8deg) scale(1.05);
+  }
+}
+
+@keyframes floatStats {
+  0%, 100% {
+    transform: translateY(0) rotate(0) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) rotate(3deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(10px) rotate(-3deg) scale(0.98);
+  }
+}
+
+@keyframes floatAlumni {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  33% {
+    transform: translateY(-18px) rotate(6deg);
+  }
+  66% {
+    transform: translateY(12px) rotate(-4deg);
+  }
+}
+
+@keyframes floatNews {
+  0%, 100% {
+    transform: translateY(0) rotate(0) scale(1);
+  }
+  50% {
+    transform: translateY(-22px) rotate(-6deg) scale(1.03);
+  }
+}
+
+/* تخصيص الأشكال حسب نوع القسم */
+.about-shapes .shape-1 {
+  filter: drop-shadow(0 8px 24px rgba(var(--color-blue-500-rgb), 0.15));
+}
+
+.dean-shapes .shape-2 {
+  filter: drop-shadow(0 8px 24px rgba(var(--color-purple-500-rgb), 0.15));
+}
+
+.hero-shapes .shape-3 {
+  filter: drop-shadow(0 8px 24px rgba(var(--color-emerald-500-rgb), 0.15));
+}
+
+.majors-shapes .shape {
+  filter: drop-shadow(0 6px 20px rgba(var(--color-blue-500-rgb), 0.12));
+}
+
+.stats-shapes .shape {
+  filter: drop-shadow(0 4px 16px rgba(var(--color-purple-500-rgb), 0.18));
+}
+
+.alumni-shapes .shape {
+  filter: drop-shadow(0 10px 28px rgba(var(--color-emerald-500-rgb), 0.14));
+}
+
+.news-shapes .shape {
+  filter: drop-shadow(0 7px 22px rgba(var(--color-blue-500-rgb), 0.16));
+}
+
+/* ===== تحسينات الوضع الليلي ===== */
+[data-theme="dark"] .college-section::before {
+  background: linear-gradient(
+    135deg,
+    var(--surface-base) 0%,
+    rgba(var(--color-slate-800-rgb), 0.8) 100%
+  );
+}
+
+[data-theme="dark"] .dean-section::before {
+  background: linear-gradient(
+    135deg,
+    var(--surface-base) 0%,
+    rgba(var(--color-slate-800-rgb), 0.9) 50%,
+    var(--surface-base) 100%
+  );
+}
+
+[data-theme="dark"] .dean-card {
+  background: rgba(var(--color-slate-800-rgb), 0.5);
+  border-color: rgba(var(--color-slate-600-rgb), 0.3);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .dean-card::before {
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(var(--color-blue-400-rgb), 0.1) 50%,
+    transparent 100%
+  );
+}
+
+[data-theme="dark"] .college-tab-content {
+  background: rgba(var(--color-slate-800-rgb), 0.5);
+  border-color: rgba(var(--color-slate-600-rgb), 0.3);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .shape-1 {
+  background: linear-gradient(135deg, var(--color-blue-400), var(--color-blue-500));
+  opacity: 0.25 !important;
+}
+
+[data-theme="dark"] .shape-2 {
+  background: linear-gradient(135deg, var(--color-purple-400), var(--color-purple-500));
+  opacity: 0.25 !important;
+}
+
+[data-theme="dark"] .shape-3 {
+  background: linear-gradient(135deg, var(--color-emerald-400), var(--color-emerald-500));
+  opacity: 0.25 !important;
+}
+
+/* تحسينات خاصة بالوضع الليلي للأشكال */
+[data-theme="dark"] .about-shapes .shape-1 {
+  filter: drop-shadow(0 8px 24px rgba(var(--color-blue-400-rgb), 0.2));
+}
+
+[data-theme="dark"] .dean-shapes .shape-2 {
+  filter: drop-shadow(0 8px 24px rgba(var(--color-purple-400-rgb), 0.2));
+}
+
+[data-theme="dark"] .hero-shapes .shape-3 {
+  filter: drop-shadow(0 8px 24px rgba(var(--color-emerald-400-rgb), 0.2));
+}
+
+[data-theme="dark"] .majors-shapes .shape {
+  filter: drop-shadow(0 6px 20px rgba(var(--color-blue-400-rgb), 0.18));
+}
+
+[data-theme="dark"] .stats-shapes .shape {
+  filter: drop-shadow(0 4px 16px rgba(var(--color-purple-400-rgb), 0.25));
+}
+
+[data-theme="dark"] .alumni-shapes .shape {
+  filter: drop-shadow(0 10px 28px rgba(var(--color-emerald-400-rgb), 0.2));
+}
+
+[data-theme="dark"] .news-shapes .shape {
+  filter: drop-shadow(0 7px 22px rgba(var(--color-blue-400-rgb), 0.22));
+}
+
+/* ===== تحسينات الاستجابة ===== */
+@media (max-width: 768px) {
+  .college-tabs-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .college-tab-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .dean-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    text-align: center;
+  }
+
+  .dean-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .dean-image-container::after {
+    width: 220px;
+    height: 220px;
+  }
+
+  .dean-title {
+    font-size: var(--text-2xl);
+  }
+
+  .dean-name {
+    font-size: var(--text-lg);
+  }
+
+  .dean-message {
+    text-align: center;
+  }
+
+  .dean-signature {
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-college-section,
+  .dean-section {
+    padding: var(--space-12) 0;
+  }
+
+  .about-college-container,
+  .dean-container {
+    padding: 0 var(--space-4);
+  }
+
+  .dean-card {
+    padding: var(--space-8);
+  }
+
+  .dean-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .dean-image-container::after {
+    width: 170px;
+    height: 170px;
+  }
+  
+  .shape {
+    transform: scale(0.7);
+  }
+}
+
+/* ===== تحسينات الوصولية ===== */
+@media (prefers-reduced-motion: reduce) {
+  .college-tab-btn,
+  .college-tab-content,
+  .dean-image {
+    transition: none;
+  }
+
+  .college-tab-btn::before {
+    display: none;
+  }
+
+  .college-tab-btn:hover {
+    transform: none;
+  }
+
+  .dean-image:hover {
+    transform: none;
+  }
+  
+  .shape,
+  .about-shapes .shape,
+  .dean-shapes .shape,
+  .hero-shapes .shape,
+  .majors-shapes .shape,
+  .stats-shapes .shape,
+  .alumni-shapes .shape,
+  .news-shapes .shape {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.college-tab-btn:focus-visible {
+  outline: 2px solid var(--interactive-primary);
+  outline-offset: 2px;
+}
+
+@media print {
+  .college-tabs-container {
+    display: none;
+  }
+  
+  .college-tab-content {
+    opacity: 1;
+    transform: none;
+    max-height: none;
+    box-shadow: none;
+    border: none;
+  }
+  
+  .dean-card {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .dean-image {
+    border: 2px solid #000;
+  }
+  
+  .geometric-shapes {
+    display: none;
+  }
+} 

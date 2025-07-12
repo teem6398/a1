@@ -1,0 +1,503 @@
+.majorsSection {
+  padding: var(--space-24) 0;
+  background-color: var(--bg-secondary);
+  direction: rtl;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.sectionTitle {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.sectionDescription {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.loading {
+  text-align: center;
+  padding: var(--space-8);
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+}
+
+/* رسالة اختيار الكلية */
+.selectCollegeMessage {
+  text-align: center;
+  margin: var(--space-8) 0;
+  padding: var(--space-6);
+  background-color: var(--surface-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-secondary);
+}
+
+.selectCollegeMessage p {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+/* شبكة الكليات */
+.collegesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+.collegeCard {
+  background-color: var(--surface-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: var(--space-8);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+  border: 2px solid var(--border-secondary);
+}
+
+.collegeCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--interactive-primary);
+}
+
+.collegeName {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
+}
+
+.collegeInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+}
+
+.arrowIcon {
+  font-size: var(--text-xl);
+  color: var(--interactive-primary);
+  transition: transform 0.3s ease;
+}
+
+.collegeCard:hover .arrowIcon {
+  transform: translateX(-10px);
+}
+
+/* عنوان الكلية المحددة */
+.selectedCollegeHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: var(--space-8) 0;
+}
+
+.backButton {
+  padding: var(--space-2) var(--space-6);
+  background-color: transparent;
+  border: 2px solid var(--interactive-primary);
+  border-radius: 30px;
+  color: var(--interactive-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-base);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: var(--space-4);
+}
+
+.backButton:hover {
+  background-color: var(--interactive-primary);
+  color: var(--text-inverse);
+}
+
+.selectedCollegeTitle {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-8);
+}
+
+/* شبكة التخصصات */
+.majorsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-8);
+}
+
+.majorCard {
+  background-color: var(--surface-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  padding: var(--space-6);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--border-secondary);
+}
+
+.majorCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-accent);
+}
+
+.majorHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.majorIcon {
+  font-size: var(--text-4xl);
+  margin-left: var(--space-4);
+  background-color: var(--bg-tertiary);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: var(--interactive-primary);
+}
+
+.majorTitles {
+  flex: 1;
+}
+
+.majorName {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1) 0;
+}
+
+.majorCollege {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.majorDescription {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+  line-height: var(--line-height-relaxed);
+}
+
+.majorInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-secondary);
+}
+
+.majorDuration, .majorStudents {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.majorFeatures {
+  margin-bottom: var(--space-6);
+}
+
+.featuresTitle, .requirementsTitle {
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.featuresList, .requirementsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.featureItem, .requirementItem {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+  padding-right: var(--space-6);
+  position: relative;
+}
+
+.featureItem::before {
+  content: '✓';
+  position: absolute;
+  right: 0;
+  color: var(--state-success);
+  font-weight: bold;
+}
+
+.requirementItem {
+  padding-right: var(--space-4);
+  position: relative;
+}
+
+.requirementItem::before {
+  content: '•';
+  position: absolute;
+  right: 0;
+  color: var(--interactive-primary);
+}
+
+.noRequirements {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.admissionRequirements {
+  margin-bottom: var(--space-6);
+  flex-grow: 1;
+}
+
+.applyButton {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) 0;
+  background-color: var(--interactive-primary);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: 8px;
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.applyButton:hover {
+  background-color: var(--interactive-primary-hover);
+  transform: translateY(-2px);
+}
+
+/* إضافة أنماط لمنطقة الفلتر */
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: var(--space-10) 0;
+  gap: var(--space-6);
+  position: relative;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  padding: var(--space-8);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid var(--border-secondary);
+}
+
+.filterContainer::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--interactive-primary), var(--interactive-secondary));
+  border-radius: 4px;
+}
+
+.filterTitle {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2) 0;
+  text-align: center;
+  position: relative;
+  padding-bottom: var(--space-3);
+}
+
+.filterTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--interactive-primary), var(--interactive-secondary));
+  border-radius: 2px;
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.selectIcon {
+  position: absolute;
+  top: 50%;
+  right: 1.2rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%233182ce' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.collegeFilter {
+  padding: var(--space-4) var(--space-8);
+  border: 2px solid var(--border-secondary);
+  border-radius: 50px;
+  background-color: var(--surface-primary);
+  font-size: var(--text-lg);
+  color: var(--text-primary);
+  width: 100%;
+  cursor: pointer;
+  appearance: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+}
+
+.collegeFilter:focus {
+  outline: none;
+  border-color: var(--interactive-primary);
+  box-shadow: 0 0 0 4px rgba(49, 130, 206, 0.2), var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.collegeFilter:hover {
+  border-color: var(--interactive-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.collegeFilter option {
+  padding: 10px;
+  font-size: var(--text-lg);
+  background-color: var(--surface-primary);
+  color: var(--text-primary);
+}
+
+/* تعديل لدعم RTL */
+[dir="rtl"] .selectIcon {
+  right: auto;
+  left: 1.2rem;
+}
+
+/* تعديلات للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .majorsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sectionTitle {
+    font-size: var(--text-3xl);
+  }
+  
+  .filterContainer {
+    padding: var(--space-6);
+  }
+  
+  .filterTitle {
+    font-size: var(--text-lg);
+  }
+  
+  .collegeFilter {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-base);
+  }
+}
+
+/* تنسيقات الوضع الليلي */
+:global([data-theme="dark"]) .majorCard {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-primary);
+}
+
+:global([data-theme="dark"]) .majorCard:hover {
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+  border-color: var(--interactive-primary);
+}
+
+:global([data-theme="dark"]) .majorIcon {
+  background-color: var(--bg-primary);
+}
+
+:global([data-theme="dark"]) .applyButton {
+  box-shadow: var(--shadow-md);
+}
+
+:global([data-theme="dark"]) .applyButton:hover {
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+}
+
+:global([data-theme="dark"]) .filterContainer {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--surface-primary) 100%);
+  border-color: var(--border-primary);
+}
+
+:global([data-theme="dark"]) .collegeFilter {
+  background-color: var(--surface-primary);
+  border-color: var(--border-primary);
+}
+
+:global([data-theme="dark"]) .collegeFilter:focus,
+:global([data-theme="dark"]) .collegeFilter:hover {
+  border-color: var(--interactive-primary);
+  box-shadow: var(--shadow-md), var(--glow-secondary);
+}
+
+:global([data-theme="dark"]) .collegeCard {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-primary);
+}
+
+:global([data-theme="dark"]) .collegeCard:hover {
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+  border-color: var(--interactive-primary);
+}
+
+:global([data-theme="dark"]) .selectCollegeMessage {
+  background-color: var(--surface-primary);
+  border-color: var(--border-primary);
+  box-shadow: var(--shadow-md);
+}
+
+:global([data-theme="dark"]) .backButton {
+  border-color: var(--interactive-primary);
+  color: var(--interactive-primary);
+}
+
+:global([data-theme="dark"]) .backButton:hover {
+  background-color: var(--interactive-primary);
+  color: var(--text-inverse);
+  box-shadow: var(--shadow-md), var(--glow-secondary);
+}

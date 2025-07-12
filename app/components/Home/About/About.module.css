@@ -1,0 +1,1718 @@
+.aboutWrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .about {
+    padding: 80px 0 40px;
+    background: var(--section-bg-primary);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+  
+  .about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23333333' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+
+.dark-mode .about::before {
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.sectionTitle h2 {
+    text-align: center;
+    color: var(--text-primary);
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    position: relative;
+    font-weight: 700;
+}
+
+.dark-mode .sectionTitle h2 {
+    color: var(--interactive-primary) !important;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.videoSection {
+    margin-bottom: 3rem;
+}
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: var(--shadow-strong);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.videoWrapper:hover {
+    transform: scale(1.01) translateY(-5px);
+}
+
+.videoWrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.readMoreContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2.5rem 0 1.5rem;
+}
+
+.readMoreBtn {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--interactive-primary), var(--interactive-primary-dark));
+    color: var(--text-on-accent);
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 8px 20px rgba(0, 86, 179, 0.3);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* تنسيق الزر الأزرق */
+.blueBtn {
+    position: relative;
+}
+
+/* إضافة تأثير خلفية متحركة للزر */
+.blueBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s;
+    z-index: -1;
+}
+
+/* إلغاء تأثير hover العام للزر الأزرق واستخدام التأثير المخصص فقط */
+.blueBtn:hover {
+    background: linear-gradient(135deg, var(--interactive-primary-dark), var(--interactive-primary));
+    box-shadow: 0 12px 25px rgba(0, 86, 179, 0.5) !important;
+    transform: translateY(-5px) scale(1.03);
+}
+
+.blueBtn:hover::before {
+    left: 100%;
+}
+
+.readMoreIcon {
+    width: 24px;
+    height: 24px;
+    margin-left: 0;
+    margin-right: 12px;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+    order: 0;
+}
+
+.rtlIcon {
+    transform: rotate(0deg);
+    margin-right: 12px;
+    margin-left: 0;
+    order: 0;
+}
+
+.readMoreBtn:hover .readMoreIcon {
+    transform: translateX(-8px);
+}
+
+.readMoreBtn:hover .rtlIcon {
+    transform: translateX(-8px);
+}
+
+/* إضافة تأثير الهالة للزر */
+.readMoreBtn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: auto;
+    right: 24px;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.readMoreBtn:hover::after {
+    opacity: 1;
+    right: 20px;
+}
+
+/* تصميم للوضع الداكن */
+.dark-mode .blueBtn {
+    background: linear-gradient(135deg, #2196f3, #1565c0);
+    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
+}
+
+.dark-mode .blueBtn:hover {
+    background: linear-gradient(135deg, #1565c0, #2196f3);
+    box-shadow: 0 12px 25px rgba(33, 150, 243, 0.6) !important;
+}
+
+/* Nuevo botón para mostrar sección del presidente */
+.showPresidentBtnContainer {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 3rem;
+}
+
+.showPresidentBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 86, 179, 0.1);
+    border: 1px solid rgba(0, 86, 179, 0.2);
+    color: var(--interactive-primary);
+    border-radius: 50px;
+    padding: 12px 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(4px);
+}
+
+.dark-mode .showPresidentBtn {
+    background: rgba(33, 150, 243, 0.15);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+    color: #42a5f5;
+}
+
+.showPresidentBtn span {
+    margin-top: 6px;
+    color: var(--color-gray-900);
+}
+
+.dark-mode .showPresidentBtn span {
+    color: var(--color-gray-900) !important;
+}
+
+.showPresidentBtn:hover {
+    background: rgba(0, 86, 179, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.showPresidentBtn:active {
+    transform: translateY(-1px);
+}
+
+/* حاوية الأزرار الثلاثة */
+.buttonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 3rem;
+}
+
+/* تعديل زر عرض معلومات الرئيس ليلائم العرض المتجاور */
+.buttonsContainer .showPresidentBtn {
+    min-width: 180px;
+}
+
+/* Sección del mensaje del presidente */
+.presidentMessage {
+    padding: 5rem 0;
+    background: var(--section-bg-primary);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.presidentMessage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.02) 75%, transparent 75%, transparent);
+    background-size: 10px 10px;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.presidentTitle {
+    font-size: var(--text-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: var(--space-8);
+    line-height: var(--line-height-tight);
+    letter-spacing: var(--letter-spacing-tight);
+}
+
+.dark-mode .presidentTitle {
+    color: var(--text-primary);
+}
+
+.presidentContent {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ltrContent {
+    flex-direction: row;
+}
+
+.rtlContent {
+    flex-direction: row-reverse;
+}
+
+.presidentText {
+    flex: 1;
+    padding: var(--space-6);
+}
+
+.presidentText p {
+    font-size: var(--text-lg);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-primary);
+    margin-bottom: var(--space-6);
+    text-align: justify;
+}
+
+.dark-mode .presidentText p {
+    color: var(--text-secondary);
+}
+
+.presidentSignature {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-left: 3px solid var(--interactive-primary);
+    background: rgba(0, 86, 179, 0.05);
+    border-radius: 0 8px 8px 0;
+}
+
+.dark-mode .presidentSignature {
+    background: rgba(33, 150, 243, 0.1);
+    border-left: 3px solid var(--interactive-primary);
+}
+
+.presidentSignature h3 {
+    font-size: 1.2rem;
+    color: var(--interactive-primary);
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.dark-mode .presidentSignature h3 {
+    color: #ffffff !important;
+}
+
+.presidentSignature p {
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+.dark-mode .presidentSignature p {
+    color: #ffffff !important;
+}
+
+.presidentImage {
+    flex: 0 0 400px;
+}
+
+.presidentPhoto {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-strong);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .presidentPhoto {
+    border: 5px solid rgba(255, 255, 255, 0.05);
+}
+
+.presidentPhoto:hover {
+    transform: scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.collapsePresidentBtn {
+    display: block;
+    margin: 3rem auto 0;
+    background-color: rgba(0, 86, 179, 0.1);
+    color: var(--interactive-primary);
+    border: 1px solid rgba(0, 86, 179, 0.2);
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.dark-mode .collapsePresidentBtn {
+    background-color: rgba(33, 150, 243, 0.15);
+    color: #42a5f5;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.collapsePresidentBtn:hover {
+    background-color: rgba(0, 86, 179, 0.15);
+    transform: translateY(-2px);
+}
+
+.collapsePresidentBtn:active {
+    transform: translateY(0);
+}
+
+/* Loading Spinner */
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 107, 107, 0.3);
+    border-radius: 50%;
+    border-top-color: #ff6b6b;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+    .presidentContent {
+        gap: 2rem;
+    }
+
+    .presidentImage {
+        flex: 0 0 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .presidentContent {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    .presidentText p {
+        font-size: 1rem;
+    }
+
+    .presidentSignature {
+        margin-top: 2rem;
+    }
+
+    .presidentImage {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .presidentTitle {
+        font-size: 2rem;
+    }
+
+    .sectionTitle h2 {
+        font-size: 2rem;
+    }
+
+    .about {
+        padding: 60px 0 30px;
+}
+
+.readMoreBtn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .showPresidentBtn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .showPresidentBtn span {
+        font-size: 0.9rem;
+    }
+
+    .collapsePresidentBtn {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+    }
+    
+    /* تنسيق حاوية الأزرار للشاشات الصغيرة */
+    .buttonsContainer {
+        flex-direction: column;
+    align-items: center;
+    }
+    
+    .buttonsContainer .showPresidentBtn {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .readMoreBtn {
+        padding: 7px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .showPresidentBtn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .collapsePresidentBtn {
+        padding: 7px 16px;
+        font-size: 0.85rem;
+}
+}
+
+/* إضافة الأشكال الهندسية المتحركة */
+.about::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* المربع الأول */
+.about::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgba(0, 86, 179, 0.2);
+  border-radius: 10px;
+  top: 5%;
+  left: -3%;
+  z-index: 0;
+  animation: float 15s ease-in-out infinite;
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+/* المثلث */
+.about::before {
+  content: '';
+  position: absolute;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 170px solid rgba(0, 86, 179, 0.1);
+  right: -50px;
+  bottom: 10%;
+  z-index: 0;
+  animation: float 18s ease-in-out infinite alternate;
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+/* دائرة كبيرة */
+.aboutWrapper::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 86, 179, 0.1);
+  right: -100px;
+  top: 20%;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite alternate-reverse;
+  pointer-events: none;
+}
+
+/* مربع صغير متحرك */
+.aboutWrapper::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+  height: 80px;
+  background: rgba(0, 86, 179, 0.08);
+  transform: rotate(45deg);
+  left: 10%;
+  bottom: 15%;
+  z-index: 0;
+  animation: float 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* حركة الأشكال الهندسية */
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(10px, 20px) rotate(5deg);
+  }
+  40% {
+    transform: translate(20px, -10px) rotate(10deg);
+  }
+  60% {
+    transform: translate(-10px, 15px) rotate(5deg);
+}
+  80% {
+    transform: translate(-20px, -10px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* نجمة ذات ثماني رؤوس */
+.container::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 86, 179, 0.04);
+  clip-path: polygon(
+    50% 0%, 
+    61% 35%, 
+    98% 35%, 
+    68% 57%, 
+    79% 91%, 
+    50% 70%, 
+    21% 91%, 
+    32% 57%, 
+    2% 35%, 
+    39% 35%
+  );
+  right: 10%;
+  top: 120px;
+  z-index: 0;
+  animation: spinStar 20s linear infinite;
+  pointer-events: none;
+}
+
+/* مستطيل متحرك */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 80px;
+  border: 2px solid rgba(0, 86, 179, 0.08);
+  left: 15%;
+  bottom: -10px;
+  z-index: 0;
+  transform: perspective(200px) rotateX(10deg);
+  animation: floatUpDown 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* شكل الزيجزاج */
+.videoSection::before {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(0, 86, 179, 0.06);
+  clip-path: polygon(
+    0 0, 
+    50% 25%, 
+    100% 0, 
+    100% 75%, 
+    50% 100%, 
+    0 75%
+  );
+  left: -30px;
+  top: 30%;
+  z-index: -1;
+  animation: floatUpDown 8s ease-in-out infinite alternate-reverse;
+  pointer-events: none;
+}
+
+@keyframes spinStar {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatUpDown {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 20px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* تعديل قسم الأهداف والرسالة */
+.sectionGoals h3,
+.sectionMission h3 {
+    font-size: 1.8rem;
+    color: #333333;
+    margin-bottom: 1.5rem;
+    position: relative;
+    font-weight: 600;
+}
+
+.dark-mode .sectionGoals h3,
+.dark-mode .sectionMission h3 {
+    color: #ffffff !important;
+}
+
+.sectionGoals p,
+.sectionMission p,
+.sectionGoals li,
+.sectionMission li {
+    color: #333333;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.dark-mode .sectionGoals p,
+.dark-mode .sectionMission p {
+    color: #ffffff !important;
+}
+
+/* تعديل على القوائم في قسم الأهداف */
+.goalsList {
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.goalsList li {
+    margin-bottom: 0.8rem;
+    color: #333333;
+    }
+    
+.dark-mode .goalsList li {
+    color: #ffffff !important;
+}
+
+/* تحديث أنماط النصوص فقط */
+
+.goalTitle {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  line-height: var(--line-height-snug);
+}
+
+.goalDescription {
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-secondary);
+  text-align: justify;
+}
+
+/* تحديث أنماط النصوص للوضع الليلي */
+.dark-mode .goalTitle {
+  color: var(--text-primary);
+}
+
+.dark-mode .goalDescription {
+  color: var(--text-secondary);
+}
+
+/* تحديث أنماط النصوص للغة العربية */
+[dir="rtl"] .presidentText p,
+[dir="rtl"] .goalDescription {
+  font-family: var(--font-arabic);
+}
+
+/* تحديث أنماط النصوص للغة الإنجليزية */
+[dir="ltr"] .presidentText p,
+[dir="ltr"] .goalDescription {
+  font-family: var(--font-english);
+}
+
+.goalsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+  width: 70vw; /* تغيير العرض إلى 70% من عرض الشاشة */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .goalsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    width: 85vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .goalsGrid {
+    grid-template-columns: 1fr;
+    width: 90vw;
+  }
+}
+
+.goalCard {
+  background: var(--surface-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-primary);
+}
+
+.goalCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.goalIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-accent);
+  border-radius: 50%;
+  color: var(--interactive-primary);
+}
+
+.dark-mode .goalIcon {
+  background: rgba(var(--color-primary-500-rgb), 0.1);
+  color: var(--interactive-primary);
+}
+
+.goalIcon svg {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.goalCard:hover .goalIcon svg {
+  transform: scale(1.1);
+}
+
+/* تحسين أزرار القسم */
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+  flex-wrap: wrap;
+}
+
+.buttonsContainer .showPresidentBtn {
+  min-width: 180px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* تحسين أنماط الأزرار للوضع الليلي والنهاري */
+.showPresidentBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--surface-primary);
+  border: 1px solid var(--border-primary);
+  color: var(--interactive-primary);
+  border-radius: 50px;
+  padding: 12px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(4px);
+}
+
+.showPresidentBtn span {
+  margin-top: 6px;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+  transition: color 0.3s ease;
+}
+
+.showPresidentBtn:hover {
+  background: var(--bg-accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--interactive-primary);
+}
+
+.showPresidentBtn:hover span {
+  color: var(--interactive-primary);
+}
+
+.showPresidentBtn:active {
+  transform: translateY(-1px);
+}
+
+/* تنسيقات الوضع الليلي للأزرار */
+:global([data-theme="dark"]) .showPresidentBtn {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-secondary);
+  box-shadow: var(--shadow-md), var(--glow-sm);
+}
+
+:global([data-theme="dark"]) .showPresidentBtn span {
+  color: var(--text-primary);
+}
+
+:global([data-theme="dark"]) .showPresidentBtn:hover {
+  background: var(--bg-accent);
+  border-color: var(--interactive-primary);
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+}
+
+:global([data-theme="dark"]) .showPresidentBtn:hover span {
+  color: var(--interactive-primary);
+}
+
+/* إطار أنيق لقسم رسالة الجامعة وكلمة رئيس الجامعة */
+.presidentMessage {
+  padding: 3rem 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border-primary);
+  border-bottom: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-inner);
+}
+
+.presidentMessage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--interactive-primary), var(--interactive-secondary), var(--interactive-primary));
+  opacity: 0.7;
+}
+
+.presidentMessage::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--interactive-primary), var(--interactive-secondary), var(--interactive-primary));
+  opacity: 0.7;
+}
+
+/* تحسين عنوان القسم */
+.presidentTitle {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  position: relative;
+  color: var(--text-primary) !important;
+  transition: all 0.3s ease;
+}
+
+.presidentTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, var(--interactive-primary), var(--interactive-primary-dark));
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+:global([data-theme="dark"]) .presidentTitle {
+  color: var(--interactive-primary);
+  text-shadow: 0 0 20px rgba(var(--interactive-primary-rgb), 0.3);
+}
+
+:global([data-theme="dark"]) .presidentTitle::after {
+  background: linear-gradient(to right, 
+    rgba(var(--interactive-primary-rgb), 0.7),
+    rgba(var(--interactive-primary-rgb), 0.3)
+  );
+  box-shadow: 0 0 10px rgba(var(--interactive-primary-rgb), 0.5);
+}
+
+/* تحسين محتوى القسم */
+.presidentContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  align-items: center;
+  background: var(--surface-primary);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.presidentContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+/* تنسيقات الوضع الليلي للإطار */
+:global([data-theme="dark"]) .presidentMessage {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-secondary);
+  border-bottom: 1px solid var(--border-secondary);
+  box-shadow: var(--shadow-inner), var(--glow-sm);
+}
+
+:global([data-theme="dark"]) .presidentContent {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-secondary);
+  box-shadow: var(--shadow-md), var(--glow-sm);
+}
+
+:global([data-theme="dark"]) .presidentContent::before {
+  opacity: 0.2;
+}
+
+/* تحسين بطاقات الأهداف وإضافة أيقونة الدبوس */
+.goalsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.goalCard {
+  background: var(--surface-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.goalCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--interactive-primary);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+/* أيقونة الدبوس */
+.goalCard::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-inverse);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.goalCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--interactive-primary);
+}
+
+.goalCard:hover::before {
+  opacity: 1;
+}
+
+.goalCard:hover::after {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* تنسيقات الوضع الليلي للبطاقات */
+:global([data-theme="dark"]) .goalCard {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+:global([data-theme="dark"]) .goalCard:hover {
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+  border-color: var(--interactive-primary);
+}
+
+:global([data-theme="dark"]) .goalCard::before {
+  background: var(--interactive-primary);
+  opacity: 0.5;
+}
+
+:global([data-theme="dark"]) .goalCard:hover::before {
+  opacity: 0.8;
+}
+
+.goalIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-accent);
+  border-radius: 50%;
+  color: var(--interactive-primary);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+:global([data-theme="dark"]) .goalIcon {
+  background: rgba(var(--interactive-primary-rgb), 0.1);
+  color: var(--interactive-primary);
+  box-shadow: var(--shadow-sm), var(--glow-sm);
+}
+
+.goalCard:hover .goalIcon {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+:global([data-theme="dark"]) .goalCard:hover .goalIcon {
+  box-shadow: var(--shadow-lg),
+    inset 0 0 30px rgba(var(--interactive-primary-rgb), 0.2),
+    0 0 20px rgba(var(--interactive-primary-rgb), 0.2);
+}
+
+.goalIcon svg {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.goalCard:hover .goalIcon svg {
+  transform: scale(1.1);
+}
+
+/* تحسين زر الإغلاق */
+.collapsePresidentBtn {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 10px 25px;
+  background: transparent;
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.collapsePresidentBtn:hover {
+  background: var(--bg-accent);
+  color: var(--interactive-primary);
+  border-color: var(--interactive-primary);
+}
+
+:global([data-theme="dark"]) .collapsePresidentBtn {
+  border: 1px solid var(--border-secondary);
+  color: var(--text-primary);
+}
+
+:global([data-theme="dark"]) .collapsePresidentBtn:hover {
+  background: var(--bg-accent);
+  color: var(--interactive-primary);
+  border-color: var(--interactive-primary);
+  box-shadow: var(--shadow-sm), var(--glow-sm);
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  gap: 1rem;
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem auto;
+}
+
+.actionButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--interactive-primary);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.actionButton::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-inverse);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.actionButton:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--interactive-primary);
+}
+
+.actionButton:hover::before {
+  opacity: 1;
+}
+
+.actionButton:hover::after {
+  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.actionButtonIcon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.actionButton:hover .actionButtonIcon {
+  transform: scale(1.1);
+}
+
+/* تنسيقات الوضع الليلي */
+:global([data-theme="dark"]) .actionButton {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+:global([data-theme="dark"]) .actionButton:hover {
+  box-shadow: var(--shadow-lg), var(--glow-primary);
+  border-color: var(--interactive-primary);
+}
+
+:global([data-theme="dark"]) .actionButton::before {
+  background: var(--interactive-primary);
+  opacity: 0.5;
+}
+
+:global([data-theme="dark"]) .actionButton:hover::before {
+  opacity: 0.8;
+}
+
+/* تنسيقات للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .actionButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    max-width: 250px;
+  }
+  
+  .actionButtonIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* تنسيقات قسم الأهداف */
+.goalsSection {
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  width: 100%;
+}
+
+.goalsContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.goalsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.goalCard {
+  background: var(--surface-primary);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-primary);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  min-height: 320px;
+}
+
+.goalCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--interactive-primary);
+}
+
+.goalIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--interactive-primary), var(--interactive-primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(var(--interactive-primary-rgb), 0.2);
+}
+
+.goalIcon::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    rgba(var(--interactive-primary-rgb), 0.2),
+    rgba(var(--interactive-primary-rgb), 0.1)
+  );
+  z-index: -1;
+  transition: all 0.4s ease;
+}
+
+.goalIcon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,
+    rgba(255, 255, 255, 0.2),
+    transparent 70%
+  );
+  transition: all 0.4s ease;
+}
+
+.goalIcon svg {
+  width: 32px;
+  height: 32px;
+  color: var(--text-on-accent);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: all 0.4s ease;
+}
+
+.goalCard:hover .goalIcon {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(var(--interactive-primary-rgb), 0.3);
+}
+
+.goalCard:hover .goalIcon::after {
+  opacity: 0.8;
+}
+
+.goalCard:hover .goalIcon svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+:global([data-theme="dark"]) .goalIcon {
+  background: linear-gradient(135deg,
+    rgba(var(--interactive-primary-rgb), 0.8),
+    rgba(var(--interactive-primary-rgb), 0.6)
+  );
+  box-shadow: 0 8px 20px rgba(var(--interactive-primary-rgb), 0.3),
+              inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+:global([data-theme="dark"]) .goalIcon::before {
+  background: linear-gradient(135deg,
+    rgba(var(--interactive-primary-rgb), 0.3),
+    rgba(var(--interactive-primary-rgb), 0.1)
+  );
+}
+
+:global([data-theme="dark"]) .goalCard:hover .goalIcon {
+  background: linear-gradient(135deg,
+    rgba(var(--interactive-primary-rgb), 0.9),
+    rgba(var(--interactive-primary-rgb), 0.7)
+  );
+  box-shadow: 0 15px 30px rgba(var(--interactive-primary-rgb), 0.4),
+              inset 0 2px 6px rgba(255, 255, 255, 0.2);
+}
+
+/* تنسيقات للشاشات المختلفة */
+@media (max-width: 1400px) {
+  .goalsContainer {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .goalsGrid {
+    gap: 1.5rem;
+  }
+  
+  .goalCard {
+    padding: 2rem 1.5rem;
+  }
+  
+  .goalIcon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .goalIcon svg {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .goalsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .goalCard {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .goalsContainer {
+    padding: 0 1.5rem;
+  }
+  
+  .goalsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .goalCard {
+    min-height: 280px;
+    padding: 2rem 1.5rem;
+  }
+  
+  .goalIcon {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 1.5rem;
+  }
+
+  .goalIcon svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .goalTitle {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .goalsContainer {
+    padding: 0 1rem;
+  }
+  
+  .goalCard {
+    padding: 1.75rem 1.25rem;
+    min-height: 260px;
+  }
+  
+  .goalIcon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.25rem;
+  }
+
+  .goalIcon svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.presidentMessage {
+  padding: 3rem 0;
+  background: var(--surface-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.presidentContent {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  position: relative;
+  max-width: 90%;
+  margin: 2rem auto;
+}
+
+/* تحسينات التجاوب مع الشاشات */
+@media (max-width: 768px) {
+  .presidentMessage {
+    padding: 2rem 0;
+  }
+
+  .presidentContent {
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 95%;
+    margin: 1rem auto;
+  }
+
+  .presidentImage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    order: -1; /* نقل الصورة للأعلى */
+  }
+
+  .presidentPhoto {
+    width: 280px; /* زيادة عرض الصورة */
+    height: 380px; /* زيادة الارتفاع للحفاظ على النسبة */
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(var(--interactive-primary-rgb), 0.15);
+  }
+
+  .presidentText {
+    width: 100%;
+    margin: 0;
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+
+  /* إزالة المثلث في وضع الموبايل */
+  .presidentText::after {
+    display: none;
+  }
+
+  .presidentText p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .presidentSignature {
+    text-align: center;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+  }
+
+  .presidentSignature h3 {
+    font-size: 1.1rem;
+    color: var(--interactive-primary); /* جعل لون الاسم أزرق */
+    font-weight: 600;
+  }
+
+  .presidentSignature p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .presidentMessage {
+    padding: 1.5rem 0;
+  }
+
+  .presidentContent {
+    max-width: 100%;
+    margin: 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .presidentPhoto {
+    width: 240px; /* زيادة عرض الصورة في الشاشات الأصغر */
+    height: 320px;
+  }
+
+  .presidentText {
+    padding: 1.2rem;
+    margin: 0 0.5rem;
+  }
+
+  .presidentText p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  .presidentSignature {
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+  }
+
+  .presidentSignature h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .presidentSignature p {
+    font-size: 0.85rem;
+  }
+
+  /* تحسين أزرار التنقل في وضع الموبايل */
+  .collapsePresidentBtn {
+    width: 100%;
+    max-width: 200px;
+    margin: 1rem auto;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+    border-radius: 25px;
+    background: var(--interactive-primary);
+    color: var(--text-on-accent);
+    border: none;
+    box-shadow: 0 4px 15px rgba(var(--interactive-primary-rgb), 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .collapsePresidentBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--interactive-primary-rgb), 0.4);
+  }
+
+  .collapsePresidentBtn:active {
+    transform: translateY(0);
+  }
+}
+
+/* تحسينات الوضع الليلي للموبايل */
+@media (max-width: 768px) {
+  :global([data-theme="dark"]) .presidentText {
+    background: rgba(var(--interactive-primary-rgb), 0.12);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25),
+                inset 0 0 15px rgba(var(--interactive-primary-rgb), 0.1);
+  }
+
+  :global([data-theme="dark"]) .presidentSignature {
+    border-top-color: rgba(var(--interactive-primary-rgb), 0.2);
+  }
+
+  :global([data-theme="dark"]) .collapsePresidentBtn {
+    background: linear-gradient(135deg,
+      rgba(var(--interactive-primary-rgb), 0.9),
+      rgba(var(--interactive-primary-rgb), 0.7)
+    );
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  :global([data-theme="dark"]) .collapsePresidentBtn:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(var(--interactive-primary-rgb), 0.3);
+  }
+}

@@ -1,0 +1,229 @@
+/* ==========================================================================
+   GEOMETRIC SHAPES ANIMATIONS
+   نظام الأشكال الهندسية المتحركة للخلفيات
+   ========================================================================== */
+
+/* الحاوي الرئيسي للأشكال */
+.geometric-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* الشكل الأساسي */
+.shape {
+  position: absolute;
+  animation: float 8s ease-in-out infinite;
+  will-change: transform;
+  backdrop-filter: blur(1px);
+}
+
+/* أنواع الأشكال */
+.shape-circle {
+  border-radius: 50%;
+}
+
+.shape-square {
+  border-radius: var(--radius-sm);
+}
+
+.shape-triangle {
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  border-style: solid;
+}
+
+/* ألوان الأشكال */
+.shape-1 {
+  background: var(--color-blue-500);
+  opacity: 0.1;
+}
+
+.shape-2 {
+  background: var(--color-purple-500);
+  opacity: 0.08;
+}
+
+.shape-3 {
+  background: var(--color-emerald-500);
+  opacity: 0.09;
+}
+
+/* أشكال المثلثات */
+.shape-triangle.shape-1 {
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 87px solid rgba(var(--color-blue-500-rgb), 0.1);
+}
+
+.shape-triangle.shape-2 {
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 87px solid rgba(var(--color-purple-500-rgb), 0.08);
+}
+
+.shape-triangle.shape-3 {
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 87px solid rgba(var(--color-emerald-500-rgb), 0.09);
+}
+
+/* الحركات المختلفة */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-25px) rotate(3deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(20px) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(5deg);
+  }
+  75% {
+    transform: translateY(25px) rotate(-3deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) rotate(180deg) scale(1.1);
+  }
+}
+
+/* تطبيق حركات مختلفة */
+.shape:nth-child(2n) {
+  animation: floatReverse 10s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.shape:nth-child(3n) {
+  animation: floatSlow 12s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+.shape:nth-child(4n) {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: -1s;
+}
+
+.shape:nth-child(5n) {
+  animation: floatReverse 14s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+/* تأثيرات خاصة للوضع الليلي */
+[data-theme="dark"] .shape-1 {
+  background: var(--color-blue-400);
+  opacity: 0.15;
+  box-shadow: 0 0 20px rgba(var(--color-blue-400-rgb), 0.2);
+}
+
+[data-theme="dark"] .shape-2 {
+  background: var(--color-purple-400);
+  opacity: 0.12;
+  box-shadow: 0 0 20px rgba(var(--color-purple-400-rgb), 0.15);
+}
+
+[data-theme="dark"] .shape-3 {
+  background: var(--color-emerald-400);
+  opacity: 0.13;
+  box-shadow: 0 0 20px rgba(var(--color-emerald-400-rgb), 0.18);
+}
+
+[data-theme="dark"] .shape-triangle.shape-1 {
+  border-bottom-color: rgba(var(--color-blue-400-rgb), 0.15);
+  filter: drop-shadow(0 0 10px rgba(var(--color-blue-400-rgb), 0.2));
+}
+
+[data-theme="dark"] .shape-triangle.shape-2 {
+  border-bottom-color: rgba(var(--color-purple-400-rgb), 0.12);
+  filter: drop-shadow(0 0 10px rgba(var(--color-purple-400-rgb), 0.15));
+}
+
+[data-theme="dark"] .shape-triangle.shape-3 {
+  border-bottom-color: rgba(var(--color-emerald-400-rgb), 0.13);
+  filter: drop-shadow(0 0 10px rgba(var(--color-emerald-400-rgb), 0.18));
+}
+
+/* تحسينات الأداء */
+@media (prefers-reduced-motion: reduce) {
+  .shape {
+    animation: none;
+  }
+}
+
+/* إخفاء الأشكال على الأجهزة الصغيرة لتحسين الأداء */
+@media (max-width: 768px) {
+  .shape {
+    display: none;
+  }
+}
+
+/* أشكال خاصة بالأقسام المختلفة */
+.about-shapes .shape {
+  animation-duration: 15s;
+}
+
+.dean-shapes .shape {
+  animation-duration: 18s;
+  opacity: 0.6;
+}
+
+.dean-shapes .shape-1 {
+  background: var(--color-navy-500);
+  opacity: 0.08;
+}
+
+.dean-shapes .shape-2 {
+  background: var(--color-blue-600);
+  opacity: 0.06;
+}
+
+.dean-shapes .shape-3 {
+  background: var(--color-purple-500);
+  opacity: 0.07;
+}
+
+/* أشكال الخريجين */
+.alumni-shapes .shape {
+  animation-duration: 20s;
+}
+
+.alumni-shapes .shape-1 {
+  background: var(--color-emerald-500);
+  opacity: 0.1;
+}
+
+.alumni-shapes .shape-2 {
+  background: var(--color-blue-500);
+  opacity: 0.08;
+}
+
+.alumni-shapes .shape-3 {
+  background: var(--color-purple-500);
+  opacity: 0.09;
+} 

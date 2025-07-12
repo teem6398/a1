@@ -1,0 +1,61 @@
+.container {
+  width: 100%; /* Take full width of the page */
+  margin: 0 auto; /* Center the container with no top/bottom margin */
+  padding: 2rem; /* Add some padding around the content within this container */
+  min-height: 100vh; /* Full viewport height */
+  background-color: #fcfcfc; /* Slightly softer background color */
+  border-radius: 0; /* Remove rounded corners for full-width appearance */
+  box-shadow: 0 5px 15px rgba(243, 9, 9, 0.05); /* Subtle shadow for depth */
+  /* display, align-items, justify-content, text-align are removed as sections will handle their own layout */
+}
+
+.container p {
+  font-size: 1.5rem;
+  color: #39056d;
+}
+
+.header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.content {
+  margin-top: 2rem;
+  width: 100%;
+  min-height: calc(100vh - 150px); /* Full height minus header and margins */
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingContainer, .unauthorizedContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.loading, .unauthorized {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.unauthorized h2 {
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.unauthorized p {
+  color: #666666;
+  font-size: 1.2rem;
+}

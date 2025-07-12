@@ -1,0 +1,592 @@
+.publicationsManager {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: var(--font-family);
+  color: #333333;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.publicationsManager h2 {
+  color: #333333;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.publicationsList {
+  color: #333333;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.publicationsList h2,
+.addPublication h2,
+.adviceList h2,
+.addAdvice h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  width: fit-content;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--surface-border);
+  padding-bottom: 0.75rem;
+}
+
+.tabButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.tabButton:hover {
+  background-color: var(--surface-hover);
+  transform: translateY(-2px);
+}
+
+.activeTab {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.emptyState {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  background-color: var(--surface-hover);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.publicationsGrid,
+.adviceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.publicationCard,
+.adviceCard {
+  background-color: var(--surface-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid var(--surface-border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 220px;
+}
+
+.publicationCard:hover,
+.adviceCard:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.publicationHeader,
+.adviceHeader {
+  padding: 1rem;
+  background-color: var(--surface-section);
+  border-bottom: 1px solid var(--surface-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.publicationHeader h3,
+.adviceHeader h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.publicationBody,
+.adviceBody {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.publicationBody p,
+.adviceBody p {
+  margin-top: 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.thumbnailContainer {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-sm);
+  position: relative;
+  background-color: var(--surface-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noThumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--text-secondary);
+  font-size: 3rem;
+  background-color: var(--surface-hover);
+}
+
+.publicationMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.publicationType,
+.publicationCategory,
+.adviceCategory {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--surface-hover);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--surface-border);
+}
+
+.publicationType {
+  background-color: var(--primary-color-light);
+  color: var(--primary-color-dark);
+}
+
+.publicationCategory {
+  background-color: var(--surface-hover);
+}
+
+.publicationActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.deleteButton {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.deleteButton:hover {
+  background-color: var(--danger-color-dark);
+}
+
+.publicationForm,
+.adviceForm {
+  background-color: var(--surface-card);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--surface-border);
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.formControl {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-ground);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.formControl:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+}
+
+textarea.formControl {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cancelButton {
+  padding: 0.85rem 1.75rem;
+  background-color: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancelButton:hover {
+  background-color: var(--surface-hover);
+}
+
+.submitButton {
+  padding: 0.85rem 1.75rem;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.fileHelp,
+.selectHelp {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.adviceIcon {
+  font-size: 1.2rem;
+  color: var(--warning-color);
+  margin-right: 0.5rem;
+}
+
+.adviceDate {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.backButton:hover {
+  background-color: var(--surface-hover);
+  transform: translateX(5px);
+}
+
+.backButtonIcon {
+  font-size: 1.2rem;
+}
+
+[dir="rtl"] .formActions {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .backButton:hover {
+  transform: translateX(-5px);
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .publicationsGrid,
+  .adviceGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .formActions {
+    flex-direction: column;
+  }
+  
+  .cancelButton,
+  .submitButton,
+  .backButton {
+    width: 100%;
+  }
+  
+  .publicationForm,
+  .adviceForm {
+    padding: 1.25rem;
+  }
+}
+
+[data-theme="dark"] .tabButton {
+  background-color: var(--surface-card-dark, #1e1e1e);
+  border-color: var(--surface-border-dark, #333);
+  color: var(--text-primary-dark, #f5f5f5);
+}
+
+[data-theme="dark"] .tabButton:hover {
+  background-color: var(--surface-hover-dark, #2a2a2a);
+}
+
+[data-theme="dark"] .activeTab {
+  background-color: var(--primary-color-dark, #0066cc);
+  color: var(--text-on-primary-dark, #ffffff);
+}
+
+[data-theme="dark"] .publicationCard,
+[data-theme="dark"] .adviceCard {
+  background-color: var(--surface-card-dark, #1e1e1e);
+  border-color: var(--surface-border-dark, #333);
+}
+
+[data-theme="dark"] .publicationHeader,
+[data-theme="dark"] .adviceHeader {
+  background-color: var(--surface-section-dark, #1e1e1e);
+}
+
+[data-theme="dark"] .formControl {
+  background-color: var(--surface-ground-dark, #121212);
+  border-color: var(--surface-border-dark, #333);
+  color: var(--text-primary-dark, #f5f5f5);
+}
+
+[data-theme="dark"] .formControl:focus {
+  border-color: var(--primary-color-dark, #0066cc);
+}
+
+[data-theme="dark"] .backButton {
+  background-color: var(--surface-card-dark, #1e1e1e);
+  border-color: var(--surface-border-dark, #333);
+  color: var(--text-primary-dark, #f5f5f5);
+}
+
+[data-theme="dark"] .backButton:hover {
+  background-color: var(--surface-hover-dark, #2a2a2a);
+}
+
+[data-theme="dark"] .noThumbnail {
+  background-color: var(--surface-hover-dark, #2a2a2a);
+}
+
+[data-theme="dark"] .publicationType {
+  background-color: rgba(0, 102, 204, 0.2);
+  color: var(--primary-color-light, #66b3ff);
+}
+
+/* أنماط مربع حوار تأكيد الحذف */
+.deleteConfirmOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.deleteConfirmDialog {
+  background-color: var(--surface-card);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--surface-border);
+}
+
+.deleteConfirmDialog h3 {
+  margin: 0 0 1rem 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.deleteWarning {
+  color: var(--danger-color);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.deleteConfirmActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* أنماط أزرار التعديل والحذف */
+.publicationActions,
+.adviceActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.editButton,
+.deleteButton {
+  background: none;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-secondary);
+}
+
+.editButton {
+  background-color: var(--primary-color-light);
+  color: var(--primary-color);
+}
+
+.editButton:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.deleteButton {
+  background-color: var(--danger-color-light);
+  color: var(--danger-color);
+}
+
+.deleteButton:hover {
+  background-color: var(--danger-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* تحسينات للوضع الليلي */
+[data-theme="dark"] .deleteConfirmDialog {
+  background-color: var(--surface-card-dark);
+  border-color: var(--surface-border-dark);
+}
+
+[data-theme="dark"] .deleteConfirmDialog h3 {
+  color: var(--text-primary-dark);
+}
+
+[data-theme="dark"] .editButton {
+  background-color: rgba(0, 102, 204, 0.2);
+  color: var(--primary-color-light);
+}
+
+[data-theme="dark"] .editButton:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+[data-theme="dark"] .deleteButton {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: var(--danger-color-light);
+}
+
+[data-theme="dark"] .deleteButton:hover {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+/* تحسينات للجوال */
+@media (max-width: 768px) {
+  .deleteConfirmDialog {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .deleteConfirmActions {
+    flex-direction: column;
+  }
+
+  .deleteConfirmActions button {
+    width: 100%;
+  }
+} 

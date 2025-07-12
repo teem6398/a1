@@ -1,0 +1,349 @@
+.footer {
+  background-color: #2d3748;
+  color: #ffffff;
+  padding: 3rem 0 1rem;
+}
+
+.footerContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+.footerSection {
+  flex: 1;
+  min-width: 250px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #ffffff;
+}
+
+/* تعديل لدعم اتجاه النص حسب اللغة */
+[dir="rtl"] .sectionTitle::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="ltr"] .sectionTitle::after {
+  right: auto;
+  left: 0;
+}
+
+/* روابط التواصل الاجتماعي */
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  font-size: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.socialLink:hover {
+  background-color: #2196f3;
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.dark-mode .socialLink {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .socialLink:hover {
+  background-color: #2196f3;
+  color: #ffffff;
+}
+
+/* ===== تصميم الأيقونات الاجتماعية الجذاب ===== */
+
+/* فيسبوك - الأزرق الكلاسيكي */
+.facebookLink:hover {
+  background: linear-gradient(135deg, #1877F2, #4267B2) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4) !important;
+  transform: translateY(-5px) scale(1.1) !important;
+}
+
+/* X (تويتر سابقاً) - الأسود الأنيق */
+.xTwitterLink:hover {
+  background: linear-gradient(135deg, #000000, #1d1d1d) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6) !important;
+  transform: translateY(-5px) scale(1.1) !important;
+}
+
+/* إنستغرام - التدرج الملون المميز */
+.instagramLink:hover {
+  background: linear-gradient(135deg, #E4405F, #833AB4, #F56040) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(228, 64, 95, 0.5) !important;
+  transform: translateY(-5px) scale(1.1) !important;
+}
+
+/* LinkedIn - الأزرق المهني */
+.linkedinLink:hover {
+  background: linear-gradient(135deg, #0077B5, #005885) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4) !important;
+  transform: translateY(-5px) scale(1.1) !important;
+}
+
+/* واتساب - الأخضر المميز */
+.whatsappLink:hover {
+  background: linear-gradient(135deg, #25D366, #128C7E) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4) !important;
+  transform: translateY(-5px) scale(1.1) !important;
+}
+
+/* تأثيرات إضافية للجاذبية */
+.socialLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.socialLink:hover::before {
+  left: 100%;
+}
+
+/* تأثير النبض للأيقونات */
+@keyframes socialPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.socialLink:hover {
+  animation: socialPulse 1.5s infinite;
+}
+
+/* تحسين للوضع الليلي */
+.dark-mode .facebookLink:hover {
+  box-shadow: 0 8px 25px rgba(24, 119, 242, 0.6) !important;
+}
+
+.dark-mode .xTwitterLink:hover {
+  background: linear-gradient(135deg, #1d1d1d, #000000) !important;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark-mode .instagramLink:hover {
+  box-shadow: 0 8px 25px rgba(228, 64, 95, 0.7) !important;
+}
+
+.dark-mode .linkedinLink:hover {
+  box-shadow: 0 8px 25px rgba(0, 119, 181, 0.6) !important;
+}
+
+.dark-mode .whatsappLink:hover {
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6) !important;
+}
+
+/* الروابط السريعة */
+.linksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linksList li {
+  margin-bottom: 1rem;
+}
+
+.linksList a {
+  color: #e2e8f0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+.linksList a:hover {
+  color: #ffffff;
+}
+
+/* تعديل لدعم اتجاه النص حسب اللغة */
+[dir="rtl"] .linksList a::before {
+  content: '›';
+  margin-left: 0.5rem;
+  color: #64b5f6;
+}
+
+[dir="ltr"] .linksList a::before {
+  content: '›';
+  margin-right: 0.5rem;
+  color: #64b5f6;
+}
+
+/* معلومات الاتصال */
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contactList li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: #e2e8f0;
+}
+
+/* تعديل لدعم اتجاه النص حسب اللغة */
+[dir="rtl"] .contactList li svg {
+  margin-left: 0.8rem;
+  color: #64b5f6;
+  font-size: 1.2rem;
+}
+
+[dir="ltr"] .contactList li svg {
+  margin-right: 0.8rem;
+  color: #64b5f6;
+  font-size: 1.2rem;
+}
+
+/* حقوق النشر */
+.copyright {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.dark-mode .copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .sectionTitle {
+  color: #ffffff;
+}
+
+.dark-mode .sectionTitle::after {
+  background-color: #ffffff;
+}
+
+/* تكيف مع الشاشات المختلفة */
+@media (max-width: 768px) {
+  .footerContent {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .footerSection {
+    width: 100%;
+  }
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #e2e8f0;
+}
+
+/* ===== تحسينات الوصولية والأداء ===== */
+
+/* تحسين للحركة المقللة */
+@media (prefers-reduced-motion: reduce) {
+  .socialLink:hover,
+  .linksList a:hover {
+    transform: none;
+  }
+  
+  .socialLink:hover {
+    animation: none;
+  }
+  
+  .socialLink::before {
+    transition: none;
+  }
+  
+  .facebookLink:hover,
+  .xTwitterLink:hover,
+  .instagramLink:hover,
+  .linkedinLink:hover,
+  .whatsappLink:hover {
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* تحسين للتباين العالي */
+@media (prefers-contrast: high) {
+  .socialLink {
+    border: 2px solid #ffffff;
+  }
+  
+  .socialLink:hover {
+    border-color: transparent;
+  }
+}
+
+/* تحسين للأجهزة التي تدعم التمرير */
+@media (hover: hover) {
+  .socialLink:hover {
+    will-change: transform, box-shadow;
+  }
+}
+
+/* تحسين للشاشات الصغيرة */
+@media (max-width: 480px) {
+  .socialLinks {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .socialLink {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+} 

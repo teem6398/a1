@@ -1,0 +1,720 @@
+/* تصميم نموذج تسجيل الدخول */
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1.5rem 1rem;
+  font-family: 'Arial', sans-serif;
+  direction: rtl;
+  position: relative;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.loginContainer.inModal {
+  padding: 0;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  animation: logoAppear 1s ease-out forwards;
+}
+
+@keyframes logoAppear {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.title {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 4px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298, #1e3c72);
+  border-radius: 2px;
+}
+
+.subtitle {
+  color: var(--text-color-light);
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+}
+
+:global(.dark-mode) .subtitle {
+  color: #555;
+}
+
+.formGroup {
+  position: relative;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.formGroup:focus-within {
+  transform: translateY(-5px);
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+:global(.dark-mode) .label {
+  color: #333;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem 2.5rem 0.6rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  background: #fff;
+  transition: border-color 0.3s ease;
+}
+
+:global(.dark-mode) .input {
+  background: #fafafa;
+  border-color: #e0e0e0;
+  color: #222;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+:global(.dark-mode) .input:focus {
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.iconWrapper {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+  font-size: 1rem;
+}
+
+:global(.dark-mode) .iconWrapper {
+  color: #555;
+}
+
+.formGroup:focus-within .iconWrapper {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.formError {
+  padding: 0.5rem 1rem;
+  background-color: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.formSuccess {
+  padding: 0.5rem 1rem;
+  background-color: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.7rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(45deg, #4f46e5, #6366f1);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+:global(.dark-mode) .submitButton {
+  background: linear-gradient(45deg, #1976d2, #2196f3);
+}
+
+.submitButton:hover {
+  background: linear-gradient(45deg, #4338ca, #4f46e5);
+  transform: translateY(-2px);
+}
+
+:global(.dark-mode) .submitButton:hover {
+  background: linear-gradient(45deg, #1565c0, #1976d2);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+}
+
+.buttonIcon {
+  font-size: 1.2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+  margin-left: 0.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.adminLoginSection {
+  margin-top: 1.2rem;
+  text-align: center;
+  position: relative;
+  padding-top: 1rem;
+}
+
+.adminLoginSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+.adminLoginButton {
+  background-color: rgba(230, 57, 70, 0.9);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(230, 57, 70, 0.3);
+}
+
+.adminLoginButton:hover {
+  background-color: rgba(193, 18, 31, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(193, 18, 31, 0.4);
+}
+
+/* تأثيرات إضافية */
+.formGroup:nth-child(1) {
+  animation: slideInRight 0.5s ease-out 0.1s both;
+}
+
+.formGroup:nth-child(2) {
+  animation: slideInRight 0.5s ease-out 0.2s both;
+}
+
+.submitButton {
+  animation: slideInRight 0.5s ease-out 0.3s both;
+}
+
+.adminLoginSection {
+  animation: slideInRight 0.5s ease-out 0.4s both;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* تعديلات للشاشات الصغيرة */
+@media (max-width: 576px) {
+  .loginContainer {
+    padding: 1rem 0.8rem;
+  }
+  
+  .loginForm {
+    gap: 1rem;
+  }
+  
+  .formHeader {
+    margin-bottom: 1rem;
+  }
+  
+  .logoContainer {
+    margin-bottom: 1rem;
+  }
+  
+  .logoContainer img {
+    width: 140px !important;
+    height: 55px !important;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .title::after {
+    width: 60px;
+    height: 3px;
+    bottom: -8px;
+  }
+  
+  .subtitle {
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+  }
+  
+  .label {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .input {
+    padding: 0.7rem 2.5rem 0.7rem 0.7rem;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  
+  .iconWrapper {
+    right: 0.8rem;
+    font-size: 1rem;
+  }
+  
+  .submitButton {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    margin-top: 0.8rem;
+  }
+  
+  .adminLoginSection {
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+  }
+  
+  .adminLoginButton {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .formError, .formSuccess {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  /* تحسين تصميم أزرار تسجيل الدخول */
+.loginTypeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  margin: 0; /* إزالة الهوامش الرأسية */
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  background: linear-gradient(135deg, #f9f9f9, #e6e6e6);
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loginTypeButton:hover {
+  background: linear-gradient(135deg, #e6e6e6, #d4d4d4);
+  border-color: #bbb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.loginTypeButton:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.loginTypeButton svg {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #007bff;
+}
+}
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+  direction: rtl;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modalContent {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 450px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  transform: translateZ(0);
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modalContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298, #1e3c72);
+  z-index: 1;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  position: relative;
+}
+
+/* أنماط شعار الجامعة */
+.universityLogoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 1rem 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.universityLogo {
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.universityLogo:hover {
+  transform: scale(1.05);
+}
+
+.closeButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #1e3c72;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  z-index: 2;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: rotate(90deg);
+}
+
+/* تأثيرات زخرفية */
+.decorCircle1, .decorCircle2, .decorCircle3 {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.2), rgba(42, 82, 152, 0.1));
+  z-index: -1;
+}
+
+.decorCircle1 {
+  width: 150px;
+  height: 150px;
+  top: -50px;
+  right: -50px;
+  animation: float 15s infinite ease-in-out;
+}
+
+.decorCircle2 {
+  width: 100px;
+  height: 100px;
+  bottom: 50px;
+  left: -30px;
+  animation: float 12s infinite ease-in-out reverse;
+}
+
+.decorCircle3 {
+  width: 70px;
+  height: 70px;
+  bottom: -20px;
+  right: 50px;
+  animation: float 10s infinite ease-in-out 2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-15px) scale(1.05); }
+}
+
+/* تأثير الضوء المتحرك */
+.modalContent::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent
+  );
+  animation: lightSweep 5s infinite;
+}
+
+@keyframes lightSweep {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
+}
+
+/* تحسين تصميم أزرار تسجيل الدخول */
+.loginTypeButtonContainer {
+  display: flex; /* عرض الأزرار بشكل أفقي */
+  justify-content: center; /* محاذاة الأزرار في المنتصف */
+  align-items: center; /* محاذاة العناصر عموديًا */
+  gap: 15px; /* المسافة بين الأزرار */
+  margin-top: 20px;
+}
+
+.loginTypeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  margin: 0; /* إزالة الهوامش الرأسية */
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loginTypeButton:hover {
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.loginTypeButton:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.loginTypeButton svg {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.active {
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: #fff;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.active:hover {
+  background: linear-gradient(135deg, #218838, #1e7e34);
+  transform: translateY(-2px);
+}
+
+/* تعديلات للشاشات الصغيرة */
+@media (max-width: 576px) {
+  .modalContent {
+    max-width: 95%;
+    padding-bottom: 1rem;
+  }
+  
+  .universityLogoContainer {
+    padding: 1rem 0.5rem 0;
+  }
+  
+  .universityLogo {
+    width: 120px !important;
+    height: 48px !important;
+  }
+  
+  .modalHeader {
+    padding: 0.5rem;
+  }
+  
+  .closeButton {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+  
+  .decorCircle1 {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .decorCircle2 {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .decorCircle3 {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.loginTypeSelector {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.loginTypeButton {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+:global(.dark-mode) .loginTypeButton {
+  background: #f0f0f0;
+  color: #333;
+  border-color: #ddd;
+}
+
+.loginTypeButton.active {
+  background: linear-gradient(45deg, #4f46e5, #6366f1);
+  color: white;
+  border-color: transparent;
+}
+
+:global(.dark-mode) .loginTypeButton.active {
+  background: linear-gradient(45deg, #1976d2, #2196f3);
+  color: white;
+}
+
+.loginTypeButton:hover:not(.active) {
+  background: #f0f0f0;
+  color: #333;
+}
+
+:global(.dark-mode) .loginTypeButton:hover:not(.active) {
+  background: #e8e8e8;
+  color: #222;
+}
+
+.welcomeText {
+  color: #333;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+:global(.dark-mode) .welcomeText {
+  color: #222;
+}

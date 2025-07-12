@@ -1,0 +1,641 @@
+/* General Layout */
+.editorLayoutContainer {
+  display: flex;
+  flex-direction: column; /* Stack sidebar (now top bar) and content vertically */
+  height: auto; /* Allow height to adjust to content */
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden; /* To contain rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar { /* This will now act as a top bar */
+  width: 100%; /* Full width */
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0; /* Border at the bottom */
+  padding: 1rem; /* Adjusted padding */
+  display: flex;
+  flex-direction: column; /* Keep header and item list stacked vertically within this bar */
+  /* overflow-y: auto; Removed as itemList has its own scroll if needed and this bar shouldn't scroll vertically */
+  flex-shrink: 0; /* Prevent this top bar from shrinking */
+}
+
+.contentArea {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: #fff; /* Or #f8f9fa if you want it to match the container bg */
+  /* Ensure it takes remaining space */
+}
+
+/* Sidebar Styles */
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; /* Reduced margin */
+  padding-bottom: 0.75rem; /* Reduced padding */
+  border-bottom: 1px solid #f0f0f0; /* Lighter border */
+}
+
+.sidebarHeader h3 {
+  font-size: 1.35rem; /* Increased font size */
+  font-weight: 600;
+  color: var(--primary-color, #0056b3); /* Primary color */
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.addButtonSmall {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px; /* Matches item border-radius */
+  padding: 0.5rem 0.85rem; /* Adjusted padding */
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.addButtonSmall:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.itemList {
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem; /* Further reduced gap */
+  margin: 0;
+  padding: 1rem 0.2rem; /* Further reduced horizontal padding */
+  background-color: transparent; /* Transparent background */
+  /* border-radius: 8px; Removed */
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #bdc3c7 #ecf0f1; /* Softer scrollbar colors */
+}
+
+.itemList::-webkit-scrollbar {
+  height: 6px;
+}
+
+.itemList::-webkit-scrollbar-track {
+  background: #ecf0f1; /* Lighter track */
+  border-radius: 3px;
+}
+
+.itemList::-webkit-scrollbar-thumb {
+  background: #bdc3c7; /* Softer thumb */
+  border-radius: 3px;
+}
+
+.itemList::-webkit-scrollbar-thumb:hover {
+  background: #95a5a6; /* Darker thumb on hover */
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.6rem; /* Further reduced horizontal and vertical padding */
+  background-color: #ffffff;
+  border: 1px solid #dee2e6; /* Standard light border */
+  border-radius: 6px;
+  color: #495057; /* Slightly softer text color */
+  font-weight: 500;
+  font-size: 0.85rem; /* Further reduced font size */
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.item:hover {
+  background-color: #f8f9fa; /* Lighter hover */
+  border-color: #adb5bd;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+  color: #212529;
+}
+
+.activeItem {
+  background-color: var(--primary-color, #0056b3);
+  color: white;
+  border-color: var(--primary-color, #0056b3) !important;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 70, 140, 0.2);
+}
+
+.activeItem:hover {
+  background-color: var(--primary-color-dark, #004a99) !important;
+  border-color: var(--primary-color-dark, #004a99) !important;
+  color: white;
+  transform: translateY(0); /* Keep active item stable on hover */
+  box-shadow: 0 2px 8px rgba(0, 70, 140, 0.25); /* Slightly more pronounced shadow for active hover */
+}
+
+.activeItem:hover {
+  background-color: var(--primary-color-dark, #0056b3) !important; /* Darker shade on hover for active item */
+  border-color: var(--primary-color-dark, #0056b3) !important;
+  color: white;
+}
+
+.deleteButtonSmall {
+  background-color: transparent;
+  color: #dc3545;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.deleteButtonSmall:hover {
+  opacity: 1;
+  color: #c82333;
+}
+
+.activeItem .deleteButtonSmall {
+  color: #fff; /* Make delete button visible on active item */
+  opacity: 0.8;
+}
+.activeItem .deleteButtonSmall:hover {
+  opacity: 1;
+  background-color: rgba(255,255,255,0.1); /* Slight background on hover for active */
+}
+
+
+.emptyListMessage {
+  text-align: center;
+  color: #6c757d;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+/* Content Area Styles */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  color: #6c757d;
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #adb5bd;
+}
+
+.placeholder p {
+  font-size: 1.1rem;
+  max-width: 400px;
+}
+
+/* Form Styles */
+.editorForm { /* Renamed from .form to match TSX, or ensure .form applies if used */
+  background-color: #fff;
+  /* padding: 2rem; remove if contentArea already has padding */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); */
+}
+
+.editorForm h2 {
+  font-size: 1.75rem; /* Larger heading for the form title */
+  font-weight: 600;
+  color: #343a40;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef; /* Separator for title */
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.formInput,
+.formTextarea,
+.formSelect {
+  width: 100%;
+  padding: 0.85rem 1.1rem; /* Slightly increased padding */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #343a40; /* Darker text for better readability */
+  background-color: #f8f9fa; /* Light background for inputs */
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.35rem; /* Slightly more rounded corners */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.formInput:hover,
+.formTextarea:hover,
+.formSelect:hover {
+  border-color: #adb5bd;
+}
+
+.formInput:focus,
+.formTextarea:focus,
+.formSelect:focus {
+  border-color: #007bff; /* Primary blue for focus */
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.2);
+  background-color: #fff; /* White background on focus */
+}
+
+.formTextarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Creative Textarea for large content sections */
+.largeContentTextarea {
+ 
+  min-height: 350px; /* Significantly increased height */
+  height: 350px;     /* Set initial height */
+  width: 50%;        /* Set width to 50% of its container */
+  padding: 1.1rem 1.3rem; 
+  font-size: 1rem; 
+  line-height: 1.7;
+  background-color: #fdfdff; 
+  border: 1px solid #d8dde4; 
+  border-radius: 8px; 
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); 
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  resize: vertical; /* Ensure vertical resizing is still possible */
+}
+
+.largeContentTextarea:hover {
+  border-color: #c0c8d2;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.06);
+}
+
+.largeContentTextarea:focus {
+  background-color: #ffffff;
+  border-color: #007bff; /* Primary color on focus */
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15), inset 0 1px 3px rgba(0,0,0,0.07); /* Outer glow and slightly more pronounced inner shadow */
+}
+
+/* Original .form class, if needed elsewhere, otherwise can be removed or merged with .editorForm */
+.form {
+  background-color: #fff;
+  /* padding: 2rem; remove if contentArea already has padding */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); */
+}
+
+.form h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #212529;
+  margin-top: 0;
+  margin-bottom: 2rem; /* Increased bottom margin */
+}
+
+/* Form Section Styling */
+.formSection { /* This corresponds to fieldset in TSX */
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2.5rem; /* Increased bottom margin for better separation */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.formSection:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.formSection legend { /* Style for legend elements within fieldset */
+  font-size: 1.35rem; /* Increased font size */
+  font-weight: 700; /* Bolder */
+  color: #0056b3; /* Primary color for emphasis */
+  padding: 0.5rem 1rem;
+  margin-left: 1rem; /* Indent legend slightly */
+  margin-bottom: 2rem; /* Increased space below legend */
+  background-color: #e9ecef;
+  border-radius: 6px;
+  /* border-bottom: 2px solid #007bff; Optional: accent line */
+  display: inline-block; /* To allow padding and background */
+  position: relative;
+  top: -0.8em; /* Pull legend slightly up into the padding of fieldset */
+}
+
+/* .sectionLegend can be removed if fieldset legend is styled directly, or kept if used for other elements */
+.sectionLegend {
+  font-size: 1.15rem; /* Slightly larger legend */
+  font-weight: 600;
+  color: #007bff; /* Primary color for legend */
+  padding: 0 0.5rem;
+  margin-left: 1rem; /* Align with padding of fieldset */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Grid layout for form fields within a section - can be applied to .formSection or a div inside it */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+}
+
+.form h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #212529;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+.form h4 { /* For Hero Section title */
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #343a40;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+
+.formRow {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroupHalf {
+  flex: 1;
+  min-width: 0; /* Prevents overflow in flex items */
+}
+
+.formLabel {
+  display: block;
+  font-weight: 500;
+  color: #343a40;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.requiredStar {
+  color: #dc3545;
+  margin-left: 0.25rem;
+}
+
+/* The .formInput, .formTextarea, .formSelect styles are defined earlier in the file (around line 186) */
+/* This duplicate definition has been removed to avoid overriding previous enhancements. */
+
+.formTextarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.formInput:focus,
+.formTextarea:focus,
+.formSelect:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+/* General Button Style */
+.button {
+  padding: 0.75rem 1.5rem; /* Increased padding */
+  border: 1px solid transparent; /* Added border for consistency, can be overridden */
+  border-radius: 0.35rem; /* Slightly more rounded */
+  font-size: 0.95rem;
+  font-weight: 600; /* Slightly bolder */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out;
+  display: inline-flex; /* Use inline-flex for better alignment with text/icons */
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrapping */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.button:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.button:disabled,
+.button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.saveButton {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+.saveButton:hover {
+  background-color: #218838;
+}
+.saveButton:disabled {
+  background-color: #a3d9b1;
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  background-color: #6c757d; /* Gray */
+  color: white;
+}
+.cancelButton:hover {
+  background-color: #5a6268;
+}
+.cancelButton:disabled {
+  background-color: #b0b6bb;
+  cursor: not-allowed;
+  color: #e9ecef;
+}
+
+/* Add Button */
+.addButton {
+  background-color: #007bff; /* Primary blue */
+  color: white;
+  border-color: #007bff;
+}
+.addButton:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Secondary Button Style (e.g., for 'Add Project' if distinct from primary add) */
+.buttonSecondary {
+  composes: button; /* Inherit base styles */
+  background-color: #6c757d; /* Bootstrap secondary color */
+  color: white;
+  border-color: #6c757d;
+}
+
+.buttonSecondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+  color: white;
+}
+
+.buttonSecondary:active {
+  background-color: #545b62;
+  transform: translateY(1px);
+}
+
+/* Remove Button */
+.removeButton {
+  background-color: #dc3545; /* Red for danger/remove */
+  color: white;
+  border-color: #dc3545;
+}
+.removeButton:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+/* Small Button Modifier */
+.buttonSmall {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  gap: 0.3rem;
+}
+
+/* Back Button Style */
+.backButton {
+  background-color: #f8f9fa; /* Light grey, almost white background */
+  color: #343a40; /* Dark text for contrast */
+  border: 1px solid #ced4da; /* Standard border */
+  box-shadow: none; /* Remove default shadow from .button if too prominent */
+}
+
+.backButton:hover {
+  background-color: #e9ecef; /* Slightly darker on hover */
+  border-color: #adb5bd;
+  color: #212529;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Subtle shadow on hover */
+}
+
+.backButton:active {
+  background-color: #dee2e6;
+  transform: translateY(0px);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Messages */
+.messageSuccess,
+.messageError {
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.messageSuccess {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.messageError {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+/* Placeholder for future list editors */
+.placeholderSection {
+  background-color: #e9ecef;
+  border: 1px dashed #ced4da;
+  border-radius: 4px;
+  padding: 2rem;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  margin-top: 1rem; /* Space from legend if no other fields */
+}
+
+/* Styling for individual sub-entity items (e.g., a single course, a single job opportunity) */
+.subEntityItem {
+  background-color: #fdfdfd;
+  padding: 1.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+/* Grid layout for elements within a subEntityItem or other form sections */
+.formGrid {
+  display: grid;
+  gap: 1rem 1.5rem; /* row-gap column-gap */
+  align-items: end; /* Align items to the bottom, useful for buttons next to inputs */
+  /* This will create as many 200px columns as fit, and distribute remaining space. 
+     The last column (often a button) will also adhere to this. 
+     We might need specific overrides if buttons need to be consistently small. */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Specific override for grids that are known to have, for example, two main inputs and a button */
+/* You would apply an additional class to the formGrid element in the TSX for this, e.g., styles.formGridThreeCol */
+/* .formGridThreeCol {
+  grid-template-columns: 1fr 1fr auto;
+} */
+
+/* Ensure formTextarea takes full width in grid if needed */
+.formSection > div > .formTextarea {
+  width: 100%; /* Make textarea take full width of its direct parent div */
+}
+
+/* Spinner Icon */
+.spinnerIcon {
+  animation: spin 1s linear infinite;
+  font-size: 1em; /* Adjust size relative to button text */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

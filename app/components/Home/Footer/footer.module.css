@@ -1,0 +1,352 @@
+/* ===== تذييل الموقع المحسن مع دعم الوضع الليلي والنهاري - اللون الرمادي ===== */
+.footer {
+  background-color: #2d3748;
+  color: var(--text-inverse);
+  padding: var(--space-12) 0 var(--space-4);
+  transition: var(--transition-theme);
+}
+
+/* تحسين الوضع الليلي للتذييل */
+[data-theme="dark"] .footer,
+.dark-mode .footer {
+  background-color: #1a1d23;
+  border-top: 1px solid rgba(27, 28, 30, 0.3);
+}
+
+.footerContent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+  gap: var(--space-8);
+}
+
+.footerSection {
+  flex: 1;
+  min-width: 250px;
+}
+
+.sectionTitle {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-2);
+  position: relative;
+  display: inline-block;
+  font-weight: var(--font-weight-semibold);
+  color: #ffffff;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: var(--radius-base);
+}
+
+/* تحسين الوضع الليلي للعناوين */
+[data-theme="dark"] .sectionTitle::after,
+.dark-mode .sectionTitle::after {
+  background: #242528;
+  box-shadow: 0 0 8px rgba(34, 35, 37, 0.4);
+}
+
+/* تعديل لدعم اتجاه النص حسب اللغة */
+[dir="rtl"] .sectionTitle::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="ltr"] .sectionTitle::after {
+  right: auto;
+  left: 0;
+}
+
+/* روابط التواصل الاجتماعي */
+.socialLinks {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text-inverse);
+  font-size: var(--text-lg);
+  transition: var(--transition-base);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.socialLink:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* تحسين الوضع الليلي لروابط التواصل */
+[data-theme="dark"] .socialLink,
+.dark-mode .socialLink {
+  background: rgba(156, 163, 175, 0.15);
+  border: 1px solid rgba(156, 163, 175, 0.3);
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .socialLink:hover,
+.dark-mode .socialLink:hover {
+  background: rgba(156, 163, 175, 0.25);
+  box-shadow: var(--shadow-md), 0 0 8px rgba(156, 163, 175, 0.4);
+  color: #d1d5db;
+}
+
+/* الروابط السريعة */
+.linksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linksList li {
+  margin-bottom: var(--space-4);
+}
+
+.linksList a {
+  color: var(--text-inverse);
+  text-decoration: none;
+  transition: var(--transition-base);
+  display: inline-block;
+  position: relative;
+  font-size: var(--text-base);
+  opacity: var(--opacity-90);
+}
+
+.linksList a:hover {
+  color: var(--text-inverse);
+  opacity: 1;
+  transform: translateX(-3px);
+}
+
+/* تحسين الوضع الليلي للروابط */
+[data-theme="dark"] .linksList a,
+.dark-mode .linksList a {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .linksList a:hover,
+.dark-mode .linksList a:hover {
+  color: var(--interactive-primary);
+  text-shadow: var(--glow-primary);
+}
+
+/* تعديل لدعم اتجاه النص حسب اللغة */
+[dir="rtl"] .linksList a::before {
+  content: '›';
+  margin-left: var(--space-2);
+  color: var(--text-inverse);
+  transition: var(--transition-base);
+}
+
+[dir="ltr"] .linksList a::before {
+  content: '›';
+  margin-right: var(--space-2);
+  color: var(--text-inverse);
+  transition: var(--transition-base);
+}
+
+[dir="rtl"] .linksList a:hover::before,
+[dir="ltr"] .linksList a:hover::before {
+  color: var(--text-inverse);
+}
+
+/* تحسين الوضع الليلي لرموز الروابط */
+[data-theme="dark"] [dir="rtl"] .linksList a::before,
+[data-theme="dark"] [dir="ltr"] .linksList a::before,
+.dark-mode [dir="rtl"] .linksList a::before,
+.dark-mode [dir="ltr"] .linksList a::before {
+  color: var(--interactive-primary);
+}
+
+[data-theme="dark"] [dir="rtl"] .linksList a:hover::before,
+[data-theme="dark"] [dir="ltr"] .linksList a:hover::before,
+.dark-mode [dir="rtl"] .linksList a:hover::before,
+.dark-mode [dir="ltr"] .linksList a:hover::before {
+  color: var(--interactive-primary-hover);
+}
+
+/* معلومات الاتصال */
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contactList li {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-4);
+  color: var(--text-inverse);
+  font-size: var(--text-base);
+  opacity: var(--opacity-90);
+}
+
+/* تحسين الوضع الليلي لمعلومات الاتصال */
+[data-theme="dark"] .contactList li,
+.dark-mode .contactList li {
+  color: var(--text-primary);
+}
+
+/* تعديل لدعم اتجاه النص حسب اللغة */
+[dir="rtl"] .contactList li svg {
+  margin-left: var(--space-3);
+  color: var(--text-inverse);
+  font-size: var(--text-lg);
+  transition: var(--transition-base);
+}
+
+[dir="ltr"] .contactList li svg {
+  margin-right: var(--space-3);
+  color: var(--text-inverse);
+  font-size: var(--text-lg);
+  transition: var(--transition-base);
+}
+
+/* تحسين الوضع الليلي لأيقونات الاتصال */
+[data-theme="dark"] [dir="rtl"] .contactList li svg,
+[data-theme="dark"] [dir="ltr"] .contactList li svg,
+.dark-mode [dir="rtl"] .contactList li svg,
+.dark-mode [dir="ltr"] .contactList li svg {
+  color: var(--interactive-primary);
+  filter: var(--glow-primary);
+}
+
+/* حقوق النشر */
+.copyright {
+  text-align: center;
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: var(--text-sm);
+  color: var(--text-inverse);
+  max-width: var(--container-xl);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+  opacity: var(--opacity-80);
+}
+
+/* تحسين الوضع الليلي لحقوق النشر */
+[data-theme="dark"] .copyright,
+.dark-mode .copyright {
+  border-top: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .sectionTitle,
+.dark-mode .sectionTitle {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .sectionTitle::after,
+.dark-mode .sectionTitle::after {
+  background: #ffffff;
+}
+
+/* حالة التحميل */
+.loading {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--text-inverse);
+  font-size: var(--text-base);
+}
+
+/* تحسين الوضع الليلي لحالة التحميل */
+[data-theme="dark"] .loading,
+.dark-mode .loading {
+  color: var(--text-primary);
+}
+
+/* تكيف مع الشاشات المختلفة */
+@media (max-width: 768px) {
+  .footerContent {
+    flex-direction: column;
+    gap: var(--space-12);
+    padding: 0 var(--space-4);
+  }
+  
+  .footerSection {
+    width: 100%;
+  }
+  
+  .footer {
+    padding: var(--space-8) 0 var(--space-4);
+  }
+  
+  .socialLinks {
+    justify-content: center;
+  }
+  
+  .copyright {
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: var(--text-lg);
+  }
+  
+  .linksList a,
+  .contactList li {
+    font-size: var(--text-sm);
+  }
+  
+  .socialLink {
+    width: 36px;
+    height: 36px;
+    font-size: var(--text-base);
+  }
+}
+
+/* تحسين للحركة المقللة */
+@media (prefers-reduced-motion: reduce) {
+  .socialLink:hover,
+  .linksList a:hover {
+    transform: none;
+  }
+}
+
+/* تحسين للتباين العالي */
+@media (prefers-contrast: high) {
+  .footer {
+    border-top: 2px solid var(--border-primary);
+  }
+  
+  .socialLink,
+  .linksList a {
+    border-width: 2px;
+  }
+  
+  .sectionTitle::after {
+    height: 3px;
+  }
+}
+
+/* تحسين للأجهزة التي تدعم التمرير */
+@media (hover: hover) {
+  .socialLink:hover,
+  .linksList a:hover {
+    will-change: transform;
+  }
+} 

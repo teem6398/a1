@@ -1,0 +1,362 @@
+/* UsersManager.module.css */
+
+.tableWrapper {
+  overflow-x: auto; /* Allows horizontal scrolling for the table on small screens */
+}
+
+/* College Filter Styles */
+.collegeFilterContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  background-color: #e9f0f7; /* Slightly different background */
+  border-radius: 8px;
+}
+
+.collegeFilterLabel {
+  font-weight: 600;
+  color: #004a99;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.collegeFilterTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.collegeFilterTab {
+  padding: 0.6rem 1.2rem;
+  background-color: white;
+  border: 1px solid #c5d5e5;
+  border-radius: 6px;
+  color: #334155;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.collegeFilterTab:hover {
+  background-color: #f0f4f8;
+  border-color: #0056b3;
+  color: #0056b3;
+}
+
+.collegeFilterTab.activeCollegeFilterTab {
+  background-color: #0056b3;
+  color: white;
+  border-color: #00418a;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 86, 179, 0.15);
+}
+
+/* Major Filter Styles */
+.majorFilterContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.6rem 0.75rem; /* Slightly smaller padding */
+  background-color: #dde7f3; /* Even lighter background or distinct color */
+  border-radius: 8px;
+  margin-top: -0.5rem; /* Pull it up a bit closer to college filters */
+}
+
+.majorFilterLabel {
+  font-weight: 500; /* Slightly less prominent */
+  color: #003a75; /* Darker shade for label */
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem; /* Smaller font */
+}
+
+.majorFilterTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.majorFilterTab {
+  padding: 0.5rem 1rem; /* Smaller buttons */
+  background-color: white;
+  border: 1px solid #b0c4de;
+  border-radius: 5px;
+  color: #2c3e50;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+}
+
+.majorFilterTab:hover {
+  background-color: #e6eff8;
+  border-color: #004a99;
+  color: #004a99;
+}
+
+.majorFilterTab.activeMajorFilterTab {
+  background-color: #004a99; /* Slightly lighter blue than main active tab */
+  color: white;
+  border-color: #003a75;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 74, 153, 0.1);
+}
+
+
+.userManagerContainer {
+  background-color: #fff;
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); /* Softer, more diffused shadow */
+  padding: 2rem; /* Increased padding */
+  margin-bottom: 2.5rem;
+  direction: rtl; /* Right-to-left for Arabic */
+}
+
+.editorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem; /* Increased margin */
+  padding-bottom: 1.5rem; /* Increased padding */
+  border-bottom: 1px solid #e0e0e0; /* Lighter border */
+}
+
+.editorTitle {
+  font-size: 1.8rem; /* Larger title */
+  font-weight: 700;
+  margin: 0;
+  color: #004a99; /* Slightly different shade of blue */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Increased gap for icon */
+}
+
+.addButton {
+  background-color: #0056b3; /* Primary blue */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.addButton:hover {
+  background-color: #00418a; /* Darker blue on hover */
+  transform: translateY(-2px);
+}
+
+.controlsContainer {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: flex-start; /* Align search to the start (right in RTL) */
+}
+
+.searchInput {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px; /* Max width for search bar */
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.searchInput:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.2);
+  outline: none;
+}
+
+.userTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem; /* Increased margin */
+  padding: 0.75rem;
+  background-color: #f4f7fc; /* Lighter, more modern background for tabs */
+  border-radius: 10px;
+}
+
+.userTab {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.5rem; /* Increased padding */
+  background-color: white;
+  border: 1px solid #dbe3eb; /* Lighter border */
+  border-radius: 8px;
+  color: #334155; /* Darker text for better contrast */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 1rem;
+}
+
+.userTab:hover {
+  background-color: #e9f0f7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  border-color: #c5d5e5;
+}
+
+.userTab.activeTab {
+  background-color: #0056b3;
+  color: white;
+  border-color: #0056b3;
+  box-shadow: 0 2px 10px rgba(0, 86, 179, 0.2);
+}
+
+.tabIcon {
+  font-size: 1.3rem; /* Larger icon */
+}
+
+.userContent {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+  min-height: 350px; /* Slightly reduced min-height */
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.spinner {
+  border: 5px solid #f3f3f3; 
+  border-top: 5px solid #0056b3; 
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px dashed #dee2e6;
+  color: #495057;
+  font-size: 1.1rem;
+  min-height: 200px;
+}
+
+/* Table Styles */
+.usersTable {
+  width: 100%;
+  border-collapse: separate; /* Use separate for border-spacing */
+  border-spacing: 0 0.5rem; /* Spacing between rows */
+  text-align: right;
+}
+
+.usersTable th,
+.usersTable td {
+  padding: 1rem 1.25rem; /* Increased padding */
+  vertical-align: middle;
+  text-align: right;
+}
+
+.usersTable th {
+  background-color: #f4f7fc;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.usersTable td {
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0; /* Very light border for rows */
+  color: #455a64;
+}
+
+.usersTable tr:hover td {
+  background-color: #f9fafb; /* Subtle hover effect */
+}
+
+/* Make first and last td in a row have rounded corners if table has border-radius */
+.usersTable tr td:first-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.usersTable tr td:last-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.usersTable tr th:first-child {
+  border-top-right-radius: 8px;
+}
+.usersTable tr th:last-child {
+  border-top-left-radius: 8px;
+}
+
+
+.actionButtons {
+  display: flex;
+  gap: 0.75rem; /* Increased gap */
+  justify-content: flex-start; /* Align to start (left in RTL) */
+}
+
+.iconButton {
+  background: none;
+  border: 1px solid transparent;
+  width: 38px; /* Slightly larger buttons */
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.1rem;
+}
+
+.editButton {
+  color: #007bff; /* Blue for edit */
+  border-color: #007bff;
+}
+
+.editButton:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.deleteButton {
+  color: #dc3545; /* Red for delete */
+  border-color: #dc3545;
+}
+
+.deleteButton:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+  transform: translateY(-1px);
+}

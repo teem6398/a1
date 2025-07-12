@@ -1,0 +1,103 @@
+.coursesSection {
+  padding: var(--spacing-6);
+  background: var(--surface-2);
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-6) 0;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-all);
+}
+
+.sectionTitle {
+  color: var(--text-1);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-6);
+  position: relative;
+  padding-right: var(--spacing-8);
+}
+
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--spacing-6);
+  height: var(--spacing-1);
+  background: var(--brand);
+  border-radius: var(--radius-full);
+}
+
+.coursesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-4);
+}
+
+.courseCard {
+  background: var(--surface-1);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-4);
+  box-shadow: var(--shadow-xs);
+  transition: var(--transition-all);
+  border: 1px solid var(--border);
+}
+
+.courseCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--brand);
+}
+
+.courseTitle {
+  color: var(--brand);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-3);
+  font-weight: var(--font-weight-bold);
+}
+
+.courseInfo {
+  color: var(--text-2);
+}
+
+.courseDescription {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  margin-top: var(--spacing-2);
+}
+
+.loading, .error, .noData {
+  text-align: center;
+  padding: var(--spacing-6);
+  color: var(--text-2);
+  font-size: var(--font-size-lg);
+}
+
+.error {
+  color: var(--error);
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .coursesSection {
+  background: var(--surface-2);
+}
+
+[data-theme="dark"] .courseCard {
+  background: var(--surface-1);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .courseCard:hover {
+  border-color: var(--brand);
+  box-shadow: var(--shadow-md);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .coursesList {
+    grid-template-columns: 1fr;
+  }
+  
+  .coursesSection {
+    padding: var(--spacing-4);
+  }
+} 

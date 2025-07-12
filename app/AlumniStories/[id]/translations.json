@@ -1,0 +1,36 @@
+{
+  "ar": {
+    "loading": "جاري تحميل البيانات...",
+    "error": "حدث خطأ:",
+    "retry": "إعادة المحاولة",
+    "classOf": "دفعة",
+    "summary": "نبذة مختصرة",
+    "fullStory": "القصة الكاملة",
+    "achievements": "الإنجازات",
+    "photoGallery": "معرض الصور",
+    "backToStories": "العودة إلى قصص الخريجين",
+    "contactInfo": "معلومات الاتصال",
+    "education": "التعليم",
+    "position": "المنصب الحالي",
+    "company": "الشركة",
+    "college": "الكلية",
+    "major": "التخصص"
+  },
+  "en": {
+    "loading": "Loading data...",
+    "error": "Error:",
+    "retry": "Retry",
+    "classOf": "Class of",
+    "summary": "Summary",
+    "fullStory": "Full Story",
+    "achievements": "Achievements",
+    "photoGallery": "Photo Gallery",
+    "backToStories": "Back to Alumni Stories",
+    "contactInfo": "Contact Information",
+    "education": "Education",
+    "position": "Current Position",
+    "company": "Company",
+    "college": "College",
+    "major": "Major"
+  }
+} 

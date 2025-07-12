@@ -1,0 +1,454 @@
+/* ===== قسم Hero الرئيسي ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-gray-900);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: var(--transition-theme);
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slideImage {
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* ===== طبقات التغطية ===== */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, var(--opacity-40));
+  z-index: 2;
+  transition: opacity var(--duration-500) var(--ease-in-out);
+}
+
+.gradientOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, var(--opacity-10)) 30%,
+    rgba(0, 0, 0, var(--opacity-50)) 70%,
+    rgba(0, 0, 0, var(--opacity-70)) 100%
+  );
+  z-index: 3;
+}
+
+/* ===== المحتوى ===== */
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  padding: 0 var(--space-5);
+  color: var(--text-inverse);
+  text-align: center;
+  width: 100%;
+}
+
+.contentInner {
+  max-width: var(--container-lg);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.titleContainer {
+  position: relative;
+  margin-bottom: var(--space-8);
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.title {
+  font-size: var(--text-6xl);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-2);
+  color: #ffffff; /* أبيض في كلا الحالات */
+  text-shadow: 0 2px 12px rgba(0, 0, 0, var(--opacity-40));
+  position: relative;
+  z-index: 2;
+  letter-spacing: var(--letter-spacing-tight);
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+.titleDecoration {
+  height: var(--space-2);
+  width: var(--space-24);
+  background: linear-gradient(90deg, var(--interactive-primary), var(--color-primary-400));
+  margin: var(--space-2-5) auto 0;
+  border-radius: var(--radius-base);
+}
+
+.description {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-10);
+  color: #ffffff; /* أبيض في كلا الحالات */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, var(--opacity-25));
+  max-width: var(--space-96);
+  line-height: var(--line-height-base);
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+.buttonContainer {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  width: 100%;
+}
+
+.cta {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+  padding: var(--btn-padding-lg);
+  font-size: var(--text-lg);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--btn-transition);
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--btn-primary-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  text-align: center;
+  margin: 0 auto;
+  min-width: var(--space-44);
+  min-height: var(--btn-height-lg);
+  font-family: var(--font-family);
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, var(--opacity-20)), transparent);
+  transition: all var(--duration-500) var(--ease-out);
+  z-index: -1;
+}
+
+.cta:hover {
+  background: var(--btn-primary-bg-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--btn-primary-shadow-hover);
+}
+
+.cta:hover::before {
+  left: 100%;
+}
+
+.cta:active {
+  transform: translateY(-1px);
+  box-shadow: var(--btn-primary-shadow);
+}
+
+/* ===== التنقل ===== */
+.navigation {
+  position: absolute;
+  bottom: var(--space-20);
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.navigationInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  background: rgba(0, 0, 0, var(--opacity-30));
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-full);
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid rgba(255, 255, 255, var(--opacity-10));
+  max-width: fit-content;
+  margin: 0 auto;
+  position: relative;
+  right: 0;
+  transform: translateX(0);
+}
+
+.indicators {
+  display: flex;
+  gap: var(--space-2-5);
+}
+
+.indicator {
+  width: var(--space-10);
+  height: var(--space-1);
+  background: rgba(255, 255, 255, var(--opacity-20));
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-base);
+}
+
+.indicator.active {
+  background: rgba(255, 255, 255, var(--opacity-60));
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, var(--opacity-40));
+}
+
+.indicatorInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.indicatorProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--text-inverse);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: progress var(--duration-500) linear forwards;
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+}
+  to {
+  transform: scaleX(1);
+  }
+}
+
+.navButton {
+  background: rgba(255, 255, 255, var(--opacity-10));
+  color: var(--text-inverse);
+  border: none;
+  width: var(--space-10);
+  height: var(--space-10);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-base);
+  backdrop-filter: blur(4px);
+  font-size: var(--text-xl);
+  border: 1px solid rgba(255, 255, 255, var(--opacity-10));
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, var(--opacity-30));
+  transform: scale(var(--scale-110));
+}
+
+.navButton:active {
+  transform: scale(var(--scale-95));
+}
+
+/* ===== أزرار التحكم ===== */
+.pauseButton {
+  position: absolute;
+  top: var(--space-8);
+  right: var(--space-8);
+  background: rgba(255, 255, 255, var(--opacity-10));
+  color: var(--text-inverse);
+  border: none;
+  width: var(--space-10);
+  height: var(--space-10);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-base);
+  z-index: 10;
+  opacity: var(--opacity-0);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, var(--opacity-10));
+}
+
+.hero:hover .pauseButton {
+  opacity: var(--opacity-100);
+}
+
+.pauseButton:hover {
+  opacity: var(--opacity-100);
+}
+
+.pauseButton.paused {
+  opacity: var(--opacity-100);
+}
+
+/* ===== حالة التحميل ===== */
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-base);
+  color: var(--text-base);
+  z-index: 10;
+}
+
+.spinner {
+  width: var(--space-12);
+  height: var(--space-12);
+  border: var(--space-1) solid var(--color-gray-200);
+  border-top: var(--space-1) solid var(--color-primary-500);
+  border-radius: var(--radius-full);
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== الاستجابة للأجهزة المحمولة ===== */
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--text-4xl);
+  }
+
+  .description {
+    font-size: var(--text-lg);
+  }
+
+  .navigationInner {
+    padding: 0 var(--space-4);
+  }
+
+  .navButton {
+    width: var(--space-10);
+    height: var(--space-10);
+  }
+
+  .indicator {
+    width: var(--space-2);
+  }
+
+  .cta {
+    padding: var(--btn-padding-base);
+    font-size: var(--text-base);
+  }
+
+  .content {
+    padding: 0 var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: var(--text-3xl);
+  }
+
+  .description {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-6);
+  }
+
+  .titleDecoration {
+    width: var(--space-16);
+  }
+
+  .navigation {
+    bottom: var(--space-4);
+  }
+
+  .content {
+    padding: 0 var(--space-3);
+  }
+}
+
+/* ===== دعم اللغة العربية (RTL) ===== */
+[dir="rtl"] .content,
+[dir="rtl"] .contentInner,
+[dir="rtl"] .buttonContainer,
+[dir="rtl"] .titleContainer,
+[dir="rtl"] .description {
+  text-align: center;
+}
+
+/* ===== تحسينات الوصولية ===== */
+@media (prefers-reduced-motion: reduce) {
+  .slideImage,
+  .cta::before {
+    animation: none;
+  }
+  
+  .cta:hover,
+  .navButton:hover {
+    transform: none;
+  }
+  
+  .slideImage {
+    transform: none;
+  }
+}
+
+/* ===== تحسينات الوضع الليلي ===== */
+[data-theme="dark"] .loading,
+[data-theme="dark"] .spinner {
+  background-color: var(--bg-base);
+  color: var(--text-base);
+} 

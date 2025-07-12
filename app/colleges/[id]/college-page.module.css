@@ -1,0 +1,305 @@
+/* ==========================================================================
+   COLLEGE PAGE - INDIVIDUAL COLLEGE LAYOUT
+   ========================================================================== */
+
+/* Page Container */
+.pageContainer {
+  min-height: 100vh;
+  background: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   THEME TOGGLE - FIXED POSITION
+   ========================================================================== */
+
+.themeToggleFixed {
+  position: fixed;
+  top: 100px;
+  right: 2rem;
+  z-index: 1000;
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+}
+
+.themeToggleFixed:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-strong);
+}
+
+/* ==========================================================================
+   LOADING STATE
+   ========================================================================== */
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  font-size: 1.2rem;
+  color: var(--text-color-light);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   ERROR STATE
+   ========================================================================== */
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.errorTitle {
+  font-size: 2rem;
+  color: #e74c3c;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.errorMessage {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+.retryButton {
+  background: var(--primary-color);
+  color: var(--button-text);
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.retryButton:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ==========================================================================
+   NOT FOUND STATE
+   ========================================================================== */
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.notFoundTitle {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.notFoundMessage {
+  color: var(--text-color-light);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   DARK MODE ENHANCEMENTS
+   ========================================================================== */
+
+.dark-mode .themeToggleFixed {
+  background: rgba(30, 30, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3),
+              0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .errorMessage {
+  background: rgba(231, 76, 60, 0.15);
+  border-color: rgba(231, 76, 60, 0.4);
+  color: #ffffff;
+}
+
+.dark-mode .notFoundTitle {
+  color: #ffffff;
+}
+
+.dark-mode .notFoundMessage {
+  color: #cccccc;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .themeToggleFixed {
+    top: 80px;
+    right: 1rem;
+    padding: 0.4rem;
+  }
+  
+  .loadingContainer,
+  .errorContainer,
+  .notFoundContainer {
+    padding: 2rem 1rem;
+    min-height: 50vh;
+  }
+  
+  .loadingSpinner {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .errorTitle,
+  .notFoundTitle {
+    font-size: 1.8rem;
+  }
+  
+  .errorMessage {
+    padding: 1.25rem;
+    font-size: 1rem;
+  }
+  
+  .retryButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .themeToggleFixed {
+    top: 70px;
+    right: 0.75rem;
+    padding: 0.3rem;
+  }
+  
+  .errorTitle,
+  .notFoundTitle {
+    font-size: 1.5rem;
+  }
+  
+  .loadingText {
+    font-size: 1rem;
+  }
+  
+  .errorMessage,
+  .notFoundMessage {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & PERFORMANCE
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .loadingSpinner {
+    animation: none;
+  }
+  
+  .themeToggleFixed {
+    transition: none;
+  }
+  
+  .retryButton {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .errorMessage {
+    border-width: 2px;
+  }
+  
+  .retryButton {
+    border: 2px solid var(--button-text);
+  }
+  
+  .themeToggleFixed {
+    border-width: 2px;
+  }
+}
+
+/* Touch target optimization */
+@media (max-width: 768px) {
+  .themeToggleFixed {
+    min-height: 48px;
+    min-width: 48px;
+    touch-action: manipulation;
+  }
+  
+  .retryButton {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+}
+
+/* Print styles */
+@media print {
+  .themeToggleFixed {
+    display: none;
+  }
+  
+  .pageContainer {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .errorContainer,
+  .notFoundContainer,
+  .loadingContainer {
+    display: none;
+  }
+} 

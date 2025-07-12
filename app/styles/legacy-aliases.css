@@ -1,0 +1,73 @@
+/* ===== متغيرات التوافق العكسي ===== */
+/* هذا الملف يوفر توافقًا عكسيًا مع أسماء المتغيرات القديمة */
+
+:root {
+  /* الألوان الأساسية القديمة */
+  --primary-color: var(--color-primary-500);
+  --secondary-color: var(--color-secondary-500);
+  --accent-color: var(--color-accent-500);
+  --text-color: var(--text-primary);
+  --text-color-light: var(--text-secondary);
+  --background-color: var(--bg-primary);
+  --background-color-light: var(--bg-secondary);
+  
+  /* متغيرات الشريط العلوي القديمة */
+  --nav-bg: var(--navbar-bg);
+  --nav-text: var(--navbar-text);
+  --nav-hover: var(--navbar-text-hover);
+  --nav-active: var(--navbar-text-active);
+  
+  /* متغيرات الأزرار القديمة */
+  --button-bg: var(--btn-primary-bg);
+  --button-text: var(--btn-primary-text);
+  --button-hover-bg: var(--btn-primary-bg-hover);
+  --button-hover-text: var(--btn-primary-text-hover);
+  
+  /* متغيرات البطاقات القديمة */
+  --card-background: var(--card-bg);
+  --card-text: var(--card-text);
+  --card-border: var(--card-border-color);
+  
+  /* متغيرات الأقسام القديمة */
+  --section-background: var(--section-bg-primary);
+  
+  /* متغيرات النموذج القديمة */
+  --input-background: var(--input-bg);
+  --input-text-color: var(--input-text);
+  --input-border: var(--input-border-color);
+  --input-focus-border: var(--input-border-color-focus);
+  
+  /* متغيرات القوائم المنسدلة القديمة */
+  --dropdown-background: var(--dropdown-bg);
+  --dropdown-text-color: var(--dropdown-text);
+  --dropdown-hover-bg: var(--dropdown-item-bg-hover);
+  --dropdown-hover-text: var(--dropdown-item-text-hover);
+  
+  /* تدرجات Hero القديمة */
+  --hero-gradient-start: var(--color-primary-500);
+  --hero-gradient-end: var(--color-primary-600);
+  --hero-gradient-start-rgb: var(--color-primary-500-rgb);
+  --hero-gradient-end-rgb: var(--color-primary-600-rgb);
+  
+  /* تدرجات الأزرار المحسنة القديمة */
+  --button-primary-bg: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600));
+  --button-primary-hover: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-500));
+  --button-primary-shadow: 0 10px 25px rgba(var(--color-primary-500-rgb), 0.3);
+  --button-primary-shadow-hover: 0 15px 35px rgba(var(--color-primary-500-rgb), 0.5);
+  
+  --button-secondary-bg: linear-gradient(145deg, #ffffff, #f5f7fa);
+  --button-secondary-border: rgba(var(--color-primary-500-rgb), 0.2);
+  --button-secondary-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  
+  --button-danger-bg: linear-gradient(145deg, #ffffff, #f5f7fa);
+  --button-danger-color: var(--color-danger-500);
+  --button-danger-border: rgba(var(--color-danger-500-rgb), 0.3);
+  --button-danger-shadow: 0 4px 15px rgba(var(--color-danger-500-rgb), 0.2);
+  
+  /* أحجام الأيقونات القديمة */
+  --icon-size-sm: 1.4rem;
+  --icon-size-md: 1.8rem;
+  --icon-size-lg: 2rem;
+  --icon-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  --icon-shadow-hover: drop-shadow(0 4px 8px rgba(var(--color-primary-500-rgb), 0.4));
+} 

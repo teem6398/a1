@@ -1,0 +1,34 @@
+{
+  "ar": {
+    "sectionTitle": "قصص نجاح خريجينا",
+    "sectionSubtitle": "تعرف على قصص ملهمة من خريجي جامعتنا الذين يصنعون الفرق في العالم",
+    "readMore": "اقرأ القصة كاملة",
+    "viewAll": "عرض جميع قصص النجاح",
+    "loading": "جاري تحميل قصص الخريجين...",
+    "error": "حدث خطأ:",
+    "retry": "إعادة المحاولة",
+    "empty": "لا توجد قصص خريجين متاحة حالياً",
+    "graduateOf": "خريج",
+    "class": "دفعة",
+    "at": "في",
+    "prev": "السابق",
+    "next": "التالي",
+    "goToAlumni": "الانتقال إلى الخريج"
+  },
+  "en": {
+    "sectionTitle": "Our Alumni Success Stories",
+    "sectionSubtitle": "Discover inspiring stories from our university graduates who are making a difference in the world",
+    "readMore": "Read Full Story",
+    "viewAll": "View All Success Stories",
+    "loading": "Loading alumni stories...",
+    "error": "An error occurred:",
+    "retry": "Retry",
+    "empty": "No alumni stories available",
+    "graduateOf": "Graduate of",
+    "class": "Class of",
+    "at": "at",
+    "prev": "Previous",
+    "next": "Next",
+    "goToAlumni": "Go to alumni"
+  }
+} 

@@ -1,0 +1,364 @@
+/* ===== متغيرات التصميم الأساسية ===== */
+:root {
+  /* ===== نظام الألوان الموحد (50-900) ===== */
+  
+  /* الأزرق الأساسي - Primary */
+  --color-primary-50: #e3f2fd;
+  --color-primary-100: #bbdefb;
+  --color-primary-200: #90caf9;
+  --color-primary-300: #64b5f6;
+  --color-primary-400: #42a5f5;
+  --color-primary-500: #2196f3;  /* الأساسي */
+  --color-primary-600: #1e88e5;
+  --color-primary-700: #1976d2;
+  --color-primary-800: #1565c0;
+  --color-primary-900: #0d47a1;
+  
+  /* الأزرق الأساسي - RGB Values */
+  --color-primary-50-rgb: 227, 242, 253;
+  --color-primary-100-rgb: 187, 222, 251;
+  --color-primary-200-rgb: 144, 202, 249;
+  --color-primary-300-rgb: 100, 181, 246;
+  --color-primary-400-rgb: 66, 165, 245;
+  --color-primary-500-rgb: 33, 150, 243;
+  --color-primary-600-rgb: 30, 136, 229;
+  --color-primary-700-rgb: 25, 118, 210;
+  --color-primary-800-rgb: 21, 101, 192;
+  --color-primary-900-rgb: 13, 71, 161;
+
+  /* الأخضر الثانوي - Secondary */
+  --color-secondary-50: #e8f5e9;
+  --color-secondary-100: #c8e6c9;
+  --color-secondary-200: #a5d6a7;
+  --color-secondary-300: #81c784;
+  --color-secondary-400: #66bb6a;
+  --color-secondary-500: #4caf50;  /* الأساسي */
+  --color-secondary-600: #43a047;
+  --color-secondary-700: #388e3c;
+  --color-secondary-800: #2e7d32;
+  --color-secondary-900: #1b5e20;
+  
+  /* الأخضر الثانوي - RGB Values */
+  --color-secondary-50-rgb: 232, 245, 233;
+  --color-secondary-100-rgb: 200, 230, 201;
+  --color-secondary-200-rgb: 165, 214, 167;
+  --color-secondary-300-rgb: 129, 199, 132;
+  --color-secondary-400-rgb: 102, 187, 106;
+  --color-secondary-500-rgb: 76, 175, 80;
+  --color-secondary-600-rgb: 67, 160, 71;
+  --color-secondary-700-rgb: 56, 142, 60;
+  --color-secondary-800-rgb: 46, 125, 50;
+  --color-secondary-900-rgb: 27, 94, 32;
+
+  /* ألوان الحالات */
+  --color-success-50: #e8f5e9;
+  --color-success-500: #4caf50;
+  --color-success-900: #1b5e20;
+  --color-success-500-rgb: 76, 175, 80;
+  
+  --color-warning-50: #fff3e0;
+  --color-warning-500: #ff9800;
+  --color-warning-900: #e65100;
+  --color-warning-500-rgb: 255, 152, 0;
+  
+  --color-danger-50: #ffebee;
+  --color-danger-500: #f44336;
+  --color-danger-900: #b71c1c;
+  --color-danger-500-rgb: 244, 67, 54;
+  
+  --color-info-50: #e3f2fd;
+  --color-info-500: #2196f3;
+  --color-info-900: #0d47a1;
+  --color-info-500-rgb: 33, 150, 243;
+
+  /* ألوان كحلية غامقة - Navy */
+  --color-navy-50: #f8fafc;
+  --color-navy-100: #f1f5f9;
+  --color-navy-200: #e2e8f0;
+  --color-navy-300: #cbd5e1;
+  --color-navy-400: #94a3b8;
+  --color-navy-500: #64748b;
+  --color-navy-600: #475569;
+  --color-navy-700: #334155;
+  --color-navy-800: #1e293b;
+  --color-navy-900: #0f172a;  /* الكحلي الغامق الأساسي */
+
+  /* ألوان كحلية غامقة - RGB Values */
+  --color-navy-50-rgb: 248, 250, 252;
+  --color-navy-100-rgb: 241, 245, 249;
+  --color-navy-200-rgb: 226, 232, 240;
+  --color-navy-300-rgb: 203, 213, 225;
+  --color-navy-400-rgb: 148, 163, 184;
+  --color-navy-500-rgb: 100, 116, 139;
+  --color-navy-600-rgb: 71, 85, 105;
+  --color-navy-700-rgb: 51, 65, 85;
+  --color-navy-800-rgb: 30, 41, 59;
+  --color-navy-900-rgb: 15, 23, 42;
+
+  /* ألوان رمادية */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #eeeeee;
+  --color-gray-300: #e0e0e0;
+  --color-gray-400: #bdbdbd;
+  --color-gray-500: #9e9e9e;
+  --color-gray-600: #757575;
+  --color-gray-700: #616161;
+  --color-gray-800: #424242;
+  --color-gray-900: #212121;
+  
+  /* ألوان رمادية - RGB Values */
+  --color-gray-50-rgb: 250, 250, 250;
+  --color-gray-100-rgb: 245, 245, 245;
+  --color-gray-200-rgb: 238, 238, 238;
+  --color-gray-300-rgb: 224, 224, 224;
+  --color-gray-400-rgb: 189, 189, 189;
+  --color-gray-500-rgb: 158, 158, 158;
+  --color-gray-600-rgb: 117, 117, 117;
+  --color-gray-700-rgb: 97, 97, 97;
+  --color-gray-800-rgb: 66, 66, 66;
+  --color-gray-900-rgb: 33, 33, 33;
+
+  /* ===== نظام الخطوط ===== */
+  --font-arabic: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-english: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family: var(--font-arabic);
+  --font-mono: 'Fira Code', 'Monaco', 'Consolas', monospace;
+
+  /* أوزان الخطوط */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* أحجام الخطوط - نظام متدرج */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  --text-6xl: 3.75rem;     /* 60px */
+  --text-7xl: 4.5rem;      /* 72px */
+  --text-8xl: 6rem;        /* 96px */
+  --text-9xl: 8rem;        /* 128px */
+  
+  /* ارتفاع الأسطر */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* تباعد الأحرف */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  /* ===== نظام المسافات - 8px Grid ===== */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0-5: 0.125rem;   /* 2px */
+  --space-1: 0.25rem;      /* 4px */
+  --space-1-5: 0.375rem;   /* 6px */
+  --space-2: 0.5rem;       /* 8px */
+  --space-2-5: 0.625rem;   /* 10px */
+  --space-3: 0.75rem;      /* 12px */
+  --space-3-5: 0.875rem;   /* 14px */
+  --space-4: 1rem;         /* 16px */
+  --space-5: 1.25rem;      /* 20px */
+  --space-6: 1.5rem;       /* 24px */
+  --space-7: 1.75rem;      /* 28px */
+  --space-8: 2rem;         /* 32px */
+  --space-9: 2.25rem;      /* 36px */
+  --space-10: 2.5rem;      /* 40px */
+  --space-11: 2.75rem;     /* 44px */
+  --space-12: 3rem;        /* 48px */
+  --space-14: 3.5rem;      /* 56px */
+  --space-16: 4rem;        /* 64px */
+  --space-20: 5rem;        /* 80px */
+  --space-24: 6rem;        /* 96px */
+  --space-28: 7rem;        /* 112px */
+  --space-32: 8rem;        /* 128px */
+  --space-36: 9rem;        /* 144px */
+  --space-40: 10rem;       /* 160px */
+  --space-44: 11rem;       /* 176px */
+  --space-48: 12rem;       /* 192px */
+  --space-52: 13rem;       /* 208px */
+  --space-56: 14rem;       /* 224px */
+  --space-60: 15rem;       /* 240px */
+  --space-64: 16rem;       /* 256px */
+  --space-72: 18rem;       /* 288px */
+  --space-80: 20rem;       /* 320px */
+  --space-96: 24rem;       /* 384px */
+
+  /* ===== أنصاف الأقطار ===== */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;    /* 2px */
+  --radius-base: 0.25rem;   /* 4px */
+  --radius-md: 0.375rem;    /* 6px */
+  --radius-lg: 0.5rem;      /* 8px */
+  --radius-xl: 0.75rem;     /* 12px */
+  --radius-2xl: 1rem;       /* 16px */
+  --radius-3xl: 1.5rem;     /* 24px */
+  --radius-4xl: 2rem;       /* 32px */
+  --radius-full: 9999px;
+
+  /* ===== الظلال ===== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+  --shadow-none: 0 0 #0000;
+
+  /* ظلال ملونة */
+  --shadow-primary: 0 10px 25px -5px rgba(var(--color-primary-500-rgb), 0.3);
+  --shadow-secondary: 0 10px 25px -5px rgba(var(--color-secondary-500-rgb), 0.3);
+  --shadow-success: 0 10px 25px -5px rgba(var(--color-success-500-rgb), 0.3);
+  --shadow-warning: 0 10px 25px -5px rgba(var(--color-warning-500-rgb), 0.3);
+  --shadow-danger: 0 10px 25px -5px rgba(var(--color-danger-500-rgb), 0.3);
+
+  /* ===== الانتقالات والحركة ===== */
+  --transition-none: none;
+  --transition-all: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slower: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-theme: background-color 300ms ease, color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+
+  /* منحنيات التسارع */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* مدة الحركة */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+
+  /* ===== نقاط التوقف (Breakpoints) ===== */
+  --breakpoint-xs: 475px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  /* ===== أحجام الحاويات ===== */
+  --container-xs: 475px;
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1400px;
+  --container-full: 100%;
+
+  /* ===== مستويات العمق (Z-Index) ===== */
+  --z-hide: -1;
+  --z-auto: auto;
+  --z-base: 0;
+  --z-docked: 10;
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-banner: 1030;
+  --z-overlay: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-skipLink: 1070;
+  --z-toast: 1080;
+  --z-tooltip: 1090;
+
+  /* ===== العتامة ===== */
+  --opacity-0: 0;
+  --opacity-5: 0.05;
+  --opacity-10: 0.1;
+  --opacity-20: 0.2;
+  --opacity-25: 0.25;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+  --opacity-75: 0.75;
+  --opacity-80: 0.8;
+  --opacity-90: 0.9;
+  --opacity-95: 0.95;
+  --opacity-100: 1;
+
+  /* ===== تحويلات الحجم ===== */
+  --scale-0: 0;
+  --scale-50: 0.5;
+  --scale-75: 0.75;
+  --scale-90: 0.9;
+  --scale-95: 0.95;
+  --scale-100: 1;
+  --scale-105: 1.05;
+  --scale-110: 1.1;
+  --scale-125: 1.25;
+  --scale-150: 1.5;
+
+  /* ===== الضبابية ===== */
+  --blur-none: 0;
+  --blur-sm: 4px;
+  --blur-base: 8px;
+  --blur-md: 12px;
+  --blur-lg: 16px;
+  --blur-xl: 24px;
+  --blur-2xl: 40px;
+  --blur-3xl: 64px;
+
+  /* ===== الاتجاه والتخطيط ===== */
+  --text-direction: rtl;
+  --layout-direction: rtl;
+  
+  /* ===== متغيرات الأداء ===== */
+  --will-change-auto: auto;
+  --will-change-scroll: scroll-position;
+  --will-change-contents: contents;
+  --will-change-transform: transform;
+
+  /* ===== التصفية ===== */
+  --filter-none: none;
+  --filter-blur: blur(var(--blur-base));
+  --filter-brightness: brightness(1.1);
+  --filter-contrast: contrast(1.1);
+  --filter-grayscale: grayscale(1);
+  --filter-invert: invert(1);
+  --filter-saturate: saturate(1.5);
+  --filter-sepia: sepia(1);
+  --filter-drop-shadow: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+/* ===== تحسين للغة الإنجليزية ===== */
+[lang="en"] {
+  --font-family: var(--font-english);
+  --text-direction: ltr;
+  --layout-direction: ltr;
+}
+
+/* ===== تحسين للأجهزة عالية الدقة ===== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  :root {
+    --shadow-sm: 0 0.5px 1px 0 rgba(0, 0, 0, 0.05);
+    --shadow-base: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.1), 0 0.5px 1px -0.5px rgba(0, 0, 0, 0.1);
+  }
+} 

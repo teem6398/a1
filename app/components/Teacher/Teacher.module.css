@@ -1,0 +1,1528 @@
+/* تنسيقات صفحة المعلم */
+.container {
+  width: 100%;
+  min-height: 100vh; /* تأكيد أن الخلفية تغطي كامل ارتفاع الصفحة */
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Cairo', sans-serif;
+  direction: rtl;
+  background: var(--surface-ground);
+  color: var(--text-primary);
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+}
+
+.themeToggle {
+  margin-left: 1rem;
+}
+
+.homeButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #0066cc, #0052a3);
+  color: rgb(255, 255, 255);
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 102, 204, 0.2);
+}
+
+.homeButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 102, 204, 0.25);
+  background: linear-gradient(135deg, #005bb8, #004080);
+}
+
+.homeButton span {
+  position: relative;
+  top: 1px;
+}
+
+/* تنسيقات قسم Hero الجديد */
+.teacherHero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  background: var(--surface-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  min-height: 350px;
+  gap: 3rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.heroImageSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  order: -1; /* تغيير الترتيب ليكون في المقدمة (اليمين) */
+}
+
+.academicTitles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding-left: 2rem;
+}
+
+.heroImageContainer {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: 350px;
+  height: 350px;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  border: 8px solid var(--surface-border);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.heroImage:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-xl);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  text-align: right;
+  padding: 0 2rem;
+}
+
+.heroName {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  text-shadow: var(--text-shadow);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 1rem;
+  font-family: 'Cairo', sans-serif;
+}
+
+.heroName::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(to left, var(--interactive-primary), transparent);
+  border-radius: 2px;
+}
+
+.heroIcon {
+  font-size: 2.2rem;
+  color: var(--interactive-primary);
+  margin-left: 0.75rem;
+  opacity: 0.9;
+}
+
+.heroTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  background: var(--surface-hover);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-right: 4px solid var(--primary-color);
+  margin-bottom: 0.75rem;
+  font-family: 'Cairo', sans-serif;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+.heroTitle:hover {
+  transform: translateX(-5px);
+  background: var(--surface-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.heroTitle:hover {
+  transform: translateX(-5px);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.heroCollege {
+  font-size: 1.1rem;
+  color: var(--primary-color-light);
+  padding: 0.5rem 1rem;
+  background: var(--surface-hover);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-right: 4px solid var(--primary-color-light);
+  font-family: 'Cairo', sans-serif;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+.heroCollege:hover {
+  transform: translateX(-5px);
+  background: var(--surface-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.heroCollege:hover {
+  transform: translateX(-5px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.academicInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--surface-card);
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
+
+.infoItem:hover {
+  transform: translateX(-5px);
+  background: var(--surface-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.infoLabel {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.infoValue {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.infoIcon {
+  margin-left: 0.75rem;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.bioSection {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--surface-section);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.bioTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  display: flex;
+  align-items: center;
+}
+
+.bioTitle:before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background-color: #0066cc;
+  margin-left: 0.75rem;
+  border-radius: 2px;
+}
+
+.bioContent {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  white-space: pre-line;
+  padding: 0.5rem;
+  background-color: var(--surface-card);
+  border-radius: var(--radius-md);
+}
+
+/* تنسيقات قسم الإنجازات */
+.achievementsSection {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+  border-right: 4px solid #0066cc;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #0066cc;
+  display: flex;
+  align-items: center;
+}
+
+.achievementsContent {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  white-space: pre-line;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+}
+
+/* تحديثات للشاشات الصغيرة */
+@media (max-width: 1200px) {
+  .heroImageSection {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .academicTitles {
+    padding-left: 0;
+    align-items: center;
+  }
+
+  .heroTitle, .heroCollege {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+    margin: 0;
+    background-color: #f5f7fa;
+  }
+
+  /* تنسيق القسم العلوي */
+  .teacherHero {
+    flex-direction: column;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+    min-height: auto;
+  }
+
+  .heroImageContainer {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  .heroContent {
+    text-align: center;
+    padding: 0;
+  }
+
+  .heroName {
+    font-size: 1.8rem;
+    justify-content: center;
+  }
+
+  .heroName::after {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .heroTitle, .heroCollege {
+    margin: 0 auto;
+    margin-bottom: 0.75rem;
+  }
+
+  .navigation {
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .navButton {
+    flex: 1 0 40%;
+    font-size: 0.9rem;
+    padding: 0.75rem 0.5rem;
+    min-width: 120px;
+  }
+
+  .manageButton {
+    flex: 1 0 100%;
+    margin-top: 0.5rem;
+  }
+
+  .topBar {
+    padding: 1rem 0.5rem;
+  }
+
+  .homeButton {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .content {
+    padding: 1rem 0.5rem;
+  }
+
+  .teacherActions {
+    padding: 1rem 0.5rem;
+  }
+
+  .actionButton {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* تنسيق المعلومات الشخصية */
+  .profileSection {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: #f5f7fa;
+    border-radius: 12px;
+  }
+
+  .infoGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .infoItem {
+    background-color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .infoLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.8rem;
+  }
+
+  .infoIcon {
+    color: #0066cc;
+    font-size: 1rem;
+  }
+
+  .infoValue {
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* تنسيق قسم النصائح والإرشادات */
+  .adviceSection {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: #f5f7fa;
+    border-radius: 12px;
+  }
+
+  .adviceList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .adviceCard {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-right: 3px solid #ff9800;
+  }
+
+  .adviceContent {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .adviceDate {
+    font-size: 0.8rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.1rem;
+    color: #0066cc;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e6e6e6;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* تنسيق النبذة الشخصية */
+  .bioSection {
+    margin: 0.5rem;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .bioTitle {
+    font-size: 1rem;
+    color: #0066cc;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .bioContent {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  /* تنسيق المواد الدراسية */
+  .coursesSection {
+    padding: 0.5rem;
+  }
+
+  .coursesList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .courseCard {
+    background-color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #00a8ff;
+  }
+
+  .courseTitle {
+    font-size: 0.85rem;
+    color: #333;
+    margin-bottom: 0.25rem;
+  }
+
+  .courseCode {
+    font-size: 0.75rem;
+    color: #666;
+  }
+
+  /* تنسيق المنشورات */
+  .publicationsSection {
+    padding: 0.5rem;
+  }
+
+  .publicationCard {
+    background-color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #4caf50;
+  }
+
+  .publicationTitle {
+    font-size: 0.85rem;
+    color: #333;
+    margin-bottom: 0.25rem;
+  }
+
+  .publicationDate {
+    font-size: 0.75rem;
+    color: #666;
+  }
+
+  /* تنسيق النصائح والإرشادات */
+  .adviceSection {
+    padding: 0.5rem;
+  }
+
+  .adviceCard {
+    background-color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #ff9800;
+  }
+
+  .adviceContent {
+    font-size: 0.85rem;
+    color: #333;
+    margin-bottom: 0.25rem;
+  }
+
+  .adviceDate {
+    font-size: 0.75rem;
+    color: #666;
+  }
+}
+
+/* تحسينات إضافية للشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+  .teacherHero {
+    padding: 1.5rem;
+    gap: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .heroName {
+    font-size: 1.8rem;
+    justify-content: center;
+  }
+
+  .heroTitle, .heroCollege {
+    font-size: 1rem;
+    margin: 0 auto;
+  }
+
+  .heroImageContainer {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+  }
+
+  .infoItem {
+    padding: 0.6rem;
+  }
+
+  .infoLabel {
+    font-size: 0.65rem;
+  }
+
+  .infoValue {
+    font-size: 0.8rem;
+  }
+
+  .bioTitle {
+    font-size: 0.85rem;
+  }
+
+  .bioContent {
+    font-size: 0.75rem;
+  }
+
+  .courseTitle, .publicationTitle, .adviceContent {
+    font-size: 0.8rem;
+  }
+
+  .courseCode, .publicationDate, .adviceDate {
+    font-size: 0.7rem;
+  }
+
+  .navigation {
+    padding: 0.4rem;
+  }
+
+  .navButton {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .profileSection {
+    margin: 0.35rem;
+    padding: 0.35rem;
+  }
+
+  .infoGrid {
+    gap: 0.5rem;
+  }
+
+  .infoItem {
+    padding: 0.6rem;
+  }
+
+  .infoLabel {
+    font-size: 0.75rem;
+  }
+
+  .infoValue {
+    font-size: 0.85rem;
+  }
+
+  .adviceSection {
+    margin: 0.35rem;
+    padding: 0.35rem;
+  }
+
+  .adviceCard {
+    padding: 0.75rem;
+  }
+
+  .adviceContent {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .adviceDate {
+    font-size: 0.75rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .bioSection {
+    padding: 0.75rem;
+  }
+
+  .bioTitle {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .bioContent {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}
+
+/* تنسيقات القائمة الأفقية المحدثة */
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  background-color: #f0f4f8;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.navigation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #0066cc, #00a1ff, #0066cc);
+  z-index: 2;
+}
+
+.navButton {
+  background: transparent;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555e68;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  margin: 0 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.navButton::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0066cc, #00a1ff);
+  transition: width 0.3s ease;
+}
+
+.navButton:hover {
+  background-color: rgba(0, 102, 204, 0.05);
+  color: #0066cc;
+  transform: translateY(-2px);
+}
+
+.navButton:hover::before {
+  width: 80%;
+}
+
+.navButtonActive {
+  background-color: #0066cc;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+  transform: translateY(-2px);
+}
+
+.navButtonActive::before {
+  width: 0;
+}
+
+/* تنسيقات المحتوى */
+.content {
+  width: 100%;
+  margin-bottom: 2.5rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* قسم معلومات المعلم */
+.profileSection, .coursesSection, .publicationsSection, .adviceSection {
+  width: 100%; /* Ensure sections take full width */
+  margin-bottom: 2.5rem; /* Increased margin */
+  background-color: #ffffff;
+  border-radius: 16px; /* More pronounced rounded corners */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+  padding: 2.5rem; /* Increased padding */
+  overflow: hidden; /* Prevent content overflow issues */
+}
+
+/* تعديل قسم الملف الشخصي ليكون أكثر تنظيماً بعد إزالة الصورة منه */
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profileImageContainer {
+  display: none; /* إخفاء الصورة في قسم الملف الشخصي لأنها موجودة الآن في Hero */
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem; /* Increased padding */
+  background-color: #f0f4f8; /* Consistent with image container */
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+  width: 100%;
+}
+
+.teacherName {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #333;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.teacherName:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, #0066cc, #00a1ff);
+  border-radius: 3px;
+}
+
+.teacherId {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  background-color: #f8faff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.infoItem:hover {
+  background-color: #e6f0ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.infoLabel {
+  font-weight: 600;
+  color: #444;
+  margin-left: 0.5rem;
+}
+
+.infoValue {
+  color: #0066cc;
+  font-weight: 500;
+}
+
+.infoIcon {
+  margin-left: 0.75rem;
+  color: #0066cc;
+  font-size: 1.1rem;
+}
+
+.bioSection {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+.bioTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #0066cc;
+  display: flex;
+  align-items: center;
+}
+
+.bioTitle:before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background-color: #0066cc;
+  margin-left: 0.75rem;
+  border-radius: 2px;
+}
+
+.bioContent {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  white-space: pre-line;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+}
+
+/* تنسيقات قسم الإنجازات */
+.achievementsSection {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+  border-right: 4px solid #0066cc;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #0066cc;
+  display: flex;
+  align-items: center;
+}
+
+.achievementsContent {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  white-space: pre-line;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+}
+
+/* قسم المواد الدراسية */
+.coursesSection {
+  margin-bottom: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 2rem; /* Larger section titles */
+  font-weight: 700;
+  color: #2c3e50; /* Darker, more neutral color */
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #007bff; /* Primary color accent */
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; /* Align with the border */
+  right: 0;
+  width: 70px; /* Length of the accent line */
+  height: 3px;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  border-radius: 3px;
+}
+
+.coursesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.courseCard, .publicationCard, .adviceCard {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef; /* Lighter border */
+  border-radius: 10px;
+  padding: 1.8rem; /* Increased padding */
+  margin-bottom: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.courseCard:hover, .publicationCard:hover, .adviceCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.courseTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0066cc;
+  margin-bottom: 0.5rem;
+}
+
+.courseCode {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  background-color: rgba(0, 102, 204, 0.1);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.courseDescription {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* قسم منشورات المعلم */
+.publicationsSection {
+  margin-bottom: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.publicationsTabs {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.publicationTab {
+  padding: 0.7rem 1.5rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background-color: #f5f7fa;
+}
+
+.publicationTab:hover {
+  background-color: #e6f0ff;
+}
+
+.activePublicationTab {
+  background-color: #0066cc;
+  color: white;
+}
+
+.publicationsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.publicationImageContainer {
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.publicationImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.publicationCard:hover .publicationImage {
+  transform: scale(1.05);
+}
+
+.publicationContent {
+  padding: 1.2rem;
+}
+
+.publicationTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.publicationDate {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.publicationDateIcon {
+  margin-left: 0.3rem;
+}
+
+.publicationDescription {
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.publicationFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.8rem;
+  border-top: 1px solid #eee;
+}
+
+.publicationType {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #0066cc;
+  font-weight: 500;
+}
+
+.publicationTypeIcon {
+  margin-left: 0.3rem;
+  font-size: 1.1rem;
+}
+
+.publicationLink {
+  color: #0066cc;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.publicationLink:hover {
+  color: #004c99;
+  transform: translateX(-3px);
+}
+
+.publicationLinkIcon {
+  margin-right: 0.3rem;
+}
+
+/* قسم نصائح المعلم */
+.adviceSection {
+  margin-bottom: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.adviceList {
+  margin-top: 2rem;
+}
+
+.adviceCard {
+  background-color: #f8faff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-right: 4px solid #0066cc;
+  position: relative;
+}
+
+.adviceCard:before {
+  content: '"';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 3rem;
+  color: rgba(0, 102, 204, 0.1);
+  font-family: Georgia, serif;
+}
+
+.adviceContent {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+}
+
+.adviceDate {
+  font-size: 0.85rem;
+  color: #777;
+  text-align: left;
+}
+
+/* تنسيق عنصر التحميل */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+  color: #1e3c72;
+  font-weight: bold;
+}
+
+/* أزرار تصفية الفئات */
+.categoryFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.categoryButton {
+  padding: 0.7rem 1.2rem;
+  background-color: #f5f7fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  color: #555;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.categoryButton:hover {
+  background-color: #e6f0ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.activeCategory {
+  background-color: #0066cc;
+  color: white;
+  border-color: #0066cc;
+}
+
+.activeCategory:hover {
+  background-color: #0056b3;
+}
+
+/* بطاقات المنشورات */
+.publicationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.publicationCard {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.publicationCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnailContainer {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.publicationCard:hover .thumbnail {
+  transform: scale(1.05);
+}
+
+.mediaIcon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.publicationDetails {
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.publicationTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.8rem;
+}
+
+.publicationMeta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.8rem;
+}
+
+.publicationDescription {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.publicationLink {
+  color: #0066cc;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding: 0.6rem 0;
+  transition: all 0.3s ease;
+}
+
+.publicationLink:hover {
+  color: #004c99;
+  transform: translateX(-3px);
+}
+
+/* رسالة عدم وجود بيانات */
+.noData {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-size: 1.1rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+.teacherActions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.actionButton {
+  display: inline-block;
+  background-color: #0070f3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.actionButton:hover {
+  background-color: #0051bb;
+}
+
+/* تحسينات الوضع الليلي */
+[data-theme="dark"] .container {
+  background: var(--surface-ground-dark, #121212);
+  color: var(--text-primary-dark, #f5f5f5);
+}
+
+[data-theme="dark"] .teacherHero {
+  background: var(--surface-card-dark, #1e1e1e);
+  box-shadow: var(--shadow-lg-dark, 0 8px 16px rgba(0, 0, 0, 0.4));
+}
+
+[data-theme="dark"] .heroImage {
+  border-color: var(--surface-border);
+  box-shadow: var(--shadow-lg-dark, 0 8px 16px rgba(0, 0, 0, 0.4));
+}
+
+[data-theme="dark"] .heroTitle,
+[data-theme="dark"] .heroCollege {
+  background: var(--surface-hover-dark, #2a2a2a);
+  color: var(--text-primary-dark, #f5f5f5);
+}
+
+[data-theme="dark"] .infoItem {
+  background: var(--surface-card-dark, #1e1e1e);
+}
+
+[data-theme="dark"] .infoItem:hover {
+  background: var(--surface-hover-dark, #2a2a2a);
+}
+
+[data-theme="dark"] .bioSection {
+  background: var(--surface-section-dark, #1e1e1e);
+  box-shadow: var(--shadow-md-dark, 0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+[data-theme="dark"] .bioContent {
+  color: var(--text-secondary-dark, #cccccc);
+}
+
+[data-theme="dark"] .navigation {
+  background: var(--surface-card-dark, #1e1e1e);
+  box-shadow: var(--shadow-md-dark, 0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+[data-theme="dark"] .navButton {
+  color: var(--text-primary-dark, #f5f5f5);
+  background: var(--surface-card-dark, #1e1e1e);
+}
+
+[data-theme="dark"] .navButton:hover {
+  background: var(--surface-hover-dark, #2a2a2a);
+}
+
+[data-theme="dark"] .navButtonActive {
+  background: var(--primary-color-dark, #0066cc);
+  color: var(--text-on-primary-dark, #ffffff);
+}
+
+[data-theme="dark"] .actionButton {
+  background: linear-gradient(135deg, #1a75ff, #0052a3);
+  box-shadow: 0 2px 4px rgba(26, 117, 255, 0.3);
+}
+
+[data-theme="dark"] .actionButton:hover {
+  background: linear-gradient(135deg, #0066ff, #0047b3);
+  box-shadow: 0 4px 6px rgba(26, 117, 255, 0.4);
+}
+
+.publicationActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #0066cc, #0052a3);
+  color: #ffffff;
+  border-radius: 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
+}
+
+.actionButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 102, 204, 0.25);
+  background: linear-gradient(135deg, #005bb8, #004080);
+}
+

@@ -1,0 +1,416 @@
+/* ===== متغيرات المكونات ===== */
+
+:root {
+  /* ===== متغيرات الأزرار ===== */
+  
+  /* أحجام الأزرار */
+  --btn-height-xs: var(--space-6);     /* 24px */
+  --btn-height-sm: var(--space-8);     /* 32px */
+  --btn-height-md: var(--space-10);    /* 40px */
+  --btn-height-lg: var(--space-12);    /* 48px */
+  --btn-height-xl: var(--space-14);    /* 56px */
+  
+  --btn-padding-xs: var(--space-1) var(--space-2);     /* 4px 8px */
+  --btn-padding-sm: var(--space-1-5) var(--space-3);   /* 6px 12px */
+  --btn-padding-md: var(--space-2) var(--space-4);     /* 8px 16px */
+  --btn-padding-lg: var(--space-3) var(--space-6);     /* 12px 24px */
+  --btn-padding-xl: var(--space-4) var(--space-8);     /* 16px 32px */
+  
+  /* خصائص الأزرار العامة */
+  --btn-border-width: 1px;
+  --btn-border-style: solid;
+  --btn-border-radius: var(--radius-md);
+  --btn-font-weight: var(--font-weight-medium);
+  --btn-transition: var(--transition-base);
+  --btn-cursor: pointer;
+  --btn-outline-width: 2px;
+  --btn-outline-offset: 2px;
+  
+  /* الزر الأساسي */
+  --btn-primary-bg: var(--interactive-primary);
+  --btn-primary-bg-hover: var(--interactive-primary-hover);
+  --btn-primary-bg-active: var(--interactive-primary-active);
+  --btn-primary-bg-disabled: var(--color-gray-300);
+  --btn-primary-text: var(--text-inverse);
+  --btn-primary-text-disabled: var(--color-gray-500);
+  --btn-primary-border: var(--interactive-primary);
+  --btn-primary-border-hover: var(--interactive-primary-hover);
+  --btn-primary-shadow: var(--shadow-base);
+  --btn-primary-shadow-hover: var(--shadow-lg);
+  --btn-primary-shadow-focus: 0 0 0 3px rgba(var(--color-primary-500-rgb), 0.2);
+  
+  /* الزر الثانوي */
+  --btn-secondary-bg: transparent;
+  --btn-secondary-bg-hover: var(--bg-accent);
+  --btn-secondary-bg-active: var(--bg-accent);
+  --btn-secondary-text: var(--interactive-primary);
+  --btn-secondary-text-hover: var(--interactive-primary-hover);
+  --btn-secondary-border: var(--interactive-primary);
+  --btn-secondary-border-hover: var(--interactive-primary-hover);
+  --btn-secondary-shadow: none;
+  --btn-secondary-shadow-hover: var(--shadow-sm);
+  
+  /* زر الخطر */
+  --btn-danger-bg: var(--state-danger);
+  --btn-danger-bg-hover: var(--color-danger-600);
+  --btn-danger-text: var(--text-inverse);
+  --btn-danger-border: var(--state-danger);
+  --btn-danger-shadow: var(--shadow-base);
+  --btn-danger-shadow-focus: 0 0 0 3px rgba(var(--color-danger-500-rgb), 0.2);
+  
+  /* زر النجاح */
+  --btn-success-bg: var(--state-success);
+  --btn-success-bg-hover: var(--color-success-600);
+  --btn-success-text: var(--text-inverse);
+  --btn-success-border: var(--state-success);
+  
+  /* ===== متغيرات البطاقات ===== */
+  
+  --card-bg: var(--surface-primary);
+  --card-bg-hover: var(--surface-secondary);
+  --card-text: var(--text-primary);
+  --card-text-secondary: var(--text-secondary);
+  --card-border-width: 1px;
+  --card-border-style: solid;
+  --card-border-color: var(--border-primary);
+  --card-border-radius: var(--radius-lg);
+  --card-padding: var(--space-6);
+  --card-padding-sm: var(--space-4);
+  --card-padding-lg: var(--space-8);
+  --card-shadow: var(--shadow-base);
+  --card-shadow-hover: var(--shadow-md);
+  --card-transition: var(--transition-base);
+  --card-overflow: hidden;
+  
+  /* بطاقة مرتفعة */
+  --card-elevated-shadow: var(--shadow-lg);
+  --card-elevated-shadow-hover: var(--shadow-xl);
+  --card-elevated-border: none;
+  
+  /* ===== متغيرات شريط التنقل ===== */
+  
+  --navbar-height: var(--space-16);         /* 64px */
+  --navbar-height-sm: var(--space-14);      /* 56px */
+  
+  /* الخلفيات - الوضع النهاري */
+  --navbar-bg: #ffffff;
+  --navbar-bg-transparent: rgba(255, 255, 255, 0.95);
+  --navbar-bg-scrolled: #ffffff;
+  
+  /* النصوص - الوضع النهاري */
+  --navbar-text: #000000;
+  --navbar-text-hover: #0056b3;
+  --navbar-text-active: #003d82;
+  --navbar-border-bottom: 1px solid var(--border-primary);
+  --navbar-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --navbar-shadow-scrolled: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --navbar-padding: 0 var(--space-4);
+  --navbar-padding-lg: 0 var(--space-6);
+  --navbar-backdrop-filter: blur(10px);
+  --navbar-transition: var(--transition-base);
+  --navbar-z-index: var(--z-sticky);
+  
+  /* روابط شريط التنقل */
+  --navbar-link-padding: var(--space-2) var(--space-3);
+  --navbar-link-border-radius: var(--radius-base);
+  --navbar-link-transition: var(--transition-fast);
+  --navbar-link-font-weight: var(--font-weight-medium);
+  
+  /* شعار شريط التنقل */
+  --navbar-logo-height: var(--space-8);     /* 32px */
+  --navbar-logo-width: auto;
+  
+  /* القائمة المحمولة */
+  --navbar-mobile-bg: var(--surface-primary);
+  --navbar-mobile-shadow: var(--shadow-lg);
+  --navbar-mobile-border-radius: var(--radius-lg);
+  --navbar-mobile-padding: var(--space-4);
+  --navbar-mobile-max-height: 80vh;
+  
+  /* ===== متغيرات النماذج ===== */
+  
+  /* حقول الإدخال */
+  --input-height: var(--space-10);          /* 40px */
+  --input-height-sm: var(--space-8);        /* 32px */
+  --input-height-lg: var(--space-12);       /* 48px */
+  --input-padding: var(--space-3) var(--space-4);
+  --input-padding-sm: var(--space-2) var(--space-3);
+  --input-padding-lg: var(--space-4) var(--space-5);
+  --input-bg: var(--surface-primary);
+  --input-bg-focus: var(--surface-primary);
+  --input-bg-disabled: var(--bg-secondary);
+  --input-text: var(--text-primary);
+  --input-text-disabled: var(--text-tertiary);
+  --input-placeholder: var(--text-tertiary);
+  --input-border-width: 1px;
+  --input-border-style: solid;
+  --input-border-color: var(--border-primary);
+  --input-border-color-hover: var(--border-accent);
+  --input-border-color-focus: var(--interactive-primary);
+  --input-border-color-error: var(--state-danger);
+  --input-border-radius: var(--radius-md);
+  --input-shadow: none;
+  --input-shadow-focus: 0 0 0 3px rgba(var(--color-primary-500-rgb), 0.1);
+  --input-shadow-error: 0 0 0 3px rgba(var(--color-danger-500-rgb), 0.1);
+  --input-transition: var(--transition-fast);
+  
+  /* التسميات */
+  --label-font-size: var(--text-sm);
+  --label-font-weight: var(--font-weight-medium);
+  --label-color: var(--text-secondary);
+  --label-color-required: var(--state-danger);
+  --label-margin-bottom: var(--space-1);
+  
+  /* نصوص المساعدة */
+  --help-text-font-size: var(--text-xs);
+  --help-text-color: var(--text-tertiary);
+  --help-text-margin-top: var(--space-1);
+  
+  /* نصوص الخطأ */
+  --error-text-font-size: var(--text-xs);
+  --error-text-color: var(--state-danger);
+  --error-text-margin-top: var(--space-1);
+  
+  /* ===== متغيرات القوائم المنسدلة ===== */
+  
+  --dropdown-bg: #ffffff;
+  
+  /* القوائم المنسدلة - الوضع النهاري */
+  --dropdown-text: #333333;
+  --dropdown-text-hover: #0056b3;
+  --dropdown-border-width: 1px;
+  --dropdown-border-style: solid;
+  --dropdown-border-color: var(--border-primary);
+  --dropdown-border-radius: var(--radius-lg);
+  --dropdown-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --dropdown-padding: var(--space-2);
+  --dropdown-max-height: var(--space-80);    /* 320px */
+  --dropdown-min-width: 200px;
+  --dropdown-z-index: var(--z-dropdown);
+  --dropdown-transition: var(--transition-fast);
+  --dropdown-backdrop-filter: blur(8px);
+  
+  /* عناصر القائمة المنسدلة */
+  --dropdown-item-padding: var(--space-2) var(--space-3);
+  --dropdown-item-border-radius: var(--radius-base);
+  --dropdown-item-transition: var(--transition-fast);
+  --dropdown-item-bg-hover: rgba(0, 86, 179, 0.08);
+  --dropdown-item-text-hover: var(--text-primary);
+  --dropdown-item-font-size: var(--text-sm);
+  --dropdown-item-font-weight: var(--font-weight-normal);
+  
+  /* فاصل القائمة المنسدلة */
+  --dropdown-separator-height: 1px;
+  --dropdown-separator-bg: var(--border-primary);
+  --dropdown-separator-margin: var(--space-1) 0;
+  
+  /* ===== متغيرات المودال ===== */
+  
+  --modal-backdrop-bg: rgba(0, 0, 0, 0.5);
+  --modal-backdrop-z-index: var(--z-overlay);
+  --modal-bg: var(--surface-primary);
+  --modal-text: var(--text-primary);
+  --modal-border-radius: var(--radius-xl);
+  --modal-shadow: var(--shadow-2xl);
+  --modal-padding: var(--space-6);
+  --modal-padding-lg: var(--space-8);
+  --modal-max-width: 500px;
+  --modal-max-width-sm: 400px;
+  --modal-max-width-lg: 700px;
+  --modal-max-height: 90vh;
+  --modal-z-index: var(--z-modal);
+  --modal-transition: var(--transition-base);
+  
+  /* رأس المودال */
+  --modal-header-padding: var(--space-6) var(--space-6) var(--space-4) var(--space-6);
+  --modal-header-border-bottom: 1px solid var(--border-primary);
+  
+  /* محتوى المودال */
+  --modal-body-padding: var(--space-4) var(--space-6);
+  
+  /* ذيل المودال */
+  --modal-footer-padding: var(--space-4) var(--space-6) var(--space-6) var(--space-6);
+  --modal-footer-border-top: 1px solid var(--border-primary);
+  --modal-footer-gap: var(--space-3);
+  
+  /* ===== متغيرات التنبيهات ===== */
+  
+  --alert-padding: var(--space-4);
+  --alert-border-width: 1px;
+  --alert-border-style: solid;
+  --alert-border-radius: var(--radius-lg);
+  --alert-font-size: var(--text-sm);
+  --alert-transition: var(--transition-base);
+  
+  /* تنبيه النجاح */
+  --alert-success-bg: var(--color-success-50);
+  --alert-success-text: var(--color-success-900);
+  --alert-success-border: var(--state-success);
+  --alert-success-icon: var(--state-success);
+  
+  /* تنبيه التحذير */
+  --alert-warning-bg: var(--color-warning-50);
+  --alert-warning-text: var(--color-warning-900);
+  --alert-warning-border: var(--state-warning);
+  --alert-warning-icon: var(--state-warning);
+  
+  /* تنبيه الخطر */
+  --alert-danger-bg: var(--color-danger-50);
+  --alert-danger-text: var(--color-danger-900);
+  --alert-danger-border: var(--state-danger);
+  --alert-danger-icon: var(--state-danger);
+  
+  /* تنبيه المعلومات */
+  --alert-info-bg: var(--color-info-50);
+  --alert-info-text: var(--color-info-900);
+  --alert-info-border: var(--state-info);
+  --alert-info-icon: var(--state-info);
+  
+  /* ===== متغيرات التحميل ===== */
+  
+  --loader-size: var(--space-8);          /* 32px */
+  --loader-size-sm: var(--space-4);       /* 16px */
+  --loader-size-lg: var(--space-12);      /* 48px */
+  --loader-border-width: 3px;
+  --loader-border-width-sm: 2px;
+  --loader-border-width-lg: 4px;
+  --loader-color: var(--interactive-primary);
+  --loader-bg: rgba(var(--color-primary-500-rgb), 0.2);
+  --loader-animation-duration: 1s;
+  
+  /* ===== متغيرات الشارات ===== */
+  
+  --badge-height: var(--space-5);         /* 20px */
+  --badge-height-sm: var(--space-4);      /* 16px */
+  --badge-height-lg: var(--space-6);      /* 24px */
+  --badge-padding: 0 var(--space-2);
+  --badge-padding-sm: 0 var(--space-1-5);
+  --badge-padding-lg: 0 var(--space-3);
+  --badge-font-size: var(--text-xs);
+  --badge-font-size-lg: var(--text-sm);
+  --badge-font-weight: var(--font-weight-medium);
+  --badge-border-radius: var(--radius-full);
+  --badge-transition: var(--transition-fast);
+  
+  /* شارة أساسية */
+  --badge-primary-bg: var(--interactive-primary);
+  --badge-primary-text: var(--text-inverse);
+  
+  /* شارة ثانوية */
+  --badge-secondary-bg: var(--color-gray-200);
+  --badge-secondary-text: var(--color-gray-800);
+  
+  /* ===== متغيرات التبويبات ===== */
+  
+  --tab-height: var(--space-12);          /* 48px */
+  --tab-padding: var(--space-3) var(--space-4);
+  --tab-font-size: var(--text-sm);
+  --tab-font-weight: var(--font-weight-medium);
+  --tab-border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  --tab-transition: var(--transition-fast);
+  
+  /* تبويب غير نشط */
+  --tab-bg: transparent;
+  --tab-text: var(--text-secondary);
+  --tab-border-bottom: 2px solid transparent;
+  
+  /* تبويب نشط */
+  --tab-active-bg: var(--surface-primary);
+  --tab-active-text: var(--interactive-primary);
+  --tab-active-border-bottom: 2px solid var(--interactive-primary);
+  
+  /* تبويب عند التمرير */
+  --tab-hover-bg: var(--bg-accent);
+  --tab-hover-text: var(--interactive-primary-hover);
+  
+  /* متغيرات الأسهم والأيقونات */
+  --navbar-arrow-filter: none;
+  --navbar-item-filter: none;
+  --navbar-ripple-color: rgba(0, 86, 179, 0.3);
+  --navbar-ripple-animation: none;
+  
+  /* متغيرات القوائم المنسدلة */
+  --dropdown-border: none;
+  --dropdown-item-border: none;
+  --dropdown-item-shadow-hover: none;
+  --dropdown-text-glow: none;
+  --dropdown-shadow-pulse: var(--dropdown-shadow);
+  --dropdown-animation: fadeIn 0.3s forwards;
+  
+  /* متغيرات القائمة المحمولة */
+  --mobile-nav-border: 1px solid #e0e0e0;
+  --mobile-nav-bg-hover: rgba(0, 0, 0, 0.05);
+  --mobile-nav-shadow-hover: none;
+  
+  /* تأثيرات مضيئة (فارغة للوضع النهاري) */
+  --navbar-link-glow: none;
+}
+
+/* ===== تحسينات للوضع الليلي ===== */
+[data-theme="dark"] {
+  /* أزرار محسنة للوضع الليلي */
+  --btn-primary-shadow: var(--glow-primary);
+  --btn-primary-shadow-hover: var(--glow-primary);
+  --btn-primary-shadow-focus: var(--glow-secondary);
+  
+  /* تحديث شريط التنقل للوضع الليلي */
+  --navbar-bg: rgb(1, 19, 65);
+  --navbar-bg-transparent: rgb(1, 19, 65);
+  --navbar-bg-scrolled: rgb(1, 19, 65);
+  
+  --navbar-text: #00bfff;
+  --navbar-text-hover: #42d4ff;
+  --navbar-text-active: #00bfff;
+  
+  --dropdown-text: #00bfff;
+  --dropdown-text-hover: #42d4ff;
+  
+  /* تأثيرات مضيئة جديدة */
+  --navbar-link-glow: 0 0 10px rgba(0, 191, 255, 0.3);
+  --dropdown-glow: 0 0 15px rgba(0, 191, 255, 0.2);
+  --navbar-shadow-scrolled: var(--shadow-lg);
+  
+  /* متغيرات الأسهم والأيقونات - الوضع الليلي */
+  --navbar-arrow-filter: drop-shadow(0 0 6px rgba(0, 191, 255, 0.4));
+  --navbar-item-filter: drop-shadow(0 0 12px rgba(0, 191, 255, 0.4));
+  --navbar-ripple-color: rgba(0, 191, 255, 0.7);
+  --navbar-ripple-animation: rippleEffect 0.4s ease-out;
+  
+  /* متغيرات القوائم المنسدلة - الوضع الليلي */
+  --dropdown-bg: rgba(13, 20, 33, 0.95);
+  --dropdown-border: 1px solid rgba(0, 191, 255, 0.3);
+  --dropdown-item-border: 1px solid rgba(0, 191, 255, 0.15);
+  --dropdown-item-bg-hover: linear-gradient(90deg, rgba(0, 191, 255, 0.2), rgba(66, 212, 255, 0.1));
+  --dropdown-item-shadow-hover: inset 4px 0 0 #00bfff, 0 0 15px rgba(0, 191, 255, 0.3);
+  --dropdown-text-glow: 0 0 6px rgba(0, 191, 255, 0.3);
+  --dropdown-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 191, 255, 0.2), inset 0 1px 0 rgba(0, 191, 255, 0.1);
+  --dropdown-shadow-pulse: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 191, 255, 0.3), inset 0 1px 0 rgba(0, 191, 255, 0.15);
+  --dropdown-animation: subtleGlowPulse 3s ease-in-out infinite;
+  
+  /* متغيرات القائمة المحمولة - الوضع الليلي */
+  --mobile-nav-border: 1px solid rgba(0, 191, 255, 0.2);
+  --mobile-nav-bg-hover: linear-gradient(90deg, rgba(0, 191, 255, 0.15), rgba(66, 212, 255, 0.08));
+  --mobile-nav-shadow-hover: inset 4px 0 0 #00bfff;
+  
+  /* نماذج محسنة */
+  --input-shadow-focus: var(--glow-secondary);
+  --input-border-color-focus: var(--interactive-primary);
+  
+  /* قوائم منسدلة محسنة */
+  --dropdown-shadow: var(--shadow-xl);
+  --dropdown-item-bg-hover: rgba(0, 191, 255, 0.1);
+  
+  /* مودال محسن */
+  --modal-shadow: var(--shadow-2xl);
+  --modal-backdrop-bg: rgba(0, 0, 0, 0.8);
+  
+  /* تنبيهات محسنة للوضع الليلي */
+  --alert-success-bg: rgba(16, 185, 129, 0.1);
+  --alert-success-text: #10b981;
+  --alert-warning-bg: rgba(245, 158, 11, 0.1);
+  --alert-warning-text: #f59e0b;
+  --alert-danger-bg: rgba(239, 68, 68, 0.1);
+  --alert-danger-text: #ef4444;
+  --alert-info-bg: rgba(0, 191, 255, 0.1);
+  --alert-info-text: #00bfff;
+} 

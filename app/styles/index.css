@@ -1,0 +1,414 @@
+/* ===== الملف الرئيسي لتجميع نظام الأنماط الكامل ===== */
+
+/* ===== المستويات الأساسية ===== */
+/* إعادة تعيين CSS + خطوط عربي/إنجليزي */
+@import "./1-reset.css";
+
+/* متغيرات التصميم الأساسية (ألوان، خطوط، مسافات، ظلال، إلخ) */
+@import "./2-design-tokens.css";
+
+/* إعدادات الوضع النهاري والليلي */
+@import "./3-theme-modes.css";
+
+/* متغيرات المكونات (أزرار، بطاقات، حقول، إلخ) */
+@import "./4-component-variables.css";
+
+/* الفئات المساعدة (نصوص، ألوان، مسافات، إلخ) */
+@import "./5-utility-classes.css";
+
+/* قواعد محددة لأقسام الصفحة الرئيسية لمنع التضارب */
+@import "./6-sections-specific.css";
+
+/* نظام الأشكال الهندسية المتحركة */
+@import "./7-geometric-shapes.css";
+
+/* للتوافق مع النظام القديم */
+@import "./legacy-aliases.css";
+
+/* ===== قواعد HTML الأساسية ===== */
+html,
+body {
+  font-family: var(--font-family);
+  direction: var(--text-direction);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: var(--line-height-base);
+  font-size: var(--text-base);
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: var(--transition-theme);
+  scroll-behavior: smooth;
+}
+
+/* تحسين لنظام منع الوميض عند تبديل الثيمات */
+html.color-theme-in-transition,
+html.color-theme-in-transition *,
+html.color-theme-in-transition *:before,
+html.color-theme-in-transition *:after {
+  transition: var(--transition-theme) !important;
+  transition-delay: 0 !important;
+}
+
+/* ===== قواعد عامة ===== */
+a {
+  color: var(--interactive-primary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+a:hover {
+  color: var(--interactive-primary-hover);
+}
+
+/* تحسين وصولية التركيز */
+:focus {
+  outline: 3px solid var(--interactive-primary);
+  outline-offset: 3px;
+}
+
+/* دعم تفضيلات تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* تحسين للطباعة */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
+    color: blue;
+  }
+}
+
+/* ===== قواعد إضافية خاصة بالمشروع ===== */
+
+/* تحسين الحاوية الرئيسية */
+.main-container {
+  max-width: var(--container-xl);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    padding: 0 var(--space-6);
+  }
+}
+
+/* تحسين التمرير السلس */
+html {
+  scroll-padding-top: var(--navbar-height);
+}
+
+/* تحسين أداء الرسم */
+*,
+*::before,
+*::after {
+  backface-visibility: hidden;
+}
+
+/* تحسين الخطوط */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* زر جامعة الريادة المخصص */
+.btn-alryada {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  padding: var(--btn-padding-md);
+  font-weight: var(--btn-font-weight);
+  transition: var(--btn-transition);
+  box-shadow: var(--btn-primary-shadow);
+  cursor: pointer;
+}
+
+.btn-alryada:hover {
+  background: var(--btn-primary-bg-hover);
+  box-shadow: var(--btn-primary-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.btn-alryada:focus {
+  outline: none;
+  box-shadow: var(--btn-primary-shadow-focus);
+}
+
+/* بطاقة جامعة الريادة المخصصة */
+.card-alryada {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  transition: var(--card-transition);
+  overflow: var(--card-overflow);
+}
+
+.card-alryada:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* شريط تنقل جامعة الريادة */
+.navbar-alryada {
+  height: var(--navbar-height);
+  background: var(--navbar-bg);
+  border-bottom: var(--navbar-border-bottom);
+  box-shadow: var(--navbar-shadow);
+  transition: var(--navbar-transition);
+  backdrop-filter: var(--navbar-backdrop-filter);
+  position: sticky;
+  top: 0;
+  z-index: var(--navbar-z-index);
+}
+
+.navbar-alryada.scrolled {
+  background: var(--navbar-bg-scrolled);
+  box-shadow: var(--navbar-shadow-scrolled);
+}
+
+/* رابط شريط التنقل */
+.navbar-link {
+  color: var(--navbar-text);
+  padding: var(--navbar-link-padding);
+  border-radius: var(--navbar-link-border-radius);
+  transition: var(--navbar-link-transition);
+  font-weight: var(--navbar-link-font-weight);
+  text-decoration: none;
+}
+
+.navbar-link:hover {
+  color: var(--navbar-text-hover);
+  background: var(--bg-accent);
+}
+
+.navbar-link.active {
+  color: var(--navbar-text-active);
+  background: var(--bg-accent);
+}
+
+/* نموذج جامعة الريادة */
+.form-alryada .form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-alryada .form-label {
+  display: block;
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-color);
+  margin-bottom: var(--label-margin-bottom);
+}
+
+.form-alryada .form-input {
+  width: 100%;
+  height: var(--input-height);
+  padding: var(--input-padding);
+  background: var(--input-bg);
+  color: var(--input-text);
+  border: var(--input-border-width) var(--input-border-style) var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  transition: var(--input-transition);
+}
+
+.form-alryada .form-input:focus {
+  outline: none;
+  border-color: var(--input-border-color-focus);
+  box-shadow: var(--input-shadow-focus);
+}
+
+.form-alryada .form-input::placeholder {
+  color: var(--input-placeholder);
+}
+
+/* قائمة منسدلة جامعة الريادة */
+.dropdown-alryada {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-alryada .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--dropdown-bg);
+  border: var(--dropdown-border-width) var(--dropdown-border-style) var(--dropdown-border-color);
+  border-radius: var(--dropdown-border-radius);
+  box-shadow: var(--dropdown-shadow);
+  padding: var(--dropdown-padding);
+  min-width: var(--dropdown-min-width);
+  max-height: var(--dropdown-max-height);
+  overflow-y: auto;
+  z-index: var(--dropdown-z-index);
+  backdrop-filter: var(--dropdown-backdrop-filter);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: var(--dropdown-transition);
+}
+
+.dropdown-alryada.open .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-alryada .dropdown-item {
+  display: block;
+  width: 100%;
+  padding: var(--dropdown-item-padding);
+  color: var(--dropdown-text);
+  text-decoration: none;
+  border-radius: var(--dropdown-item-border-radius);
+  transition: var(--dropdown-item-transition);
+  font-size: var(--dropdown-item-font-size);
+  font-weight: var(--dropdown-item-font-weight);
+}
+
+.dropdown-alryada .dropdown-item:hover {
+  background: var(--dropdown-item-bg-hover);
+  color: var(--dropdown-item-text-hover);
+}
+
+/* ===== تحسينات الوصولية ===== */
+
+/* تحسين التركيز للوحة المفاتيح */
+.focus-visible {
+  outline: 2px solid var(--interactive-primary);
+  outline-offset: 2px;
+  outline-style: solid;
+}
+
+/* تحسين للمستخدمين الذين يفضلون تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .btn-alryada:hover {
+    transform: none;
+  }
+  
+  .card-alryada:hover {
+    transform: none;
+  }
+}
+
+/* تحسين للتباين العالي */
+@media (prefers-contrast: high) {
+  .btn-alryada,
+  .card-alryada,
+  .form-input,
+  .dropdown-menu {
+    border-width: 2px;
+  }
+  
+  .navbar-link:focus,
+  .btn-alryada:focus,
+  .form-input:focus {
+    outline-width: 3px;
+  }
+}
+
+/* ===== تحسينات الطباعة ===== */
+
+@media print {
+  .navbar-alryada,
+  .dropdown-alryada,
+  .btn-alryada {
+    display: none !important;
+  }
+  
+  .card-alryada {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+  
+  .main-container {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+}
+
+/* ===== تحسينات أداء إضافية ===== */
+
+/* تحسين الصور */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* تحسين الانتقالات */
+@media (hover: hover) {
+  .btn-alryada:hover,
+  .card-alryada:hover,
+  .navbar-link:hover,
+  .dropdown-item:hover {
+    will-change: transform;
+  }
+}
+
+/* تحسين للأجهزة اللوحية */
+@media (hover: none) and (pointer: coarse) {
+  .btn-alryada,
+  .navbar-link,
+  .dropdown-item {
+    padding: var(--space-3) var(--space-4);
+    min-height: 44px;
+  }
+}
+
+/* ===== فئات مساعدة إضافية خاصة بالمشروع ===== */
+
+/* فئة للنصوص المتدرجة */
+.text-gradient {
+  background: linear-gradient(135deg, var(--interactive-primary), var(--interactive-secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+}
+
+/* فئة للخلفية المتحركة */
+.bg-animated {
+  background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-accent), var(--bg-tertiary));
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* تعطيل الحركة إذا كان المستخدم يفضل ذلك */
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient,
+  .bg-animated {
+    animation: none;
+  }
+} 

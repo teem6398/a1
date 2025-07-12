@@ -1,0 +1,288 @@
+.categoriesContainer {
+  padding: 2.5rem 0;
+  direction: rtl;
+}
+
+.sectionTitle {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: var(--text-primary);
+  position: relative;
+  padding-right: 1.5rem;
+  text-align: center;
+}
+
+.sectionTitle::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 80%;
+  background-color: var(--interactive-primary);
+  border-radius: 4px;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.2rem;
+  padding: 1.2rem;
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem;
+  background-color: var(--surface-primary);
+  border-radius: var(--menu-item-radius);
+  box-shadow: var(--submenu-shadow);
+  transition: var(--menu-item-transition);
+  text-decoration: none;
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.categoryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: var(--interactive-primary);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: right;
+}
+
+.categoryCard:hover::before {
+  transform: scaleX(1);
+}
+
+.categoryCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .categoryCard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .categoryCard:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.categoryIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  background-color: var(--surface-raised);
+  border-radius: 50%;
+  margin-bottom: 1.8rem;
+  transition: var(--menu-item-transition);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.categoryCard:hover .categoryIcon {
+  transform: scale(1.15);
+  background-color: var(--interactive-primary);
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 86, 179, 0.25);
+}
+
+.defaultIcon {
+  font-size: 2.8rem;
+  transition: var(--menu-item-transition);
+}
+
+.categoryCard:hover .defaultIcon {
+  transform: scale(1.15);
+}
+
+.categoryName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  color: var(--text-primary);
+  transition: var(--menu-item-transition);
+}
+
+.categoryCard:hover .categoryName {
+  color: var(--interactive-primary);
+}
+
+.categoryDescription {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 1.8rem;
+  line-height: 1.7;
+  transition: var(--menu-item-transition);
+}
+
+.newsCount {
+  font-size: 0.95rem;
+  color: var(--interactive-primary);
+  font-weight: 600;
+  background-color: var(--surface-raised);
+  padding: 0.6rem 1.4rem;
+  border-radius: 25px;
+  transition: var(--menu-item-transition);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.categoryCard:hover .newsCount {
+  background-color: var(--interactive-primary);
+  color: white;
+  transform: scale(1.12);
+  box-shadow: 0 5px 12px rgba(0, 86, 179, 0.2);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(var(--interactive-primary-rgb), 0.2);
+  border-top-color: var(--interactive-primary);
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--surface-error);
+  border-radius: var(--menu-item-radius);
+  color: var(--text-error);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.retryButton {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background-color: var(--interactive-primary);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: var(--menu-item-transition);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.retryButton:hover {
+  background-color: var(--interactive-primary-hover);
+  transform: translateY(-2px);
+}
+
+/* تحسينات للشاشات المتوسطة */
+@media (max-width: 992px) {
+  .categoriesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .categoryCard {
+    padding: 1.5rem;
+  }
+
+  .categoryIcon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .categoryName {
+    font-size: 1.3rem;
+  }
+}
+
+/* تحسينات للشاشات الصغيرة */
+@media (max-width: 576px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .categoryCard {
+    padding: 1.25rem;
+  }
+
+  .categoryIcon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .defaultIcon {
+    font-size: 2rem;
+  }
+
+  .categoryName {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .categoryDescription {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* تحسينات للحركة المخففة */
+@media (prefers-reduced-motion: reduce) {
+  .categoryCard,
+  .categoryIcon,
+  .defaultIcon,
+  .categoryName,
+  .categoryDescription,
+  .newsCount {
+    transition: none;
+  }
+
+  .spinner {
+    animation: none;
+  }
+}
+
+/* تحسينات للتباين العالي */
+@media (prefers-contrast: high) {
+  .categoryCard {
+    border: 2px solid var(--text-primary);
+  }
+
+  .categoryCard:hover {
+    border-color: var(--interactive-primary);
+  }
+
+  .newsCount {
+    border: 1px solid currentColor;
+  }
+}

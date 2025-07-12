@@ -1,0 +1,158 @@
+{
+  "en": {
+    "admission": {
+      "title": "Admission",
+      "description": "Find all the information you need to apply.",
+      "requirements": "Admission Requirements",
+      "checkRequirements": "Check the requirements for admission."
+    },
+    "majorsGrid": {
+      "title": "Majors and Admission Requirements",
+      "subtitle": "Learn about available majors and admission requirements for each major.",
+      "filterByCollege": "Filter by College",
+      "allColleges": "All Colleges",
+      "loading": "Loading majors...",
+      "fetchError": "Failed to fetch majors data. Please try again later.",
+      "noMajorsFound": "No majors found for the selected criteria.",
+      "backToColleges": "Back to Colleges",
+      "availableMajors": "Click to see available majors",
+      "students": "students",
+      "features": "Features:",
+      "admissionRequirements": "Admission Requirements:",
+      "noRequirements": "No requirements have been specified yet",
+      "applyButton": "Apply Now",
+      "selectCollegePrompt": "Please select a college to view available majors:"
+    },
+    "howToApply": {
+      "title": "How to Apply",
+      "subtitle": "Learn about the simple steps to apply and join Alryada University. We are here to help you at every step of your academic journey.",
+      "loading": "Loading application steps...",
+      "fetchError": "An error occurred while fetching data. Please try again later.",
+      "retry": "Retry",
+      "noSteps": "No steps to display at the moment.",
+      "applyButton": "Start Application Now",
+      "helpLink": "Need Help?"
+    },
+    "applicationForm": {
+      "title": "Application Form",
+      "subtitle": "Fill out the form below to apply",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "nationalId": "National ID",
+      "birthDate": "Birth Date",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "highSchoolType": "High School Type",
+      "scientific": "Scientific",
+      "literary": "Literary",
+      "other": "Other",
+      "highSchoolGrade": "High School Grade",
+      "preferredCollege": "Preferred College",
+      "preferredMajor": "Preferred Major",
+      "address": "Address",
+      "notes": "Additional Notes",
+      "submit": "Submit Application",
+      "reset": "Reset Form",
+      "requiredField": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "invalidPhone": "Please enter a valid phone number",
+      "invalidNationalId": "Please enter a valid national ID",
+      "successMessage": "Your application has been submitted successfully!",
+      "errorMessage": "An error occurred. Please try again later.",
+      "personalInfo": "Personal Information",
+      "academicInfo": "Academic Information",
+      "additionalInfo": "Additional Information",
+      "notificationMessage": "We will contact you soon via email or phone.",
+      "colleges": {
+        "engineering": "College of Engineering",
+        "medicine": "College of Medicine",
+        "business": "College of Business Administration"
+      }
+    },
+    "universityIntroVideo": {
+      "title": "About the University",
+      "description": "Alryada University is a leading academic institution that aims to graduate outstanding cadres in various scientific and administrative disciplines, with an educational environment that stimulates creativity and innovation.",
+      "playVideo": "Watch Video"
+    }
+  },
+  "ar": {
+    "admission": {
+      "title": "القبول والتسجيل ",
+      "description": "اعثر على جميع المعلومات التي تحتاجها للتقديم.",
+      "requirements": "متطلبات القبول",
+      "checkRequirements": "تحقق من متطلبات القبول."
+    },
+    "majorsGrid": {
+      "title": "التخصصات وشروط القبول",
+      "subtitle": "تعرف على التخصصات المتاحة وشروط القبول في كل تخصص.",
+      "filterByCollege": "تصفية حسب الكلية",
+      "allColleges": "جميع الكليات",
+      "loading": "جاري تحميل التخصصات...",
+      "fetchError": "حدث خطأ أثناء جلب بيانات التخصصات. يرجى المحاولة مرة أخرى لاحقًا.",
+      "noMajorsFound": "لم يتم العثور على تخصصات تطابق معايير البحث.",
+      "backToColleges": "العودة إلى الكليات",
+      "availableMajors": "اضغط للاطلاع على التخصصات المتاحة",
+      "students": "طالب/ة",
+      "features": "المميزات:",
+      "admissionRequirements": "شروط القبول:",
+      "noRequirements": "لم يتم تحديد شروط القبول بعد",
+      "applyButton": "تقديم طلب الالتحاق",
+      "selectCollegePrompt": "الرجاء اختيار كلية لعرض التخصصات المتاحة:"
+    },
+    "howToApply": {
+      "title": "خطوات التقديم",
+      "subtitle": "تعرف على الخطوات البسيطة للتقديم والالتحاق بجامعة الريادة. نحن هنا لمساعدتك في كل خطوة من رحلتك الأكاديمية.",
+      "loading": "جاري تحميل خطوات التقديم...",
+      "fetchError": "حدث خطأ أثناء جلب البيانات. يرجى المحاولة مرة أخرى لاحقًا.",
+      "retry": "إعادة المحاولة",
+      "noSteps": "لا توجد خطوات للعرض حاليًا.",
+      "applyButton": "ابدأ التقديم الآن",
+      "helpLink": "هل تحتاج إلى مساعدة؟"
+    },
+    "applicationForm": {
+      "title": "نموذج التقديم",
+      "subtitle": "املأ النموذج أدناه للتقديم",
+      "fullName": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "nationalId": "رقم الهوية الوطنية",
+      "birthDate": "تاريخ الميلاد",
+      "gender": "الجنس",
+      "male": "ذكر",
+      "female": "أنثى",
+      "highSchoolType": "نوع المدرسة الثانوية",
+      "scientific": "علمي",
+      "literary": "أدبي",
+      "other": "أخرى",
+      "highSchoolGrade": "معدل المدرسة الثانوية",
+      "preferredCollege": "الكلية المفضلة",
+      "preferredMajor": "التخصص المفضل",
+      "address": "العنوان",
+      "notes": "ملاحظات إضافية",
+      "submit": "تقديم الطلب",
+      "reset": "إعادة تعيين النموذج",
+      "requiredField": "هذا الحقل مطلوب",
+      "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صالح",
+      "invalidPhone": "يرجى إدخال رقم هاتف صالح",
+      "invalidNationalId": "يرجى إدخال رقم هوية وطنية صالح",
+      "successMessage": "تم تقديم طلبك بنجاح!",
+      "errorMessage": "حدث خطأ. يرجى المحاولة مرة أخرى لاحقًا.",
+      "personalInfo": "البيانات الشخصية",
+      "academicInfo": "البيانات الأكاديمية",
+      "additionalInfo": "معلومات إضافية",
+      "notificationMessage": "سيتم التواصل معك قريبًا عبر البريد الإلكتروني أو الهاتف المسجل.",
+      "colleges": {
+        "engineering": "كلية الهندسة",
+        "medicine": "كلية الطب",
+        "business": "كلية العلوم الإدارية"
+      }
+    },
+    "universityIntroVideo": {
+      "title": "نبذة عن الجامعة",
+      "description": "جامعة الريادة هي صرح أكاديمي رائد يهدف إلى تخريج كوادر متميزة في مختلف التخصصات العلمية والإدارية، مع بيئة تعليمية محفزة على الإبداع والابتكار.",
+      "playVideo": "شاهد الفيديو"
+    }
+  }
+} 

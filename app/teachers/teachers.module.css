@@ -1,0 +1,318 @@
+/* ===== تنسيقات صفحة البحث عن المعلمين ===== */
+
+/* القسم الرئيسي */
+.pageWrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.pageWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-600) 100%);
+  opacity: 0.05;
+  transform: skewY(-6deg);
+  transform-origin: top left;
+}
+
+/* قسم الهيدر */
+.heroSection {
+  position: relative;
+  text-align: center;
+  padding: 4rem 1rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.heroIcon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-primary-200) 100%);
+  animation: pulseIcon 2s infinite;
+}
+
+.heroIcon svg {
+  font-size: 2.5rem;
+  color: var(--color-primary-500);
+}
+
+@keyframes pulseIcon {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.heroTitle {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroDescription {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* قسم البحث */
+.searchSection {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.searchContainer {
+  background: rgba(var(--color-primary-50-rgb), 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(var(--color-primary-200-rgb), 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.searchContainer.elevated {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .searchForm {
+    flex-direction: row;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.searchInput,
+.selectInput {
+  width: 100%;
+  padding: 1rem 3rem 1rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
+  background: rgba(var(--color-primary-100-rgb), 0.5);
+  color: var(--text-primary);
+  font-size: var(--text-lg);
+  transition: all 0.3s ease;
+}
+
+.searchInput:focus,
+.selectInput:focus {
+  border-color: var(--color-primary-500);
+  background: rgba(var(--color-primary-50-rgb), 0.8);
+  outline: none;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--text-tertiary);
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.inputWrapper:focus-within .inputIcon {
+  color: var(--color-primary-500);
+}
+
+/* شبكة النتائج */
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+/* بطاقة المعلم */
+.teacherCard {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--surface-primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.teacherCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.imageContainer {
+  position: relative;
+  padding-top: 125%; /* نسبة 4:5 */
+  overflow: hidden;
+}
+
+.teacherImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.teacherCard:hover .teacherImage {
+  transform: scale(1.1);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  color: white;
+}
+
+.teacherName {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.teacherCollege {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cardIcon {
+  color: var(--color-primary-300);
+  font-size: 1.25rem;
+}
+
+/* حالة التحميل */
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.loadingSpinner {
+  color: var(--color-primary-500);
+  margin-bottom: 1rem;
+}
+
+/* حالة عدم وجود نتائج */
+.noResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+  background: var(--surface-primary);
+  border: 2px dashed var(--border-default);
+  border-radius: 1rem;
+  grid-column: 1 / -1;
+}
+
+.noResultsIcon {
+  font-size: 3rem;
+  color: var(--text-tertiary);
+  margin-bottom: 1rem;
+}
+
+.noResultsTitle {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.noResultsText {
+  color: var(--text-tertiary);
+}
+
+/* تحسينات للشاشات الصغيرة */
+@media (max-width: 640px) {
+  .heroSection {
+    padding: 3rem 1rem;
+  }
+
+  .heroTitle {
+    font-size: var(--text-3xl);
+  }
+
+  .heroDescription {
+    font-size: var(--text-base);
+  }
+
+  .searchContainer {
+    padding: 1rem;
+  }
+
+  .resultsGrid {
+    gap: 1rem;
+  }
+}
+
+/* تأثيرات إضافية */
+.hoverEffect {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(var(--color-primary-500-rgb), 0.1),
+    rgba(var(--color-primary-700-rgb), 0.2)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.teacherCard:hover .hoverEffect {
+  opacity: 1;
+} 

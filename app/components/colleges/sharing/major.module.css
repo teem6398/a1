@@ -1,0 +1,1859 @@
+/* تصميم مشترك لجميع صفحات التخصصات */
+
+/* تصميم عام للصفحة */
+.majorPage {
+  font-family: var(--font-family-ar);
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  direction: rtl;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.majorPage::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 90% 10%, rgba(30, 136, 229, 0.03) 0%, transparent 60%),
+              radial-gradient(circle at 10% 90%, rgba(30, 136, 229, 0.03) 0%, transparent 60%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* قسم الهيرو */
+.heroSection {
+  position: relative;
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s ease;
+  background-position: center;
+  background-size: cover;
+  transform: translateZ(0);
+  width: 100%;
+}
+
+.heroSection:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.heroSection:hover .heroOverlay {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+  width: 100%;
+  max-width: 800px;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 30px rgba(30, 136, 229, 0.2);
+  letter-spacing: 1.2px;
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  transform: translateX(-50%);
+}
+
+.heroSubtitle {
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  font-weight: 300;
+  opacity: 0.95;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #f0f0f0;
+  line-height: 1.5;
+}
+
+.ctaButton {
+  background: linear-gradient(45deg, #1e88e5, #42a5f5);
+  color: white;
+  border: none;
+  padding: 14px 34px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #42a5f5, #1e88e5);
+  z-index: -1;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+.ctaButton:hover::before {
+  opacity: 1;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(30, 136, 229, 0.5);
+}
+
+.ctaButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(30, 136, 229, 0.4);
+}
+
+/* تصميم الأقسام العامة */
+.section {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  width: 100%;
+}
+
+.section:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(to bottom, #1e88e5, #90caf9);
+  transition: height 0.5s ease;
+}
+
+.section:hover::before {
+  height: 100%;
+}
+
+.sectionTitle {
+  color: #1e3a59;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  letter-spacing: 0.5px;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #1e88e5, #90caf9, transparent);
+  border-radius: 3px;
+}
+
+/* قسم عن التخصص */
+.aboutText {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #2a3a4d;
+  text-align: justify;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.aboutText p {
+  margin-bottom: 20px;
+  position: relative;
+  padding-right: 20px;
+}
+
+.aboutText p::before {
+  content: '❝';
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #1e88e5;
+  opacity: 0.5;
+  font-size: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* قسم المقررات */
+.coursesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  perspective: 1000px;
+}
+
+.courseItem {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 20px;
+  border-radius: 12px;
+  border-right: 3px solid #1e88e5;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  color: #263747;
+  font-weight: 500;
+}
+
+.courseItem:hover {
+  transform: translateY(-5px) rotateX(5deg);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-right-width: 5px;
+}
+
+.courseItem::after {
+  content: '📚';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1rem;
+  opacity: 0.2;
+  transition: all 0.3s ease;
+}
+
+.courseItem:hover::after {
+  opacity: 0.4;
+  transform: scale(1.2);
+}
+
+/* تحسينات على عناصر المقررات الدراسية */
+.courseLink {
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.courseLink:hover {
+  transform: translateY(-8px) translateX(5px);
+}
+
+.courseLink:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(37, 99, 235, 0.02));
+  z-index: -1;
+  pointer-events: none;
+}
+
+.courseIconWrapper {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-blue-500), var(--color-blue-700));
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.courseLink:hover .courseIconWrapper {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.35);
+}
+
+.courseIconWrapper::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.courseLink:hover .courseIconWrapper::before {
+  transform: scale(3) translateX(20px) translateY(20px);
+}
+
+.courseIcon {
+  font-size: 2rem;
+  color: white;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.courseLink:hover .courseIcon {
+  transform: scale(1.2);
+}
+
+.courseContent {
+  flex: 1;
+}
+
+/* قسم المهارات */
+.skillsTab {
+  margin-top: 2rem;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.skillCard {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skillCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.skillIcon {
+  display: inline-block;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #3b82f6;
+}
+
+.skillName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #1e3a8a;
+}
+
+.skillDescription {
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* قسم الوظائف */
+.jobsTab {
+  margin-top: 2rem;
+}
+
+.jobsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.jobCard {
+  background-color: #f0f9ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #3b82f6;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jobCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.jobTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #1e3a8a;
+}
+
+.jobDescription {
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* قسم فرص التدريب */
+.trainingPartners {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.partnerLogo {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateZ(0) rotateY(10deg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 10px;
+  background: white;
+}
+
+.partnerLogo:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: translateZ(30px) rotateY(0);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* قسم مشاريع التخرج */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  perspective: 1200px;
+}
+
+.projectCard {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  transform: translateZ(0) rotateX(0) rotateY(0);
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.projectCard:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.projectCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(30, 136, 229, 0.1) 0%, rgba(30, 136, 229, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.projectCard:hover::after {
+  opacity: 1;
+}
+
+.projectImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+  transform: translateZ(0);
+  filter: brightness(0.95);
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.projectContent {
+  padding: 25px;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(to top, white 90%, transparent 100%);
+  margin-top: -20px;
+  border-radius: 20px 20px 0 0;
+}
+
+.projectTitle {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: #1e3a59;
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  background-image: linear-gradient(90deg, #1e3a59, #2e5a89);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.3px;
+}
+
+.projectTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #1e88e5, #42a5f5, #90caf9);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.projectCard:hover .projectTitle::after {
+  width: 100%;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+  .heroSection {
+    height: 380px;
+  }
+
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.2rem;
+    max-width: 100%;
+  }
+
+  .section {
+    padding: 25px;
+  }
+  
+  .coursesList, .skillsGrid, .jobsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .skillsGrid,
+  .jobsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tabs {
+    flex-wrap: wrap;
+  }
+  
+  .tabButton {
+    margin-bottom: 0.5rem;
+  }
+
+  .courseLink {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .courseIconWrapper {
+    margin-bottom: 0.5rem;
+  }
+  
+  [dir="rtl"] .courseLink {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    height: 320px;
+  }
+
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .ctaButton {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .coursesList, .skillsGrid, .jobsGrid, .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* Common styles for tabs */
+.noData {
+  text-align: center;
+  color: #6b7280;
+  padding: 2rem;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+/* استخدام النظام الجديد للمتغيرات من app/styles */
+
+/* Animaciones globales */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.majorContainer {
+  padding: 3rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.majorContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-purple-600), var(--color-emerald-600));
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
+
+.majorHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  animation: fadeIn 0.8s ease;
+}
+
+.majorHeader h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.5px;
+}
+
+.majorHeader h1::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-purple-600));
+  border-radius: 3px;
+  transition: var(--transition-base);
+}
+
+.majorHeader:hover h1::after {
+  width: 150px;
+}
+
+.majorImageContainer {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: 2.5rem;
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  transition: var(--transition-base);
+}
+
+.majorImageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+  opacity: 0.7;
+  transition: var(--transition-base);
+}
+
+.majorImageContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.majorImageContainer:hover::before {
+  opacity: 0.5;
+}
+
+.majorImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.majorImageContainer:hover .majorImage {
+  transform: scale(1.08);
+}
+
+/* Estilos para las pestañas */
+.tabsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  border-bottom: none;
+  padding-bottom: 1.5rem;
+  justify-content: center;
+  position: relative;
+}
+
+.tabsContainer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(107, 114, 128, 0.2), transparent);
+}
+
+.tabButton {
+  padding: 1rem 1.8rem;
+  border: none;
+  background-color: var(--surface-base);
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: var(--transition-base);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  letter-spacing: 0.3px;
+}
+
+.tabButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-blue-500), var(--color-blue-600));
+  transition: var(--transition-base);
+  z-index: -1;
+}
+
+.tabButton:hover {
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3);
+}
+
+.tabButton:hover::before {
+  width: 100%;
+}
+
+.activeTab {
+  background: linear-gradient(135deg, var(--color-blue-600), var(--color-blue-700));
+  color: white;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+  transform: translateY(-3px);
+}
+
+.activeTab::before {
+  width: 100%;
+}
+
+.tabContent {
+  min-height: 300px;
+  background-color: var(--surface-base);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-medium);
+  animation: fadeIn 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tabContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.03), transparent 70%);
+  pointer-events: none;
+}
+
+/* Estilos para la pestaña de visión general */
+.overviewTab {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.majorDescription h2,
+.majorFeatures h2,
+.coursesTab h2,
+.projectsTab h2,
+.jobsTab h2,
+.skillsTab h2 {
+  font-size: 2rem;
+  margin-bottom: 1.8rem;
+  color: var(--text-primary);
+  position: relative;
+  padding-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.majorDescription h2::after,
+.majorFeatures h2::after,
+.coursesTab h2::after,
+.projectsTab h2::after,
+.jobsTab h2::after,
+.skillsTab h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-purple-600));
+  border-radius: 2px;
+  transition: var(--transition-base);
+}
+
+.majorDescription:hover h2::after,
+.majorFeatures:hover h2::after,
+.coursesTab:hover h2::after,
+.projectsTab:hover h2::after,
+.jobsTab:hover h2::after,
+.skillsTab:hover h2::after {
+  width: 100px;
+}
+
+.majorDescription p {
+  line-height: 1.9;
+  color: #000000;
+  font-size: 1.1rem;
+  letter-spacing: 0.2px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-right: 3px solid var(--color-blue-600);
+  text-align: justify;
+  font-weight: 500;
+}
+
+.majorDescription p:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  border-right-width: 5px;
+}
+
+/* Estilos para la pestaña de cursos */
+.coursesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.courseItem {
+  background-color: var(--surface-base);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-base);
+  border-top: 4px solid var(--color-blue-600);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+  animation-fill-mode: both;
+}
+
+.courseItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.08), transparent);
+  transition: var(--transition-base);
+  z-index: 0;
+}
+
+.courseItem:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.courseItem:hover::before {
+  height: 100%;
+}
+
+.courseItem:nth-child(3n+1) {
+  border-top-color: var(--color-blue-600);
+}
+
+.courseItem:nth-child(3n+2) {
+  border-top-color: var(--color-purple-600);
+}
+
+.courseItem:nth-child(3n+3) {
+  border-top-color: var(--color-emerald-600);
+}
+
+.courseItem h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  color: #000000 !important;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  transition: var(--transition-base);
+}
+
+.courseItem:hover h3 {
+  color: #000000 !important;
+}
+
+.courseItem p {
+  margin-bottom: 1.5rem;
+  color: #000000 !important;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+.courseMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: #000000 !important;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.semester {
+  background-color: rgba(59, 130, 246, 0.12);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: #000000 !important;
+  font-weight: 500;
+  transition: var(--transition-base);
+  display: flex;
+  align-items: center;
+}
+
+.semester::before {
+  content: '🗓️';
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.courseItem:hover .semester {
+  background-color: rgba(59, 130, 246, 0.18);
+}
+
+.elective {
+  background-color: rgba(16, 185, 129, 0.12);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: #000000 !important;
+  font-weight: 500;
+  transition: var(--transition-base);
+  display: flex;
+  align-items: center;
+}
+
+.elective::before {
+  content: '✓';
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.courseItem:hover .elective {
+  background-color: rgba(16, 185, 129, 0.18);
+}
+
+/* Estilos para la pestaña de proyectos */
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.projectItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  background-color: var(--surface-base);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.6s ease;
+  animation-fill-mode: both;
+}
+
+.projectItem::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-blue-600), var(--color-purple-600));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s ease;
+}
+
+.projectItem:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.projectItem:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (min-width: 768px) {
+  .projectItem {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .projectItem:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  
+  .projectItem:nth-child(even) .projectContent {
+    animation: slideInRight 0.8s ease;
+  }
+  
+  .projectItem:nth-child(odd) .projectContent {
+    animation: slideInLeft 0.8s ease;
+  }
+}
+
+.projectContent {
+  flex: 2;
+}
+
+.projectContent h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.projectContent h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-blue-600);
+  transition: var(--transition-base);
+}
+
+.projectItem:hover .projectContent h3::after {
+  width: 100%;
+}
+
+.projectContent p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.projectImageContainer {
+  flex: 1;
+  max-width: 350px;
+  height: 230px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-base);
+}
+
+.projectImageContainer:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.projectImageContainer:hover .projectImage {
+  transform: scale(1.12);
+}
+
+/* Estilos para la pestaña de oportunidades de trabajo */
+.jobsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.jobItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.8rem;
+  background-color: var(--surface-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-base);
+  border-left: 4px solid var(--color-purple-600);
+  animation: fadeIn 0.5s ease;
+  animation-fill-mode: both;
+}
+
+.jobItem:hover {
+  transform: translateY(-8px) translateX(5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.jobIcon {
+  font-size: 2rem;
+  background: rgba(139, 92, 246, 0.12);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--color-purple-600);
+  transition: var(--transition-base);
+  flex-shrink: 0;
+}
+
+.jobItem:hover .jobIcon {
+  transform: scale(1.15);
+  background: rgba(139, 92, 246, 0.18);
+}
+
+.jobTitle {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  transition: var(--transition-base);
+}
+
+.jobItem:hover .jobTitle {
+  color: var(--color-purple-600);
+}
+
+/* Estilos para la pestaña de habilidades */
+.skillsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.8rem;
+  background-color: var(--surface-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+  animation-fill-mode: both;
+}
+
+.skillItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(to bottom, var(--color-blue-600), var(--color-purple-600));
+  transition: var(--transition-base);
+}
+
+.skillItem:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.skillItem:hover::before {
+  height: 100%;
+}
+
+.skillIcon {
+  font-size: 2rem;
+  background-color: rgba(37, 99, 235, 0.12);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--color-blue-600);
+  transition: var(--transition-base);
+  flex-shrink: 0;
+}
+
+.skillItem:hover .skillIcon {
+  transform: scale(1.15) rotate(5deg);
+  background-color: rgba(37, 99, 235, 0.18);
+}
+
+.skillName {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  transition: var(--transition-base);
+}
+
+.skillItem:hover .skillName {
+  color: var(--color-blue-600);
+}
+
+/* Estilos para mensajes de carga y error */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-color: var(--surface-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-medium);
+}
+
+.loading {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(37, 99, 235, 0.15);
+  border-top: 4px solid var(--color-blue-600);
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  margin-bottom: 1.8rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 5rem 2rem;
+  background-color: var(--surface-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-medium);
+}
+
+.errorContainer h2 {
+  color: #ef4444;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.backButton {
+  margin-top: 2.5rem;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--color-blue-600), var(--color-blue-700));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: var(--transition-base);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.backButton:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.45);
+}
+
+.noData {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 4rem 2rem;
+  background-color: var(--surface-base);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-medium);
+  font-size: 1.15rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.noData::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-blue-500), var(--color-purple-600));
+}
+
+/* Estilos para RTL */
+[dir="rtl"] .requirementItem {
+  border-right: none;
+  border-left: 4px solid var(--color-emerald-600);
+}
+
+[dir="rtl"] .requirementItem::before {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+[dir="rtl"] .majorDescription h2::after,
+[dir="rtl"] .majorFeatures h2::after,
+[dir="rtl"] .coursesTab h2::after,
+[dir="rtl"] .projectsTab h2::after,
+[dir="rtl"] .jobsTab h2::after,
+[dir="rtl"] .skillsTab h2::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .jobItem {
+  border-left: none;
+  border-right: 4px solid var(--color-purple-600);
+}
+
+[dir="rtl"] .jobItem:hover {
+  transform: translateY(-8px) translateX(-5px);
+}
+
+[dir="rtl"] .skillItem::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .projectContent h3::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .semester::before,
+[dir="rtl"] .elective::before {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .majorHeader h1 {
+    font-size: 2.3rem;
+  }
+  
+  .majorImageContainer {
+    height: 300px;
+  }
+  
+  .tabsContainer {
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  
+  .tabButton {
+    padding: 0.9rem 1.3rem;
+    font-size: 0.95rem;
+  }
+  
+  .coursesList,
+  .jobsList,
+  .skillsList {
+    grid-template-columns: 1fr;
+  }
+  
+  .projectImageContainer {
+    max-width: 100%;
+    height: 200px;
+  }
+  
+  .tabContent {
+    padding: 1.8rem;
+  }
+  
+  .majorDescription h2,
+  .majorFeatures h2,
+  .coursesTab h2,
+  .projectsTab h2,
+  .jobsTab h2,
+  .skillsTab h2 {
+    font-size: 1.7rem;
+  }
+  
+  .projectItem {
+    padding: 1.8rem;
+  }
+  
+  .projectContent h3 {
+    font-size: 1.4rem;
+  }
+  
+  .projectContent p {
+    font-size: 1rem;
+  }
+}
+
+/* Animación para los elementos de la lista */
+.courseItem, .projectItem, .jobItem, .skillItem {
+  opacity: 0;
+  animation-delay: calc(var(--item-index, 0) * 0.1s);
+}
+
+.coursesList > *:nth-child(1), 
+.projectsList > *:nth-child(1), 
+.jobsList > *:nth-child(1), 
+.skillsList > *:nth-child(1) {
+  --item-index: 1;
+}
+
+.coursesList > *:nth-child(2), 
+.projectsList > *:nth-child(2), 
+.jobsList > *:nth-child(2), 
+.skillsList > *:nth-child(2) {
+  --item-index: 2;
+}
+
+.coursesList > *:nth-child(3), 
+.projectsList > *:nth-child(3), 
+.jobsList > *:nth-child(3), 
+.skillsList > *:nth-child(3) {
+  --item-index: 3;
+}
+
+.coursesList > *:nth-child(4), 
+.projectsList > *:nth-child(4), 
+.jobsList > *:nth-child(4), 
+.skillsList > *:nth-child(4) {
+  --item-index: 4;
+}
+
+.coursesList > *:nth-child(5), 
+.projectsList > *:nth-child(5), 
+.jobsList > *:nth-child(5), 
+.skillsList > *:nth-child(5) {
+  --item-index: 5;
+}
+
+.coursesList > *:nth-child(6), 
+.projectsList > *:nth-child(6), 
+.jobsList > *:nth-child(6), 
+.skillsList > *:nth-child(6) {
+  --item-index: 6;
+}
+
+.coursesList > *:nth-child(n+7), 
+.projectsList > *:nth-child(n+7), 
+.jobsList > *:nth-child(n+7), 
+.skillsList > *:nth-child(n+7) {
+  --item-index: 7;
+}
+
+.majorFeatures div {
+  color: #000000;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  letter-spacing: 0.2px;
+}
+
+.majorFeatures ul, .majorFeatures ol {
+  color: #000000;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.majorFeatures li {
+  margin-bottom: 10px;
+  color: #000000;
+  position: relative;
+  padding-right: 5px;
+}
+
+.majorFeatures p {
+  color: #000000;
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-right: 3px solid var(--color-purple-600);
+  text-align: justify;
+  font-weight: 500;
+}
+
+.majorFeatures p:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  border-right-width: 5px;
+}
+
+[dir="ltr"] .majorDescription p {
+  border-right: none;
+  border-left: 3px solid var(--color-blue-600);
+}
+
+[dir="ltr"] .majorDescription p:hover {
+  border-left-width: 5px;
+}
+
+[dir="ltr"] .majorFeatures p {
+  border-right: none;
+  border-left: 3px solid var(--color-purple-600);
+}
+
+[dir="ltr"] .majorFeatures p:hover {
+  border-left-width: 5px;
+}
+
+[dir="ltr"] .majorFeatures ul, [dir="ltr"] .majorFeatures ol {
+  padding-right: 0;
+  padding-left: 20px;
+}
+
+.backToCollegeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--color-blue-600), var(--color-blue-700));
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.backToCollegeButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, var(--color-blue-700), var(--color-blue-600));
+}
+
+.backToCollegeButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.backToCollegeButton::before {
+  content: '←';
+  font-size: 1.2rem;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.backToCollegeButton:hover::before {
+  transform: translateX(-3px);
+}
+
+[dir="ltr"] .backToCollegeButton {
+  right: auto;
+  left: 20px;
+}
+
+[dir="ltr"] .backToCollegeButton::before {
+  content: '→';
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+[dir="ltr"] .backToCollegeButton:hover::before {
+  transform: translateX(3px);
+}
+
+/* CSS للوضع الليلي - المقررات الدراسية */
+/* التأكد من أن نصوص المقررات الدراسية تكون سوداء في كلا الوضعين */
+:root[data-theme="dark"] .courseItem h3,
+html[data-theme="dark"] .courseItem h3,
+[data-theme="dark"] .courseItem h3,
+body[data-theme="dark"] .courseItem h3 {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-theme="dark"] .courseItem p,
+html[data-theme="dark"] .courseItem p,
+[data-theme="dark"] .courseItem p,
+body[data-theme="dark"] .courseItem p {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-theme="dark"] .courseItem:hover h3,
+html[data-theme="dark"] .courseItem:hover h3,
+[data-theme="dark"] .courseItem:hover h3,
+body[data-theme="dark"] .courseItem:hover h3 {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .courseItem:hover p,
+html[data-theme="dark"] .courseItem:hover p,
+[data-theme="dark"] .courseItem:hover p,
+body[data-theme="dark"] .courseItem:hover p {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .courseMeta,
+html[data-theme="dark"] .courseMeta,
+[data-theme="dark"] .courseMeta,
+body[data-theme="dark"] .courseMeta {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-theme="dark"] .semester,
+html[data-theme="dark"] .semester,
+[data-theme="dark"] .semester,
+body[data-theme="dark"] .semester {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dark"] .elective,
+html[data-theme="dark"] .elective,
+[data-theme="dark"] .elective,
+body[data-theme="dark"] .elective {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dark"] .courseItem:hover .semester,
+html[data-theme="dark"] .courseItem:hover .semester,
+[data-theme="dark"] .courseItem:hover .semester,
+body[data-theme="dark"] .courseItem:hover .semester {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="dark"] .courseItem:hover .elective,
+html[data-theme="dark"] .courseItem:hover .elective,
+[data-theme="dark"] .courseItem:hover .elective,
+body[data-theme="dark"] .courseItem:hover .elective {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* دعم إضافي للثيم الليلي */
+.dark .courseItem h3,
+.dark .courseItem p,
+.dark .courseMeta,
+.dark .semester,
+.dark .elective {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dark .courseItem:hover h3,
+.dark .courseItem:hover p,
+.dark .courseItem:hover .semester,
+.dark .courseItem:hover .elective {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* تحسين المظهر في الوضع الليلي */
+@media (prefers-color-scheme: dark) {
+  .courseItem h3,
+  .courseItem p,
+  .courseMeta,
+  .semester,
+  .elective {
+    color: #000000 !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .courseItem:hover h3,
+  .courseItem:hover p,
+  .courseItem:hover .semester,
+  .courseItem:hover .elective {
+    color: #000000 !important;
+    background-color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}

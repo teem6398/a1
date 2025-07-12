@@ -1,0 +1,267 @@
+/* ==========================================================================
+   DARK MODE STYLES FOR COLLEGES
+   ========================================================================== */
+
+/* Hero Section Dark Mode */
+[data-theme="dark"] .heroSection {
+  background: var(--section-bg-primary);
+}
+
+ .heroTitle{
+  color: #ffffff;
+ }
+ 
+.heroSubtitle {
+  color: #ffffff;
+}
+
+/* Major Page Dark Mode */
+[data-theme="dark"] .majorPage {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .majorPage::before {
+  background: radial-gradient(circle at 90% 10%, rgba(96, 165, 250, 0.05) 0%, transparent 60%),
+              radial-gradient(circle at 10% 90%, rgba(96, 165, 250, 0.05) 0%, transparent 60%);
+}
+
+/* Sections Dark Mode */
+[data-theme="dark"] .section {
+  background: var(--surface-base);
+  border-color: var(--border-subtle);
+}
+
+[data-theme="dark"] .sectionTitle {
+  color: var(--interactive-primary);
+}
+
+[data-theme="dark"] .aboutText {
+  color: var(--text-secondary);
+}
+
+/* Courses Dark Mode */
+[data-theme="dark"] .courseItem {
+  background: var(--surface-elevated);
+  border-color: var(--border-subtle);
+}
+
+[data-theme="dark"] .courseItem:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+[data-theme="dark"] .courseIconWrapper {
+  background: linear-gradient(135deg, var(--color-blue-500), var(--color-blue-600));
+}
+
+/* Skills & Jobs Dark Mode */
+[data-theme="dark"] .skillCard,
+[data-theme="dark"] .jobCard {
+  background-color: var(--surface-elevated);
+  box-shadow: var(--shadow-subtle);
+}
+
+[data-theme="dark"] .skillCard:hover,
+[data-theme="dark"] .jobCard:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+[data-theme="dark"] .skillName,
+[data-theme="dark"] .jobTitle {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .skillDescription,
+[data-theme="dark"] .jobDescription {
+  color: var(--text-secondary);
+}
+
+/* Projects Dark Mode */
+[data-theme="dark"] .projectCard {
+  background: var(--surface-elevated);
+  box-shadow: var(--shadow-medium);
+}
+
+[data-theme="dark"] .projectCard:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+[data-theme="dark"] .projectTitle {
+  color: var(--interactive-primary);
+}
+
+/* Buttons Dark Mode */
+[data-theme="dark"] .ctaButton {
+  background: linear-gradient(45deg, var(--color-blue-500), var(--color-blue-600));
+}
+
+[data-theme="dark"] .ctaButton:hover {
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+}
+
+[data-theme="dark"] .backToCollegeButton {
+  background: linear-gradient(135deg, var(--color-blue-600), var(--color-blue-700));
+}
+
+/* Major Container Dark Mode */
+[data-theme="dark"] .majorContainer {
+  background-color: var(--bg-primary);
+}
+
+[data-theme="dark"] .majorHeader h1 {
+  color: var(--interactive-primary);
+}
+
+/* Tabs Dark Mode */
+[data-theme="dark"] .tabButton {
+  background-color: var(--surface-base);
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .tabButton:hover {
+  color: white;
+  background: linear-gradient(90deg, var(--color-blue-500), var(--color-blue-600));
+}
+
+[data-theme="dark"] .activeTab {
+  background: linear-gradient(135deg, var(--color-blue-600), var(--color-blue-700));
+  color: white;
+}
+
+[data-theme="dark"] .tabContent {
+  background-color: var(--surface-base);
+}
+
+/* Description Dark Mode */
+[data-theme="dark"] .majorDescription p {
+  background-color: var(--surface-elevated);
+  color: var(--text-primary);
+  border-right-color: var(--color-blue-500);
+}
+
+[data-theme="dark"] .majorDescription p:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Features Dark Mode */
+[data-theme="dark"] .majorFeatures p {
+  background-color: var(--surface-elevated);
+  color: var(--text-primary);
+}
+
+/* Course Items Dark Mode */
+[data-theme="dark"] .courseItem {
+  background-color: var(--surface-elevated);
+}
+
+[data-theme="dark"] .courseItem h3 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .courseItem p {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .semester {
+  background-color: rgba(96, 165, 250, 0.15);
+  color: var(--color-blue-400);
+}
+
+[data-theme="dark"] .elective {
+  background-color: rgba(52, 211, 153, 0.15);
+  color: var(--color-emerald-400);
+}
+
+/* Project Items Dark Mode */
+[data-theme="dark"] .projectItem {
+  background-color: var(--surface-elevated);
+}
+
+[data-theme="dark"] .projectContent h3 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .projectContent p {
+  color: var(--text-secondary);
+}
+
+/* Job Items Dark Mode */
+[data-theme="dark"] .jobItem {
+  background-color: var(--surface-elevated);
+}
+
+[data-theme="dark"] .jobTitle {
+  color: var(--text-primary);
+}
+
+/* Skill Items Dark Mode */
+[data-theme="dark"] .skillItem {
+  background-color: var(--surface-elevated);
+}
+
+[data-theme="dark"] .skillName {
+  color: var(--text-primary);
+}
+
+/* Loading & Error Dark Mode */
+[data-theme="dark"] .loadingContainer {
+  background-color: var(--surface-base);
+}
+
+[data-theme="dark"] .loading {
+  border-color: var(--border-base);
+  border-top-color: var(--color-blue-500);
+}
+
+[data-theme="dark"] .loadingText {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .errorContainer {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+[data-theme="dark"] .errorContainer h2 {
+  color: var(--color-red-400);
+}
+
+[data-theme="dark"] .backButton {
+  background: var(--color-blue-600);
+}
+
+[data-theme="dark"] .backButton:hover {
+  background: var(--color-blue-700);
+}
+
+/* No Data Dark Mode */
+[data-theme="dark"] .noData {
+  background-color: var(--surface-elevated);
+  color: var(--text-secondary);
+}
+
+/* Partner Logos Dark Mode */
+[data-theme="dark"] .partnerLogo {
+  background: var(--surface-elevated);
+}
+
+/* Additional Dark Mode Enhancements */
+[data-theme="dark"] .heroOverlay {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+[data-theme="dark"] .sectionTitle::after {
+  background: linear-gradient(90deg, var(--color-blue-500), var(--color-blue-400), transparent);
+}
+
+[data-theme="dark"] .courseItem::before {
+  background: linear-gradient(180deg, rgba(96, 165, 250, 0.1), transparent);
+}
+
+[data-theme="dark"] .projectItem::after {
+  background: linear-gradient(90deg, var(--color-blue-500), var(--color-purple-500));
+}
+
+[data-theme="dark"] .skillItem::before {
+  background: linear-gradient(to bottom, var(--color-blue-500), var(--color-purple-500));
+} 
