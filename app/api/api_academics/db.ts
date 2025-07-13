@@ -40,7 +40,8 @@ export async function getStudentById(studentId: string) {
         p.program_name,
         m.major_name_ar as major,
         c.college_name_ar as college,
-        b.batch_id
+        b.batch_id,
+        s.photo_url
       FROM 
         students s
         LEFT JOIN batches b ON s.batch_id = b.batch_id
@@ -196,7 +197,6 @@ export async function getStudentById(studentId: string) {
     
     return {
       ...student[0],
-      photo_url: '/default-avatar.png', // URL por defecto para la foto
       level: studentLevel, // المستوى المحدد بناءً على العلامات
       nationality: 'يمني', // Valor por defecto para la nacionalidad
       expected_graduation: parseInt(student[0].join_year) + 4, // Estimación de año de graduación
@@ -209,7 +209,7 @@ export async function getStudentById(studentId: string) {
     return {
       student_id: studentId,
       name: "طالب",
-      photo_url: '/default-avatar.png',
+      photo_url: null,
       college: "كلية تقنية المعلومات",
       major: "تقنية المعلومات",
       level: "المستوى الأول",

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './footers.module.css';
-import { FaWhatsapp, FaInstagram, FaFacebook, FaMapMarkerAlt, FaPhone, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaFacebook, FaMapMarkerAlt, FaPhone, FaEnvelope, FaLinkedin, FaUsers } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import * as Icons from 'react-icons/fa';
 import { useTranslation } from '../../../lib/translation-context';
@@ -107,7 +107,7 @@ const Footer = () => {
             <ul className={styles.contactList}>
               <li>
                 <FaMapMarkerAlt />
-                <span>{language === 'en' ? 'Alryada University, Main Street' : 'جامعة الريادة، الشارع الرئيسي'}</span>
+                <span>{language === 'en' ? 'Alryada University, Main Street' : 'جامعة الريادة، الشارع التسعين '}</span>
               </li>
               <li>
                 <FaPhone />
@@ -142,8 +142,21 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className={styles.copyright}>
-          <p>{language === 'en' ? '© 2025 Alryada University. All rights reserved.' : '© 2025 جامعة الريادة. جميع الحقوق محفوظة.'}</p>
+        {/* قسم حقوق النشر وفريق العمل */}
+        <div className={styles.bottomSection}>
+          <div className={styles.copyright}>
+            <p>{language === 'en' ? '© 2025 Alryada University. All rights reserved.' : '© 2025-2026 جامعة الريادة. جميع الحقوق محفوظة.   '}</p>
+          </div>
+          <div className={styles.teamSection}>
+            <Link href="/team" className={styles.teamLink}>
+              <div className={styles.teamIcon}>
+                <FaUsers />
+              </div>
+              <span className={styles.teamText}>
+                {language === 'en' ? 'Meet Our Team' : 'تعرف على فريق العمل'}
+              </span>
+            </Link>
+          </div>
         </div>
       </footer>
     );
@@ -217,8 +230,21 @@ const Footer = () => {
         ))}
       </div>
 
-      <div className={styles.copyright}>
-        <p>{footerData.copyright?.text} {footerData.copyright?.year}</p>
+      {/* قسم حقوق النشر وفريق العمل */}
+      <div className={styles.bottomSection}>
+        <div className={styles.copyright}>
+          <p>{footerData.copyright?.text} {footerData.copyright?.year}</p>
+        </div>
+        <div className={styles.teamSection}>
+          <Link href="/team" className={styles.teamLink}>
+            <div className={styles.teamIcon}>
+              <FaUsers />
+            </div>
+            <span className={styles.teamText}>
+              {language === 'en' ? 'Meet Our Team' : 'تعرف على فريق العمل'}
+            </span>
+          </Link>
+        </div>
       </div>
     </footer>
   );

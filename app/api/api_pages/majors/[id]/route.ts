@@ -23,12 +23,21 @@ export async function GET(
       return NextResponse.json({ error: 'Major ID is required' }, { status: 400 });
     }
 
-    // جلب بيانات التخصص
+    // جلب بيانات التخصص من جدول academic_programs
     console.log(`Fetching major data for id: ${majorId}, college_id: ${collegeId}`);
-    const majorResults = await query(
-      'SELECT * FROM majors WHERE id = ? AND college_id = ?',
+    let majorResults = await query(
+      'SELECT * FROM academic_programs WHERE id = ? AND college_id = ?',
       [majorId, collegeId]
     );
+
+    // إذا لم يتم العثور على البيانات في academic_programs، جرب جدول majors
+    if (majorResults.length === 0) {
+      console.log('Not found in academic_programs, trying majors table');
+      majorResults = await query(
+        'SELECT * FROM majors WHERE id = ? AND college_id = ?',
+        [majorId, collegeId]
+      );
+    }
 
     console.log(`Query results length: ${majorResults.length}`);
     
@@ -185,10 +194,35 @@ export async function GET(
       console.warn('Could not fetch skills, continuing without them:', error);
     }
 
+    // جلب كلمة رئيس القسم
+    let departmentHead = null;
+    try {
+      console.log(`Fetching department head for program_id: ${programId}`);
+      // التحقق من وجود جدول رؤساء الأقسام
+      const checkTable = await query("SHOW TABLES LIKE 'department_heads'");
+      if (checkTable.length > 0) {
+        const headResults = await query(
+          'SELECT * FROM department_heads WHERE program_id = ?',
+          [programId]
+        );
+        if (headResults.length > 0) {
+          departmentHead = headResults[0];
+        }
+      }
+      console.log(`Found department head: ${departmentHead ? 'Yes' : 'No'}`);
+    } catch (error) {
+      console.warn('Could not fetch department head, continuing without it:', error);
+    }
+
     // تنسيق البيانات حسب اللغة
     const formattedMajor = {
       ...major,
       name: lang === 'en' && major.name_en ? major.name_en : major.name,
+      name_en: major.name_en,
+      hero_title: major.hero_title,
+      hero_subtitle: major.hero_subtitle,
+      hero_image_url: major.hero_image_url,
+      about_text: major.about_text,
       description: lang === 'en' && major.description_en ? major.description_en : major.description,
       features: lang === 'en' && major.features_en ? major.features_en : major.features,
       admission_requirements: lang === 'en' && major.admission_requirements_en 
@@ -204,6 +238,8 @@ export async function GET(
       id: course.id,
       major_id: majorId,
       program_id: course.program_id,
+      name_ar: course.name_ar,
+      name_en: course.name_en,
       name: lang === 'en' && course.name_en ? course.name_en : course.name_ar,
       description: lang === 'en' && course.description_en ? course.description_en : course.description,
       semester: course.semester,
@@ -215,9 +251,13 @@ export async function GET(
       id: project.id,
       major_id: majorId,
       program_id: project.program_id,
+      title_ar: project.title_ar,
+      title_en: project.title_en,
       title: lang === 'en' && project.title_en ? project.title_en : project.title_ar,
+      description_ar: project.description_ar,
+      description_en: project.description_en,
       description: lang === 'en' && project.description_en ? project.description_en : project.description_ar,
-      image_path: project.image_url
+      image_url: project.image_url
     }));
 
     // تنسيق متطلبات القبول حسب اللغة
@@ -231,6 +271,8 @@ export async function GET(
       id: job.id,
       major_id: majorId,
       program_id: job.program_id,
+      job_title_ar: job.job_title_ar,
+      job_title_en: job.job_title_en,
       title: lang === 'en' && job.job_title_en ? job.job_title_en : job.job_title_ar,
       icon: job.icon
     }));
@@ -240,9 +282,30 @@ export async function GET(
       id: skill.id,
       major_id: majorId,
       program_id: skill.program_id,
+      skill_name: skill.skill_name,
+      skill_name_en: skill.skill_name_en,
       name: lang === 'en' && skill.skill_name_en ? skill.skill_name_en : skill.skill_name,
       icon: skill.icon
     }));
+
+    // تنسيق كلمة رئيس القسم حسب اللغة
+    const formattedDepartmentHead = departmentHead ? {
+      id: departmentHead.id,
+      program_id: departmentHead.program_id,
+      name: lang === 'en' && departmentHead.name_en ? departmentHead.name_en : departmentHead.name_ar,
+      name_en: departmentHead.name_en,
+      title: lang === 'en' && departmentHead.title_en ? departmentHead.title_en : departmentHead.title_ar,
+      title_en: departmentHead.title_en,
+      image_url: departmentHead.image_url,
+      message: lang === 'en' && departmentHead.message_en ? departmentHead.message_en : departmentHead.message_ar,
+      message_en: departmentHead.message_en,
+      email: departmentHead.email,
+      phone: departmentHead.phone,
+      office_location: lang === 'en' && departmentHead.office_location_en ? departmentHead.office_location_en : departmentHead.office_location,
+      office_location_en: departmentHead.office_location_en,
+      office_hours: lang === 'en' && departmentHead.office_hours_en ? departmentHead.office_hours_en : departmentHead.office_hours,
+      office_hours_en: departmentHead.office_hours_en
+    } : null;
 
     console.log('Successfully prepared response data');
     return NextResponse.json({
@@ -251,7 +314,8 @@ export async function GET(
       projects: formattedProjects,
       admission_requirements: formattedRequirements,
       job_opportunities: formattedJobs,
-      skills: formattedSkills
+      skills: formattedSkills,
+      department_head: formattedDepartmentHead
     });
   } catch (error) {
     console.error('Error fetching major details:', error);

@@ -81,7 +81,7 @@ export default function AlumniDetailsPage() {
       try {
         setLoading(true);
         console.log('Fetching alumni details for ID:', id);
-        const response = await fetch(`/api/api_news/alumni?id=${id}&lang=${language}`);
+        const response = await fetch(`/api/api_pages/alumni?id=${id}&lang=${language}`);
         
         if (!response.ok) {
           const errorText = await response.text();

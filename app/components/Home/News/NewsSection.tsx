@@ -5,9 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import styles from './NewsSection.module.css';
-import { useTranslation } from '../../../lib/translation-context';
 import { format } from 'date-fns';
 import { ar, enUS } from 'date-fns/locale';
+import { useNewsTranslation } from './useNewsTranslation';
 
 // نموذج بيانات الخبر
 interface NewsItem {
@@ -30,7 +30,7 @@ interface NewsItem {
 }
 
 export default function NewsSection() {
-  const { language, t, isRTL } = useTranslation();
+  const { language, t, isRTL } = useNewsTranslation();
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,7 +48,7 @@ export default function NewsSection() {
         const response = await fetch(`/api/api_pages/news?featured=true&limit=5&lang=${language}`);
         
         if (!response.ok) {
-          throw new Error(`${t('error_fetching_news', 'خطأ في جلب الأخبار')}: ${response.status}`);
+          throw new Error(`${t('error_fetching_news')}: ${response.status}`);
         }
         
         const data = await response.json();
@@ -129,27 +129,21 @@ export default function NewsSection() {
     return arText;
   };
 
+  // لا نعرض مؤشر التحميل هنا، بل نستخدم المؤشر الموحد
   if (loading) {
-    return (
-      <section className={styles.newsSection}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>{t('latest_news', 'آخر الأخبار')}</h2>
-          <div className={styles.loading}>{t('loading_news', 'جاري تحميل الأخبار...')}</div>
-        </div>
-      </section>
-    );
+    return null;
   }
 
   return (
     <section className={styles.newsSection}>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>{t('latest_news', 'آخر الأخبار')}</h2>
+        <h2 className={styles.sectionTitle}>{t('News')}</h2>
         
         <div className={styles.newsSlider}>
           <button 
             className={styles.navButton} 
             onClick={handlePrev} 
-            aria-label={t('previous', 'السابق')}
+            aria-label={t('previous')}
           >
             <svg viewBox="0 0 24 24" className={styles.navIcon}>
               <path d={isRTL ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
@@ -198,7 +192,7 @@ export default function NewsSection() {
                   <div className={styles.newsFooter}>
                     <span className={styles.newsDate}>{formatDate(item.publish_date)}</span>
                     <Link href={`/news/${item.slug}`} className={styles.readMoreButton}>
-                      {t('read_more', 'اقرأ المزيد')}
+                      {t('read_more')}
                       <svg viewBox="0 0 24 24" className={styles.buttonIcon}>
                         <path d={isRTL ? "M5 12h14M12 5l7 7-7 7" : "M5 12h14M12 5l7 7-7 7"} />
                       </svg>
@@ -212,7 +206,7 @@ export default function NewsSection() {
           <button 
             className={styles.navButton} 
             onClick={handleNext} 
-            aria-label={t('next', 'التالي')}
+            aria-label={t('next')}
           >
             <svg viewBox="0 0 24 24" className={styles.navIcon}>
               <path d={isRTL ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7"} />
@@ -226,14 +220,14 @@ export default function NewsSection() {
               key={index}
               className={`${styles.indicator} ${index === currentIndex ? styles.activeIndicator : ''}`}
               onClick={() => setCurrentIndex(index)}
-              aria-label={t('go_to_news', 'الانتقال إلى الخبر') + ` ${index + 1}`}
+              aria-label={t('go_to_news') + ` ${index + 1}`}
             />
           ))}
         </div>
         
         <div className={styles.viewAllContainer}>
           <Link href="/news" className={styles.viewAllButton}>
-            {t('view_all_news', 'عرض جميع الأخبار')}
+            {t('view_all_news')}
           </Link>
         </div>
       </div>

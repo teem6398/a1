@@ -5,7 +5,9 @@ import {
   recordFailedLogin, 
   isBlocked, 
   clearFailedAttempts,
-  generateCSRFToken 
+  generateCSRFToken,
+  getLoginStatus,
+  formatBlockedTime
 } from '../../../../lib/auth';
 import { executeQuery } from '../../api_academics/db';
 
@@ -29,9 +31,23 @@ export async function POST(request: NextRequest) {
     
     // التحقق من محاولات تسجيل الدخول الفاشلة
     const identifier = cleanStudentId || cleanPhone || cleanName;
-    if (isBlocked(identifier)) {
+    
+    // استخدام getLoginStatus بدلاً من isBlocked للحصول على معلومات أكثر
+    const loginStatus = getLoginStatus(identifier);
+    
+    if (loginStatus.blocked) {
+      const remainingTime = formatBlockedTime(loginStatus.blockedUntil);
       return NextResponse.json(
-        { error: 'تم حظر هذا الحساب مؤقتاً بسبب محاولات تسجيل دخول فاشلة متكررة. يرجى المحاولة بعد 15 دقيقة.' },
+        { 
+          error: 'تم حظر هذا الحساب مؤقتاً بسبب محاولات تسجيل دخول فاشلة متكررة.',
+          blocked: true,
+          blockedUntil: loginStatus.blockedUntil,
+          remainingTime,
+          blockCount: loginStatus.blockCount,
+          message: loginStatus.blockCount && loginStatus.blockCount > 1 
+            ? `هذه المرة ${loginStatus.blockCount} من محاولات الحظر. مدة الحظر تزداد مع كل محاولة فاشلة متكررة وقد تصل إلى أسبوع كامل.` 
+            : undefined
+        },
         { status: 429 }
       );
     }
@@ -103,14 +119,17 @@ export async function POST(request: NextRequest) {
 
       if (!results || results.length === 0) {
         // تسجيل محاولة فاشلة
-        const blocked = recordFailedLogin(identifier);
+        const failedResult = recordFailedLogin(identifier);
         
         return NextResponse.json(
           { 
             error: loginType === 'student' 
               ? 'رقم القيد أو الاسم غير صحيح' 
               : 'الاسم أو رقم الهاتف غير صحيح',
-            blocked: blocked
+            blocked: failedResult.blocked,
+            blockedUntil: failedResult.blockedUntil,
+            remainingAttempts: failedResult.remainingAttempts,
+            remainingTime: failedResult.blockedUntil ? formatBlockedTime(failedResult.blockedUntil) : undefined
           },
           { status: 401 }
         );
@@ -121,11 +140,14 @@ export async function POST(request: NextRequest) {
 
     // التحقق من وجود المستخدم
     if (!user) {
-      const blocked = recordFailedLogin(identifier);
+      const failedResult = recordFailedLogin(identifier);
       return NextResponse.json(
         { 
           error: 'بيانات تسجيل الدخول غير صحيحة',
-          blocked: blocked
+          blocked: failedResult.blocked,
+          blockedUntil: failedResult.blockedUntil,
+          remainingAttempts: failedResult.remainingAttempts,
+          remainingTime: failedResult.blockedUntil ? formatBlockedTime(failedResult.blockedUntil) : undefined
         },
         { status: 401 }
       );

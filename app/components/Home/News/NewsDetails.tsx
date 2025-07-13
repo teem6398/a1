@@ -84,38 +84,53 @@ export default function NewsDetails({ slug }: NewsDetailsProps) {
 
   useEffect(() => {
     async function fetchNewsDetails() {
+      console.log('useEffect triggered with slug:', slug, 'language:', language);
       try {
         setLoading(true);
+        console.log('Fetching news details for slug:', slug);
+        
         // جلب تفاصيل الخبر
-        const response = await fetch(`/api/api_news?slug=${slug}&lang=${language}`);
+        const response = await fetch(`/api/api_pages/news?slug=${slug}&lang=${language}`);
         
         if (!response.ok) {
+          if (response.status === 404) {
+            setError(t('news_not_found', 'لم يتم العثور على الخبر المطلوب'));
+            return;
+          }
           throw new Error(`${t('error_fetching_news', 'خطأ في جلب تفاصيل الخبر')}: ${response.status}`);
         }
         
         const data = await response.json();
-        const newsItem = data.data && data.data.length > 0 ? data.data[0] : null;
+        console.log('API Response:', data);
+        
+        // عندما يتم طلب خبر واحد بـ slug، API يُرجع الخبر مباشرة في data.data
+        const newsItem = data.data;
         
         if (newsItem) {
           setNews(newsItem);
           
           // جلب أخبار متعلقة من نفس الفئة
           try {
-            const relatedResponse = await fetch(`/api/api_news?category=${newsItem.category_id}&limit=3&lang=${language}`);
+            const relatedResponse = await fetch(`/api/api_pages/news?category=${newsItem.category_id}&limit=4&lang=${language}`);
             if (relatedResponse.ok) {
               const relatedData = await relatedResponse.json();
-              // استبعاد الخبر الحالي من القائمة
-              const filteredRelated = relatedData.data.filter((item: NewsDetails) => item.id !== newsItem.id);
-              setRelatedNews(filteredRelated.slice(0, 3)); // أخذ أول 3 أخبار فقط
+              console.log('Related news response:', relatedData);
+              
+              if (relatedData.data && Array.isArray(relatedData.data)) {
+                // استبعاد الخبر الحالي من القائمة
+                const filteredRelated = relatedData.data.filter((item: NewsDetails) => item.id !== newsItem.id);
+                setRelatedNews(filteredRelated.slice(0, 3)); // أخذ أول 3 أخبار فقط
+              }
             }
           } catch (relatedError) {
             console.error('Error fetching related news:', relatedError);
           }
         } else {
+          console.log('No news item found in response');
           setError(t('news_not_found', 'لم يتم العثور على الخبر المطلوب'));
         }
       } catch (error) {
-        console.error(t('error_fetching_news', 'خطأ في جلب تفاصيل الخبر:'), error);
+        console.error('Error fetching news details:', error);
         setError(t('error_message', 'حدث خطأ أثناء جلب تفاصيل الخبر. يرجى المحاولة مرة أخرى.'));
       } finally {
         setLoading(false);

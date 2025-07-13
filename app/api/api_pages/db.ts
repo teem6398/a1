@@ -7,10 +7,13 @@ const dbConfig = {
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'alryada_university_cms',
   waitForConnections: true,
-  connectionLimit: 10,
+  connectionLimit: 25, // زيادة عدد الاتصالات المتزامنة
   queueLimit: 0,
   enableKeepAlive: true,
-  keepAliveInitialDelay: 0
+  keepAliveInitialDelay: 10000,
+  // إضافة إعدادات تحسين الأداء
+  multipleStatements: true, // السماح بتنفيذ عدة استعلامات في نفس الوقت
+  connectTimeout: 10000 // زيادة مهلة الاتصال
 };
 
 // إنشاء تجمع اتصالات
@@ -759,6 +762,25 @@ export async function getAlumniById(identifier: string | number, lang: string = 
     }
   } catch (error) {
     console.error('Error in getAlumniById:', error);
+    throw error;
+  }
+}
+
+// إضافة وظيفة للتنفيذ المتوازي للاستعلامات
+export async function executeParallelQueries(queries: string[], params: any[][] = []) {
+  try {
+    const connection = await pool.getConnection();
+    try {
+      const promises = queries.map((sql, index) => {
+        return connection.query(sql, params[index] || []);
+      });
+      const results = await Promise.all(promises);
+      return results.map(result => result[0]);
+    } finally {
+      connection.release();
+    }
+  } catch (error) {
+    console.error('خطأ في تنفيذ الاستعلامات المتوازية:', error);
     throw error;
   }
 }

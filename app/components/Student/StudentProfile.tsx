@@ -11,7 +11,7 @@ import jsPDF from 'jspdf';
 interface Student {
   student_id: string;
   name: string;
-  photo_url: string;
+  photo_url: string | null;
   college: string;
   major: string;
   level: string;
@@ -47,12 +47,13 @@ const StudentProfile = ({ studentId }: { studentId: string }) => {
   const [activeYear, setActiveYear] = useState('السنة الأولى');
   const [activeSemester, setActiveSemester] = useState('الفصل الأول');
   const [activeAchievementType, setActiveAchievementType] = useState('داخل الجامعة');
-  
   const contentRef = React.useRef<HTMLDivElement>(null);
+  const [currentPassword, setCurrentPassword] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [passwordSuccess, setPasswordSuccess] = useState('');
+  const [hasPassword, setHasPassword] = useState(false);
 
   useEffect(() => {
     const fetchStudentData = async () => {
@@ -66,6 +67,13 @@ const StudentProfile = ({ studentId }: { studentId: string }) => {
         setStudent(data.student);
         setGrades(data.grades);
         setAchievements(data.achievements);
+        
+        // التحقق مما إذا كان الطالب لديه كلمة مرور
+        const passwordCheckResponse = await fetch(`/api/api_academics/student/check-password?id=${data.student.enrollment_number}`);
+        if (passwordCheckResponse.ok) {
+          const passwordData = await passwordCheckResponse.json();
+          setHasPassword(passwordData.hasPassword);
+        }
       } catch (err: any) {
         setError(err?.message || 'حدث خطأ غير متوقع');
       } finally {
@@ -224,6 +232,10 @@ const StudentProfile = ({ studentId }: { studentId: string }) => {
   const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    setPasswordError('');
+    setPasswordSuccess('');
+    
+    // التحقق من كلمة المرور الجديدة
     if (password.length < 8) {
       setPasswordError('كلمة المرور يجب أن تكون 8 أحرف على الأقل');
       return;
@@ -234,7 +246,37 @@ const StudentProfile = ({ studentId }: { studentId: string }) => {
       return;
     }
 
+    // إذا كان المستخدم لديه كلمة مرور بالفعل، يجب التحقق من كلمة المرور الحالية
+    if (hasPassword && !currentPassword) {
+      setPasswordError('يجب إدخال كلمة المرور الحالية');
+      return;
+    }
+
     try {
+      // إظهار مؤشر التحميل
+      setLoading(true);
+      
+      // إذا كان لديه كلمة مرور، نتحقق أولاً من صحة كلمة المرور الحالية
+      if (hasPassword) {
+        console.log('التحقق من كلمة المرور الحالية للطالب:', studentId);
+        const verifyResponse = await fetch(`/api/api_academics/student/${studentId}/verify-password`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ password: currentPassword }),
+        });
+
+        const verifyData = await verifyResponse.json();
+        console.log('نتيجة التحقق من كلمة المرور الحالية:', verifyData);
+
+        if (!verifyResponse.ok) {
+          throw new Error(verifyData.error || 'كلمة المرور الحالية غير صحيحة');
+        }
+      }
+      
+      // بعد التحقق من كلمة المرور الحالية، نقوم بتحديث كلمة المرور الجديدة
+      console.log('تحديث كلمة المرور للطالب:', studentId);
       const response = await fetch(`/api/api_academics/student/${studentId}/password`, {
         method: 'POST',
         headers: {
@@ -243,22 +285,31 @@ const StudentProfile = ({ studentId }: { studentId: string }) => {
         body: JSON.stringify({ password }),
       });
 
+      const data = await response.json();
+      console.log('نتيجة تحديث كلمة المرور:', data);
+
       if (!response.ok) {
-        throw new Error('فشل في تحديث كلمة المرور');
+        throw new Error(data.error || 'فشل في تحديث كلمة المرور');
       }
 
+      // إظهار رسالة النجاح
       setPasswordSuccess('تم تحديث كلمة المرور بنجاح');
-      setPasswordError('');
       setPassword('');
       setConfirmPassword('');
+      setCurrentPassword('');
+      setHasPassword(true); // تحديث حالة وجود كلمة مرور
 
       // إخفاء رسالة النجاح بعد 3 ثواني
       setTimeout(() => {
         setPasswordSuccess('');
       }, 3000);
 
-    } catch (err) {
-      setPasswordError('حدث خطأ أثناء تحديث كلمة المرور');
+    } catch (err: any) {
+      console.error('خطأ في تحديث كلمة المرور:', err);
+      setPasswordError(err.message || 'حدث خطأ أثناء تحديث كلمة المرور');
+    } finally {
+      // إخفاء مؤشر التحميل
+      setLoading(false);
     }
   };
 
@@ -267,31 +318,80 @@ const StudentProfile = ({ studentId }: { studentId: string }) => {
       <div className={styles.passwordSection}>
         <h3 className={styles.sectionTitle}>
           <FaLock />
-          تغيير كلمة المرور
+          {hasPassword ? 'تغيير كلمة المرور' : 'إنشاء كلمة مرور'}
         </h3>
         <form className={styles.passwordForm} onSubmit={handlePasswordSubmit}>
-          <input
-            type="password"
-            className={styles.passwordInput}
-            placeholder="كلمة المرور الجديدة"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            type="password"
-            className={styles.passwordInput}
-            placeholder="تأكيد كلمة المرور"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <button type="submit" className={styles.passwordButton}>
-            {passwordSuccess ? <FaCheck /> : 'حفظ كلمة المرور'}
+          {hasPassword && (
+            <div className={styles.passwordInputGroup}>
+              <label htmlFor="currentPassword">كلمة المرور الحالية</label>
+              <input
+                id="currentPassword"
+                type="password"
+                className={styles.passwordInput}
+                placeholder="أدخل كلمة المرور الحالية"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                disabled={loading}
+                required
+              />
+            </div>
+          )}
+          
+          <div className={styles.passwordInputGroup}>
+            <label htmlFor="password">{hasPassword ? 'كلمة المرور الجديدة' : 'كلمة المرور'}</label>
+            <input
+              id="password"
+              type="password"
+              className={styles.passwordInput}
+              placeholder="أدخل كلمة المرور الجديدة (8 أحرف على الأقل)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={loading}
+              minLength={8}
+              required
+            />
+          </div>
+          
+          <div className={styles.passwordInputGroup}>
+            <label htmlFor="confirmPassword">تأكيد كلمة المرور</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              className={styles.passwordInput}
+              placeholder="أعد إدخال كلمة المرور للتأكيد"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              disabled={loading}
+              minLength={8}
+              required
+            />
+          </div>
+          
+          <button 
+            type="submit" 
+            className={styles.passwordButton}
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <span className={styles.buttonSpinner}></span>
+                جاري الحفظ...
+              </>
+            ) : passwordSuccess ? (
+              <>
+                <FaCheck /> تم الحفظ
+              </>
+            ) : (
+              hasPassword ? 'تحديث كلمة المرور' : 'إنشاء كلمة المرور'
+            )}
           </button>
+          
           {passwordError && (
             <div className={styles.passwordError}>
               <FaTimes /> {passwordError}
             </div>
           )}
+          
           {passwordSuccess && (
             <div className={styles.passwordSuccess}>
               <FaCheck /> {passwordSuccess}
@@ -352,6 +452,21 @@ const StudentProfile = ({ studentId }: { studentId: string }) => {
     );
   };
 
+  // Función para determinar la URL correcta de la imagen del estudiante
+  const getStudentImageUrl = (photoUrl: string | null): string => {
+    if (!photoUrl) {
+      return '/image/6.jpg'; // Imagen por defecto si no hay foto
+    }
+    
+    // Si la URL ya comienza con http o /, la usamos tal cual
+    if (photoUrl.startsWith('http') || photoUrl.startsWith('/')) {
+      return photoUrl;
+    }
+    
+    // Si es solo un nombre de archivo, asumimos que está en la carpeta Sudents
+    return `/Sudents/${photoUrl}`;
+  };
+
   if (loading) return <div>جاري التحميل...</div>;
   if (error) return <div>حدث خطأ: {error}</div>;
   if (!student) return <div>لا توجد بيانات للطالب</div>;
@@ -407,19 +522,22 @@ const StudentProfile = ({ studentId }: { studentId: string }) => {
         {activeSection === 'profile' && (
           <div className={styles.profileSection}>
             <div className={styles.profileImageContainer}>
-              <Image 
-                src={student.photo_url || '/image/6.jpg'}
-                alt={student.name}
-                width={280}
-                height={320}
-                className={styles.profileImage}
-                onError={(e) => {
-                  e.currentTarget.src = '/image/8.jpg';
-                }}
-                priority
-                loading="eager"
-                quality={95}
-              />
+              {student.photo_url ? (
+                <Image 
+                  src={getStudentImageUrl(student.photo_url)}
+                  alt={student.name}
+                  width={280}
+                  height={320}
+                  className={styles.profileImage}
+                  priority
+                  loading="eager"
+                  quality={95}
+                />
+              ) : (
+                <div className={styles.defaultUserIcon}>
+                  <FaIdCard size={120} color="#b0b0b0" />
+                </div>
+              )}
               <div className={styles.imageOverlay}>
                 <span className={styles.viewProfileText}>صورة الطالب</span>
               </div>

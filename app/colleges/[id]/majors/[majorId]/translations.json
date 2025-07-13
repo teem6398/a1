@@ -14,11 +14,21 @@
     "noProjectsAvailable": "لا توجد مشاريع متاحة حالياً",
     "noJobOpportunitiesAvailable": "لا توجد فرص وظيفية متاحة حالياً",
     "noSkillsAvailable": "لا توجد مهارات متاحة حالياً",
+    "departmentHead": "كلمة رئيس القسم",
+    "departmentHeadMessage": "كلمة رئيس القسم",
+    "contactInfo": "معلومات التواصل",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "officeLocation": "موقع المكتب",
+    "officeHours": "ساعات العمل",
+    "noDepartmentHeadAvailable": "لا توجد كلمة رئيس قسم متاحة حالياً",
     "loading": "جاري التحميل...",
     "error": "خطأ",
     "majorNotFound": "لم يتم العثور على التخصص",
     "goBack": "الرجوع",
-    "backToCollege": "العودة إلى الكلية"
+    "backToCollege": "العودة إلى الكلية",
+    "exploreMore": "استكشف المزيد",
+    "aboutProgram": "عن البرنامج"
   },
   "en": {
     "overview": "Overview",
@@ -35,10 +45,20 @@
     "noProjectsAvailable": "No projects available",
     "noJobOpportunitiesAvailable": "No job opportunities available",
     "noSkillsAvailable": "No skills available",
+    "departmentHead": "Department Head Message",
+    "departmentHeadMessage": "Department Head Message",
+    "contactInfo": "Contact Information",
+    "email": "Email",
+    "phone": "Phone",
+    "officeLocation": "Office Location",
+    "officeHours": "Office Hours",
+    "noDepartmentHeadAvailable": "No department head message available",
     "loading": "Loading...",
     "error": "Error",
     "majorNotFound": "Major not found",
     "goBack": "Go Back",
-    "backToCollege": "Back to College"
+    "backToCollege": "Back to College",
+    "exploreMore": "Explore More",
+    "aboutProgram": "About Program"
   }
 } 

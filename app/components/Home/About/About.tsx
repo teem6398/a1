@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useTranslation } from '../../../lib/translation-context';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronDown, FiTarget, FiBook, FiUsers, FiAward, FiGlobe, FiTrendingUp, FiMapPin, FiMessageCircle, FiStar } from 'react-icons/fi';
+import LoadingIndicator from '../LoadingIndicator';
 
 interface UniversityMission {
   id: number;
@@ -155,12 +156,7 @@ const Page = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className={styles.loadingContainer}>
-        <div className={styles.spinner}></div>
-        <p>{language === 'en' ? 'Loading...' : 'جاري التحميل...'}</p>
-      </div>
-    );
+    return <LoadingIndicator />;
   }
 
   if (!aboutData || !presidentData) {
@@ -192,7 +188,7 @@ const Page = () => {
           <div className={styles.videoWrapper}>
             <iframe
               className={styles.video}
-              src="12.mp4"
+              src="a/VID-20250713-WA0003.mp4"
               title={language === 'en' ? 'University Introduction Video' : 'فيديو تعريفي عن الجامعة'}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

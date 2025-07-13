@@ -53,10 +53,17 @@ export default function AlumniDetails({ slug }: AlumniDetailsProps) {
   useEffect(() => {
     const fetchAlumniDetails = async () => {
       try {
-        const response = await fetch(`/api/api_news/alumni/${slug}?lang=${language}`);
-        if (!response.ok) throw new Error('Failed to fetch alumni details');
+        const response = await fetch(`/api/api_pages/alumni?id=${slug}&lang=${language}`);
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('API Error:', response.status, errorText);
+          throw new Error('Failed to fetch alumni details');
+        }
         const data = await response.json();
-        setAlumniData(data);
+        if (!data.success) {
+          throw new Error(data.error || 'Failed to fetch alumni details');
+        }
+        setAlumniData(data.data);
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');

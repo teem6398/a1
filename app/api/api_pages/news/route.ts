@@ -1,17 +1,35 @@
 import { NextResponse } from 'next/server';
-import { 
-  getAllNews, 
-  getNewsById, 
-  getNewsCategories, 
-  getNewsAuthors, 
-  searchNews 
-} from '../db';
+import { getAllNews, getNewsById, getNewsCategories, getNewsAuthors, searchNews } from '../db';
+
+// تخزين مؤقت للأخبار
+const newsCache = new Map();
+const CACHE_DURATION = 5 * 60 * 1000; // 5 دقائق
+
+// دالة للحصول على الأخبار من التخزين المؤقت أو قاعدة البيانات
+async function getCachedNews(options: any) {
+  const cacheKey = JSON.stringify(options);
+  const cachedData = newsCache.get(cacheKey);
+  
+  if (cachedData && Date.now() - cachedData.timestamp < CACHE_DURATION) {
+    return cachedData.data;
+  }
+  
+  const data = await getAllNews(options);
+  newsCache.set(cacheKey, {
+    data,
+    timestamp: Date.now()
+  });
+  
+  return data;
+}
 
 // GET handler for /api/api_pages/news
 export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const { searchParams } = url;
+  const lang = searchParams.get('lang') || 'ar';
+  
   try {
-    const url = new URL(request.url);
-    const { searchParams } = url;
     const id = searchParams.get('id');
     const slug = searchParams.get('slug');
     const category = searchParams.get('category');
@@ -19,17 +37,28 @@ export async function GET(request: Request) {
     const search = searchParams.get('search');
     const limit = parseInt(searchParams.get('limit') || '10');
     const offset = parseInt(searchParams.get('offset') || '0');
-    const lang = searchParams.get('lang') || 'ar';
     
     // If ID or slug is provided, return a single news item
     if (id || slug) {
       const identifier = id || slug || '';
+      const cacheKey = `news_${identifier}_${lang}`;
+      const cachedItem = newsCache.get(cacheKey);
+      
+      if (cachedItem && Date.now() - cachedItem.timestamp < CACHE_DURATION) {
+        return NextResponse.json({ data: cachedItem.data });
+      }
+      
       const newsItem = await getNewsById(identifier, lang);
       
       if (!newsItem) {
         const errorMessage = lang === 'en' ? 'News not found' : 'الخبر غير موجود';
         return NextResponse.json({ error: errorMessage }, { status: 404 });
       }
+      
+      newsCache.set(cacheKey, {
+        data: newsItem,
+        timestamp: Date.now()
+      });
       
       return NextResponse.json({ data: newsItem });
     }
@@ -63,7 +92,7 @@ export async function GET(request: Request) {
       lang
     };
     
-    const news = await getAllNews(options);
+    const news = await getCachedNews(options);
     
     return NextResponse.json({ 
       data: news,
@@ -73,11 +102,10 @@ export async function GET(request: Request) {
         offset
       }
     });
+    
   } catch (error) {
-    console.error('API Error:', error);
-    const url = new URL(request.url);
-    const lang = url.searchParams.get('lang') === 'en' ? 'en' : 'ar';
-    const errorMessage = lang === 'en' ? 'Server error' : 'حدث خطأ في الخادم';
+    console.error('Error fetching news:', error);
+    const errorMessage = lang === 'en' ? 'Error fetching news' : 'حدث خطأ في جلب الأخبار';
     return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

@@ -4,6 +4,10 @@ export { default as ProtectedRoute, AdminProtectedRoute, TeacherProtectedRoute, 
 export { default as SessionManager } from './SessionManager';
 export { default as SecurityProvider } from './SecurityProvider';
 
+// مكونات تسجيل الدخول المنفصلة
+export { default as TeacherLogin } from './TeacherLogin';
+export { default as StudentLogin } from './StudentLogin';
+
 // Context المصادقة
 export { AuthProvider, useAuth, ProtectedRoute as AuthProtectedRoute, useCSRF } from '../../lib/auth-context';
 

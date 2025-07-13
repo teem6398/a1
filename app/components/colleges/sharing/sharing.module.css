@@ -743,11 +743,10 @@
 }
 
 .collegeButton:hover {
-  background: var(--color-blue-600);
-  color: #ffffff;
-  border-color: var(--color-blue-600);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, #2196f3 0%, #1565c0 100%);
+  color: #fff;
+  border-color: #1565c0;
+  box-shadow: 0 8px 24px rgba(33, 150, 243, 0.18);
 }
 
 .collegeButton:active {
@@ -1008,11 +1007,10 @@
 }
 
 [data-theme="dark"] .collegeButton:hover {
-  background: var(--color-blue-400);
-  color: var(--text-primary);
-  border-color: var(--color-blue-400);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.5);
+  background: linear-gradient(135deg, #2196f3 0%, #1565c0 100%);
+  color: #fff;
+  border-color: #2196f3;
+  box-shadow: 0 8px 24px rgba(33, 150, 243, 0.28);
 }
 
 [data-theme="dark"] .collegeButton:active {

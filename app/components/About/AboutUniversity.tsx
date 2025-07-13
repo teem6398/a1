@@ -95,16 +95,24 @@ const AboutUniversity = () => {
     const fetchAboutData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/api_pages/about/university?lang=${language}`);
+        setError(null);
+        
+        // إضافة معلمة للتجاوز المؤقت للكاش
+        const timestamp = new Date().getTime();
+        const response = await fetch(`/api/api_pages/about/university?lang=${language}&_=${timestamp}`);
         
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
         }
         
         const data = await response.json();
+        
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        
         console.log("API Response:", data); // للتحقق من البيانات الواردة
         setAboutData(data);
-        setError(null);
       } catch (err) {
         console.error('Failed to fetch about university data:', err);
         setError(isRTL ? 'فشل في جلب البيانات. يرجى المحاولة مرة أخرى لاحقًا.' : 'Failed to fetch data. Please try again later.');

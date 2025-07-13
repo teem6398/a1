@@ -63,7 +63,7 @@
 .sectionTitle {
   font-size: 2.8rem;
   font-weight: 700;
-  color: var(--interactive-primary);
+  color: var(--text-primary);
   margin-bottom: var(--space-6);
   position: relative;
   display: inline-block;
@@ -334,6 +334,7 @@
 
 .viewDetailsButton:hover {
   background-color: var(--color-primary-600);
+  color: white;
   transform: translateX(-5px);
 }
 
@@ -369,6 +370,7 @@
 .viewAllButton:hover {
   background-color: var(--color-primary-600);
   color: white;
+  text-decoration: none;
 }
 
 .buttonIcon {
@@ -460,6 +462,7 @@
   
   .viewDetailsButton:hover {
     background-color: var(--color-primary-700);
+    color: white;
     border-color: var(--color-primary-600);
   }
   
@@ -471,6 +474,7 @@
   .viewAllButton:hover {
     background-color: var(--color-primary-400);
     color: var(--color-background-900);
+    text-decoration: none;
   }
   
   .loadingContainer,

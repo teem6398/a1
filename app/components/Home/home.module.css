@@ -9,78 +9,106 @@
   transition: var(--transition-theme);
 } 
 
-/* ===== أزرار التحكم للموبايل ===== */
-.mobileControls {
+/* ===== أزرار التبديل المحسنة للجوال ===== */
+.homeMobileNavigation {
   display: flex;
-  gap: var(--space-4);
-  padding: var(--space-6);
-  justify-content: center;
-  flex-wrap: wrap;
-  background: var(--surface-secondary);
-  border-top: 1px solid var(--border-primary);
-  border-bottom: 1px solid var(--border-primary);
-  transition: var(--transition-theme);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--bg-primary);
+  padding: 0.6rem 0.4rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  gap: 0.2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-secondary);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.toggleButton {
+.homeMobileNavButton {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--btn-padding-md);
+  justify-content: center;
+  padding: 0.5rem 0.3rem;
   border: none;
-  border-radius: var(--radius-full);
-  background: var(--btn-secondary-bg);
-  color: var(--btn-secondary-text);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
+  background: linear-gradient(135deg, var(--surface-primary) 0%, var(--surface-secondary) 100%);
+  color: var(--text-primary);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.7rem;
   cursor: pointer;
-  transition: var(--btn-transition);
-  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
-  min-height: var(--btn-height-md);
+  margin: 0;
+  min-height: 60px;
+  gap: 0.2rem;
 }
 
-.toggleButton::before {
+.homeMobileNavButton::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: var(--radius-full);
-  background: var(--interactive-primary);
-  transform: translate(-50%, -50%);
-  transition: width var(--duration-500) var(--ease-out), height var(--duration-500) var(--ease-out);
-  opacity: var(--opacity-10);
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
-.toggleButton:hover::before {
-  width: 300px;
-  height: 300px;
+.homeMobileNavButton:hover::before {
+  left: 100%;
 }
 
-.toggleButton:hover {
+.homeMobileNavButton:hover {
+  background: linear-gradient(135deg, var(--surface-secondary) 0%, var(--surface-primary) 100%);
   transform: translateY(-2px);
-  box-shadow: var(--btn-secondary-shadow-hover);
-  background: var(--btn-secondary-bg-hover);
-  color: var(--btn-secondary-text-hover);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.toggleButton:active {
+.homeMobileNavButton:active {
   transform: translateY(0);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.toggleButton.active {
-  background: var(--btn-primary-bg);
-  color: var(--btn-primary-text);
-  box-shadow: var(--btn-primary-shadow);
+.homeActiveButton {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--interactive-primary-hover) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(var(--primary-color-rgb, 59, 130, 246), 0.3);
 }
 
-.toggleButton.active:hover {
-  background: var(--btn-primary-bg-hover);
-  box-shadow: var(--btn-primary-shadow-hover);
+.homeActiveButton:hover {
+  background: linear-gradient(135deg, var(--interactive-primary-hover) 0%, var(--primary-color) 100%);
+  box-shadow: 0 6px 16px rgba(var(--primary-color-rgb, 59, 130, 246), 0.4);
+}
+
+/* أيقونات الأزرار */
+.homeMobileNavButton .buttonIcon {
+  font-size: 1.2rem;
+  margin-bottom: 0.1rem;
+  transition: transform 0.3s ease;
+}
+
+.homeMobileNavButton:hover .buttonIcon {
+  transform: scale(1.1);
+}
+
+.homeActiveButton .buttonIcon {
+  transform: scale(1.1);
+}
+
+/* نص الزر */
+.homeMobileNavButton .buttonText {
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .icon {
@@ -138,34 +166,46 @@
 }
 
 /* ===== تحسينات الوضع الليلي ===== */
-[data-theme='dark'] .mobileControls,
-.dark-mode .mobileControls {
-  background: var(--surface-secondary);
-  border-color: var(--border-primary);
+[data-theme='dark'] .homeMobileNavigation,
+.dark-mode .homeMobileNavigation {
+  background-color: rgba(17, 24, 39, 0.95);
+  border-color: rgba(75, 85, 99, 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
-[data-theme='dark'] .toggleButton,
-.dark-mode .toggleButton {
-  background: var(--btn-secondary-bg);
-  color: var(--btn-secondary-text);
-  box-shadow: var(--shadow-md);
+[data-theme='dark'] .homeMobileNavButton,
+.dark-mode .homeMobileNavButton {
+  background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(55, 65, 81, 0.9) 100%);
+  color: rgba(243, 244, 246, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(75, 85, 99, 0.3);
 }
 
-[data-theme='dark'] .toggleButton:hover,
-.dark-mode .toggleButton:hover {
-  box-shadow: var(--shadow-lg);
+[data-theme='dark'] .homeMobileNavButton:hover,
+.dark-mode .homeMobileNavButton:hover {
+  background: linear-gradient(135deg, rgba(55, 65, 81, 0.9) 0%, rgba(31, 41, 55, 0.9) 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 1);
 }
 
-[data-theme='dark'] .toggleButton.active,
-.dark-mode .toggleButton.active {
-  background: var(--btn-primary-bg);
-  box-shadow: var(--btn-primary-shadow);
+[data-theme='dark'] .homeActiveButton,
+.dark-mode .homeActiveButton {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--interactive-primary-hover) 100%);
+  box-shadow: 0 4px 16px rgba(var(--primary-color-rgb, 59, 130, 246), 0.4);
+  color: white;
+  border: 1px solid rgba(var(--primary-color-rgb, 59, 130, 246), 0.5);
 }
 
-[data-theme='dark'] .toggleButton.active:hover,
-.dark-mode .toggleButton.active:hover {
-  background: var(--btn-primary-bg-hover);
-  box-shadow: var(--btn-primary-shadow-hover);
+[data-theme='dark'] .homeActiveButton:hover,
+.dark-mode .homeActiveButton:hover {
+  background: linear-gradient(135deg, var(--interactive-primary-hover) 0%, var(--primary-color) 100%);
+  box-shadow: 0 6px 20px rgba(var(--primary-color-rgb, 59, 130, 246), 0.5);
+}
+
+[data-theme='dark'] .homeMobileNavButton .buttonText,
+.dark-mode .homeMobileNavButton .buttonText {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme='dark'] .badge,
@@ -232,43 +272,146 @@
   }
 }
 
-/* ===== انتقالات الأقسام ===== */
+/* ===== انتقالات الأقسام المحسنة ===== */
 .section {
   overflow: hidden;
-  transition: all var(--duration-500) var(--ease-in-out);
+  transition: all var(--duration-700) var(--ease-out);
   transform-origin: top;
+  opacity: var(--opacity-0);
+  transform: translateY(30px) scale(0.95);
+  filter: blur(2px);
 }
 
 .section.visible {
   opacity: var(--opacity-100);
-  transform: scaleY(1);
+  transform: translateY(0) scale(1);
+  filter: blur(0);
   max-height: 5000px;
 }
 
 .section.hidden {
   opacity: var(--opacity-0);
-  transform: scaleY(0);
+  transform: translateY(30px) scale(0.95);
+  filter: blur(2px);
   max-height: 0;
-  margin: 0;
-  padding: 0;
+}
+
+/* تأثيرات خاصة لكل قسم */
+.section:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.section:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+.section:nth-child(3) {
+  transition-delay: 200ms;
+}
+
+.section:nth-child(4) {
+  transition-delay: 300ms;
+}
+
+.section:nth-child(5) {
+  transition-delay: 400ms;
+}
+
+.section:nth-child(6) {
+  transition-delay: 500ms;
+}
+
+.section:nth-child(7) {
+  transition-delay: 600ms;
+}
+
+/* تأثير التلاشي التدريجي */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.section.visible {
+  animation: fadeInUp var(--duration-700) var(--ease-out) forwards;
+}
+
+/* تأثير التوهج عند الظهور */
+.section.visible::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--interactive-primary), transparent);
+  animation: glow var(--duration-1000) var(--ease-out) forwards;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(1);
+  }
 }
 
 /* ===== استجابة الشاشات ===== */
 @media (max-width: 480px) {
-  .mobileControls {
-    padding: var(--space-4);
-    gap: var(--space-3);
+  .homeMobileNavigation {
+    padding: 0.4rem 0.2rem;
+    gap: 0.15rem;
   }
   
-  .toggleButton {
-    padding: var(--btn-padding-sm);
-    font-size: var(--text-xs);
-    flex: 1;
-    min-width: 140px;
+  .homeMobileNavButton {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.65rem;
+    min-height: 55px;
+    border-radius: 10px;
   }
   
-  .icon {
-    font-size: var(--text-base);
+  .homeMobileNavButton .buttonIcon {
+    font-size: 1.1rem;
+  }
+  
+  .homeMobileNavButton .buttonText {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .homeMobileNavigation {
+    padding: 0.3rem 0.15rem;
+    gap: 0.1rem;
+  }
+  
+  .homeMobileNavButton {
+    padding: 0.35rem 0.15rem;
+    font-size: 0.6rem;
+    min-height: 50px;
+    border-radius: 8px;
+  }
+  
+  .homeMobileNavButton .buttonIcon {
+    font-size: 1rem;
+  }
+  
+  .homeMobileNavButton .buttonText {
+    font-size: 0.55rem;
   }
 }
 
@@ -284,7 +427,7 @@
 
 /* إخفاء الأزرار على الشاشات الكبيرة */
 @media (min-width: 769px) {
-  .mobileControls {
+  .homeMobileNavigation {
     display: none;
   }
   
@@ -299,12 +442,42 @@
 @media (prefers-reduced-motion: reduce) {
   .toggleButton,
   .section,
-  .icon {
+  .icon,
+  .homeMobileNavButton {
     animation: none;
     transition: none;
   }
   
-  .toggleButton:hover {
+  .toggleButton:hover,
+  .homeMobileNavButton:hover {
     transform: none;
+  }
+}
+
+/* ===== تحسينات الأداء ===== */
+.homeMobileNavButton {
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ===== تحسينات التفاعل ===== */
+.homeMobileNavButton:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.homeMobileNavButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ===== تحسينات الشاشات عالية الدقة ===== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .homeMobileNavButton {
+    border-radius: 12px;
+  }
+  
+  .homeMobileNavButton .buttonIcon {
+    font-size: 1.3rem;
   }
 } 

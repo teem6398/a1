@@ -126,6 +126,13 @@
   transform: translateY(-5px) scale(1.1) !important;
 }
 
+/* ===== تصميم قسم فريق العمل (للتوافق مع الكود القديم) ===== */
+.teamLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 /* تأثيرات إضافية للجاذبية */
 .socialLink::before {
   content: '';
@@ -244,21 +251,7 @@
   font-size: 1.2rem;
 }
 
-/* حقوق النشر */
-.copyright {
-  text-align: center;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 0.9rem;
-  color: #cbd5e1;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
+/* حقوق النشر (محفوظ للتوافق) */
 .dark-mode .copyright {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -345,5 +338,207 @@
     width: 45px;
     height: 45px;
     font-size: 1.3rem;
+  }
+}
+
+/* دعم اتجاه النص لقسم فريق العمل */
+[dir="ltr"] .teamLink:hover {
+  transform: translateX(-5px);
+}
+
+[dir="ltr"] .teamLink:hover .teamText {
+  transform: translateX(-5px);
+}
+
+[dir="ltr"] .teamIcon {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+[dir="rtl"] .teamIcon {
+  margin-right: 0;
+  margin-left: 1rem;
+} 
+
+/* ===== تصميم قسم حقوق النشر وفريق العمل ===== */
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+}
+
+.copyright {
+  flex: 1;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  min-width: 200px;
+  order: 2;
+  margin: 0 auto;
+}
+
+.teamSection {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  order: 1;
+}
+
+.teamLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  color: #e2e8f0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.teamLink:hover {
+  color: #ffffff;
+  background: rgba(33, 150, 243, 0.1);
+  border-color: rgba(33, 150, 243, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.2);
+}
+
+.teamIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  color: #ffffff;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(33, 150, 243, 0.3);
+}
+
+.teamLink:hover .teamIcon {
+  background: linear-gradient(135deg, #1976d2, #1565c0);
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+
+.teamText {
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.teamLink:hover .teamText {
+  color: #ffffff;
+}
+
+/* تحسينات للوضع الليلي */
+.dark-mode .teamLink {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark-mode .teamLink:hover {
+  background: rgba(33, 150, 243, 0.15);
+  border-color: rgba(33, 150, 243, 0.4);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+/* دعم اتجاه النص */
+[dir="ltr"] .copyright {
+  text-align: center;
+  order: 2;
+}
+
+[dir="rtl"] .copyright {
+  text-align: center;
+  order: 2;
+}
+
+[dir="ltr"] .teamSection {
+  order: 1;
+}
+
+[dir="rtl"] .teamSection {
+  order: 3;
+}
+
+[dir="ltr"] .teamLink:hover {
+  transform: translateY(-2px);
+}
+
+[dir="rtl"] .teamLink:hover {
+  transform: translateY(-2px);
+}
+
+/* تحسينات للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .bottomSection {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .copyright {
+    text-align: center;
+    order: 2;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .teamSection {
+    order: 1;
+  }
+  
+  .teamLink {
+    padding: 0.6rem 1rem;
+  }
+  
+  .teamIcon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+  }
+  
+  .teamText {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottomSection {
+    padding: 0.8rem 1rem;
+    gap: 1rem;
+  }
+  
+  .teamLink {
+    padding: 0.5rem 0.8rem;
+  }
+  
+  .teamIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .teamText {
+    font-size: 0.9rem;
+  }
+  
+  .copyright {
+    font-size: 0.8rem;
   }
 } 

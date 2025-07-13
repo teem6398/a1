@@ -1,0 +1,32 @@
+{
+  "ar": {
+    "university_activities": "أنشطة الجامعة",
+    "activities_subtitle": "تعرف على أحدث الأنشطة والفعاليات في جامعة الريادة",
+    "view_details": "عرض التفاصيل",
+    "view_all_activities": "عرض جميع الأنشطة",
+    "loading_activities": "جاري تحميل الأنشطة...",
+    "error_loading_activities": "حدث خطأ أثناء تحميل الأنشطة",
+    "failed_fetch_activities": "فشل في جلب الأنشطة",
+    "no_activities": "لا توجد أنشطة حالياً",
+    "activity_date": "تاريخ النشاط",
+    "activity_location": "المكان",
+    "activity_organizer": "المنظم",
+    "read_more": "اقرأ المزيد",
+    "back_to_activities": "العودة إلى الأنشطة"
+  },
+  "en": {
+    "university_activities": "University Activities",
+    "activities_subtitle": "Discover the latest activities and events at Al-Ryada University",
+    "view_details": "View Details",
+    "view_all_activities": "View All Activities",
+    "loading_activities": "Loading activities...",
+    "error_loading_activities": "Error loading activities",
+    "failed_fetch_activities": "Failed to fetch activities",
+    "no_activities": "No activities currently",
+    "activity_date": "Activity Date",
+    "activity_location": "Location",
+    "activity_organizer": "Organizer",
+    "read_more": "Read More",
+    "back_to_activities": "Back to Activities"
+  }
+} 

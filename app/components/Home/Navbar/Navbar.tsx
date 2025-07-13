@@ -36,6 +36,36 @@ interface NavbarProps {
   context?: string;
 }
 
+// دالة مساعدة لمسار صورة الطالب
+const getStudentImageUrl = (photoUrl: string | null): string => {
+  if (!photoUrl) {
+    return '';
+  }
+  
+  // إذا كان المسار يبدأ بـ http أو https، فهو URL كامل
+  if (photoUrl.startsWith('http')) {
+    return photoUrl;
+  }
+  
+  // إذا كان المسار يبدأ بـ /، فهو مسار نسبي من الجذر
+  if (photoUrl.startsWith('/')) {
+    return photoUrl;
+  }
+  
+  // إذا كان المسار يحتوي على Teachers/، فهو مسار لصورة معلم
+  if (photoUrl.includes('Teachers/')) {
+    return `/${photoUrl}`;
+  }
+  
+  // إذا كان المسار يحتوي على Sudents/، فهو مسار لصورة طالب
+  if (photoUrl.includes('Sudents/')) {
+    return `/${photoUrl}`;
+  }
+  
+  // افتراضياً، نعتبره مسار لصورة طالب
+  return `/Sudents/${photoUrl}`;
+};
+
 const Navbar = ({ context = 'global' }: NavbarProps) => {
   const { language, dir } = useTranslation();
   const { theme } = useTheme();
@@ -86,11 +116,57 @@ const Navbar = ({ context = 'global' }: NavbarProps) => {
       if (storedUserName) {
         setUserName(storedUserName);
       }
+      
       if (storedUserImage) {
         setUserImage(storedUserImage);
       }
+      
       if (storedUserId) {
         setUserId(storedUserId);
+      }
+      
+      // إذا كان المستخدم طالب ولم يكن لديه صورة مخزنة، نحاول جلبها من API
+      if (userRole === 'student' && storedUserId && !storedUserImage) {
+        fetchStudentImage(storedUserId);
+      }
+      
+      // إذا كان المستخدم معلم ولم يكن لديه صورة مخزنة، نحاول جلبها من API
+      if (userRole === 'teacher' && storedUserId && !storedUserImage) {
+        fetchTeacherImage(storedUserId);
+      }
+    };
+    
+    // دالة لجلب صورة الطالب
+    const fetchStudentImage = async (studentId: string) => {
+      try {
+        const response = await fetch(`/api/api_academics/student/${studentId}`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.student && data.student.photo_url) {
+            // تخزين مسار الصورة في localStorage
+            localStorage.setItem('userImage', data.student.photo_url);
+            setUserImage(data.student.photo_url);
+          }
+        }
+      } catch (error) {
+        console.error('خطأ في جلب صورة الطالب:', error);
+      }
+    };
+    
+    // دالة لجلب صورة المعلم
+    const fetchTeacherImage = async (teacherId: string) => {
+      try {
+        const response = await fetch(`/api/api_academics/teacher/${teacherId}`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.teacher && data.teacher.photo_url) {
+            // تخزين مسار الصورة في localStorage
+            localStorage.setItem('userImage', data.teacher.photo_url);
+            setUserImage(data.teacher.photo_url);
+          }
+        }
+      } catch (error) {
+        console.error('خطأ في جلب صورة المعلم:', error);
       }
     };
 
@@ -267,26 +343,16 @@ const Navbar = ({ context = 'global' }: NavbarProps) => {
           </div>
 
           <div className={styles.actions}>
-            {/* زر تبديل السمة - يظهر على كل الشاشات */}
-            <div className={styles.desktopThemeToggle}>
-              <ThemeToggle />
-            </div>
-            
-            {/* زر تبديل اللغة */}
-            <div className={styles.desktopLanguageSwitcher}>
-              <LanguageSwitcher />
-            </div>
-
             {/* صورة المستخدم */}
             {isLoggedIn ? (
               <Link 
                 href={isTeacher ? `/teacher-profile/${userId}` : isStudent ? `/student-profile/${userId}` : '#'} 
-                className={styles.profileImageContainer}
+                className={`${styles.profileImageContainer} ${styles.hideOnMobile}`}
               >
                 {userImage ? (
                   <div className={styles.profileImage}>
                     <Image
-                      src={userImage}
+                      src={getStudentImageUrl(userImage) || '/image/blank.png'}
                       alt={userName}
                       width={64}
                       height={64}
@@ -300,6 +366,16 @@ const Navbar = ({ context = 'global' }: NavbarProps) => {
                 )}
               </Link>
             ) : null}
+
+            {/* زر تبديل السمة - يظهر على كل الشاشات */}
+            <div className={styles.desktopThemeToggle}>
+              <ThemeToggle />
+            </div>
+            
+            {/* زر تبديل اللغة */}
+            <div className={styles.desktopLanguageSwitcher}>
+              <LanguageSwitcher />
+            </div>
 
             {/* زر لوحة التحكم (يظهر فقط إذا كان المستخدم مسجل الدخول وهو مدير) */}
             {isLoggedIn && isAdmin && (
@@ -325,6 +401,63 @@ const Navbar = ({ context = 'global' }: NavbarProps) => {
       {/* القائمة المتحركة للهاتف */}
       <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ''}`}>
         <div className={styles.mobileMenuContent}>
+          {/* معلومات المستخدم في القائمة المتحركة */}
+          {isLoggedIn && (
+            <div className={styles.mobileUserSection}>
+              <Link 
+                href={isTeacher ? `/teacher-profile/${userId}` : isStudent ? `/student-profile/${userId}` : '#'} 
+                className={styles.mobileProfileLink}
+                onClick={closeMobileMenu}
+              >
+                <div className={styles.mobileProfileContainer}>
+                  {userImage ? (
+                    <div className={styles.mobileProfileImage}>
+                      <Image
+                        src={userImage}
+                        alt={userName}
+                        width={50}
+                        height={50}
+                        className={styles.mobileAvatar}
+                      />
+                    </div>
+                  ) : (
+                    <div className={styles.mobileProfileImage}>
+                      <FaUserCircle className={styles.mobileUserIcon} />
+                    </div>
+                  )}
+                  <div className={styles.mobileUserInfo}>
+                    <span className={styles.mobileUserName}>{userName}</span>
+                    <span className={styles.mobileUserRole}>
+                      {isAdmin ? (language === 'en' ? 'Administrator' : 'مدير النظام') : 
+                       isTeacher ? (language === 'en' ? 'Teacher' : 'استاذ') : 
+                       isStudent ? (language === 'en' ? 'Student' : 'طالب') : ''}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+              {isLoggedIn && (
+                <button className={styles.mobileLogoutButton} onClick={handleLogout}>
+                  <FaSignOutAlt className={styles.mobileLogoutIcon} />
+                  <span>{language === 'en' ? 'Logout' : 'تسجيل الخروج'}</span>
+                </button>
+              )}
+              {isAdmin && (
+                <Link href="/dashboard" className={styles.mobileDashboardButton} onClick={closeMobileMenu}>
+                  <FaCog className={styles.mobileCogIcon} />
+                  <span>{language === 'en' ? 'Dashboard' : 'لوحة التحكم'}</span>
+                </Link>
+              )}
+              {isTeacher && (
+                <Link href={`/teacher-profile/${userId}`} className={styles.mobileDashboardButton} onClick={closeMobileMenu}>
+                  <FaChalkboardTeacher className={styles.mobileCogIcon} />
+                  <span>{language === 'en' ? 'My Profile' : 'الملف الشخصي'}</span>
+                </Link>
+              )}
+            </div>
+          )}
+
+          <div className={styles.mobileDivider}></div>
+
           {/* روابط التنقل */}
           {menuItems.map((item) => (
             <div key={item.item_id}>

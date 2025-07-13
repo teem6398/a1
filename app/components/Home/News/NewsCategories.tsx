@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import styles from './NewsCategories.module.css';
-import { useTranslation } from '../../../lib/translation-context';
+import { useNewsTranslation } from './useNewsTranslation';
 
 // نماذج البيانات
 interface NewsCategory {
@@ -23,7 +23,7 @@ const NewsCategories = () => {
   const [categories, setCategories] = useState<NewsCategory[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const { language, t } = useTranslation();
+  const { language, t } = useNewsTranslation();
 
   useEffect(() => {
     fetchCategories();
@@ -35,15 +35,15 @@ const NewsCategories = () => {
       const response = await fetch(`/api/api_pages/news/categories?lang=${language}`);
       
       if (!response.ok) {
-        throw new Error(t('error_fetching_categories', 'خطأ في جلب التصنيفات'));
+        throw new Error(t('error_fetching_categories'));
       }
       
       const data = await response.json();
       setCategories(data.data || []);
     } catch (error) {
       console.error('خطأ في جلب تصنيفات الأخبار:', error);
-      setError(t('error_message', 'حدث خطأ أثناء جلب تصنيفات الأخبار. يرجى المحاولة مرة أخرى.'));
-      toast.error(t('error_toast', 'حدث خطأ أثناء جلب تصنيفات الأخبار'));
+      setError(t('error_message'));
+      toast.error(t('error_toast'));
     } finally {
       setLoading(false);
     }
@@ -60,8 +60,10 @@ const NewsCategories = () => {
   if (loading) {
     return (
       <div className={styles.loading}>
-        <div className={styles.spinner}></div>
-        <p>{t('loading_categories', 'جاري تحميل التصنيفات...')}</p>
+        <div className={styles.spinner}>
+          <span></span>
+        </div>
+        <p>{t('loading_categories')}</p>
       </div>
     );
   }
@@ -71,7 +73,7 @@ const NewsCategories = () => {
       <div className={styles.error}>
         <p>{error}</p>
         <button onClick={fetchCategories} className={styles.retryButton}>
-          {t('retry', 'إعادة المحاولة')}
+          {t('retry')}
         </button>
       </div>
     );
@@ -79,7 +81,7 @@ const NewsCategories = () => {
 
   return (
     <div className={styles.categoriesContainer}>
-      <h2 className={styles.sectionTitle}>{t('news_categories', 'تصنيفات الأخبار')}</h2>
+      <h2 className={styles.sectionTitle}>{t('news_categories')}</h2>
       
       <div className={styles.categoriesGrid}>
         {categories.map((category) => (
@@ -109,7 +111,7 @@ const NewsCategories = () => {
               </p>
             )}
             <div className={styles.newsCount}>
-              {category.news_count} {t('news_count', 'خبر')}
+              {category.news_count} {t('news_count')}
             </div>
           </Link>
         ))}

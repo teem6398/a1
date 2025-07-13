@@ -163,7 +163,7 @@
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 40px;
-  color: var(--interactive-primary);
+  color: var(--text-primary);
   position: relative;
 }
 
@@ -172,7 +172,7 @@
   display: block;
   width: 80px;
   height: 4px;
-  background-color: var(--primary-color);
+  background-color: var(--interactive-primary);
   margin: 15px auto 0;
   border-radius: 2px;
 }
@@ -375,13 +375,21 @@
 
 .dark-mode .readMoreButton {
   background-color: var(--interactive-primary);
+  color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .readMoreButton:hover {
   transform: translateY(-4px);
   background-color: var(--interactive-primary-hover);
+  color: white;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .readMoreButton:hover {
+  background-color: var(--interactive-primary-hover);
+  color: white;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .buttonIcon {
@@ -525,6 +533,45 @@
   min-height: 400px;
   color: var(--text-secondary);
   font-size: 1.1rem;
+  gap: 1.5rem;
+}
+
+.loading::before {
+  content: "";
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--interactive-primary);
+  border-bottom-color: var(--interactive-primary);
+  animation: spinner-dual 1.5s ease infinite;
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.15);
+  position: relative;
+}
+
+.loading::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-left-color: var(--interactive-primary);
+  border-right-color: var(--interactive-primary);
+  animation: spinner-dual 1.2s ease-in-out infinite reverse;
+  position: absolute;
+  box-shadow: 0 4px 10px rgba(0, 86, 179, 0.1);
+}
+
+@keyframes spinner-dual {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 /* ===== تحسينات للشاشات المتوسطة والصغيرة ===== */
@@ -618,4 +665,9 @@
 
 .newsFooter {
   animation-delay: 0.4s;
+}
+
+.emptyState {
+  min-height: 200px;
+  width: 100%;
 }

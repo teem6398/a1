@@ -51,7 +51,7 @@ export default function AllNews() {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch(`/api/api_news/categories?lang=${language}`);
+        const response = await fetch(`/api/api_pages/news/categories?lang=${language}`);
         
         if (!response.ok) {
           throw new Error(`${t('error_fetching_categories', 'خطأ في جلب الفئات')}: ${response.status}`);
@@ -88,7 +88,7 @@ export default function AllNews() {
       setLoading(true);
       try {
         // بناء URL للطلب مع معاملات التصفية
-        let url = `/api/api_news?limit=6&offset=${(currentPage - 1) * 6}&lang=${language}`;
+        let url = `/api/api_pages/news?limit=6&offset=${(currentPage - 1) * 6}&lang=${language}`;
         
         if (activeCategory !== 'all') {
           url += `&category=${activeCategory}`;

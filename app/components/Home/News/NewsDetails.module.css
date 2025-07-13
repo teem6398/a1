@@ -12,7 +12,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -140,13 +140,14 @@
 
 /* تخطيط المحتوى */
 .newsContent {
-  display: grid;
-  grid-template-columns: 1fr 320px;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
 .mainContent {
-  grid-column: 1;
+  width: 80%;
+  margin: 0 auto;
   background-color: var(--surface-primary);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
@@ -155,7 +156,11 @@
 }
 
 .sidebar {
-  grid-column: 2;
+  width: 80%;
+  margin: 2rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 /* رأس الخبر */
@@ -281,6 +286,9 @@
   height: 0;
   padding-bottom: 52.5%;
   overflow: hidden;
+  margin-bottom: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .mainImage {
@@ -608,32 +616,32 @@
 .relatedNewsCard {
   background-color: var(--surface-primary);
   border-radius: var(--radius-xl);
-  padding: 1.5rem;
+  padding: 2rem;
   box-shadow: var(--shadow-md);
+  margin-top: 1rem;
 }
 
 .relatedNewsList {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
 .relatedNewsItem {
   display: flex;
   gap: 1rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-secondary);
+  padding: 1rem;
+  border: 1px solid var(--border-secondary);
+  border-radius: var(--radius-lg);
   text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.relatedNewsItem:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+  transition: all 0.3s ease;
+  background-color: var(--surface-secondary);
 }
 
 .relatedNewsItem:hover {
   transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--interactive-primary);
 }
 
 .relatedNewsImageContainer {
@@ -707,6 +715,19 @@
   box-shadow: var(--shadow-md);
 }
 
+/* تحسينات الوضع الليلي */
+[data-theme="dark"] .backLink {
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-secondary);
+}
+
+[data-theme="dark"] .backLink:hover {
+  background-color: var(--interactive-primary);
+  color: white;
+  border-color: var(--interactive-primary);
+}
+
 .backIcon {
   font-size: 1.2rem;
 }
@@ -751,26 +772,27 @@
 
 /* تحسينات للشاشات المتوسطة */
 @media (max-width: 992px) {
-  .newsContent {
-    grid-template-columns: 1fr;
-  }
-  
-  .mainContent {
-    grid-column: 1;
-  }
-  
+  .mainContent,
   .sidebar {
-    grid-column: 1;
-    margin-top: 2rem;
+    width: 80%;
   }
   
   .title {
     font-size: 2rem;
   }
+  
+  .relatedNewsList {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* تحسينات للشاشات الصغيرة */
 @media (max-width: 768px) {
+  .mainContent,
+  .sidebar {
+    width: 80%;
+  }
+  
   .authorBox {
     flex-direction: column;
     align-items: flex-start;
@@ -801,10 +823,28 @@
   .mediaGrid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
+  
+  .relatedNewsList {
+    grid-template-columns: 1fr;
+  }
+  
+  .relatedNewsItem {
+    flex-direction: row;
+  }
+  
+  .relatedNewsImageContainer {
+    width: 120px;
+    height: 80px;
+  }
 }
 
 /* تحسينات للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
+  .mainContent,
+  .sidebar {
+    width: 80%;
+  }
+  
   .categoryAndDate {
     flex-direction: column;
     align-items: flex-start;
@@ -843,6 +883,18 @@
   .shareSection {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+}
+
+/* تحسينات للشاشات الصغيرة جداً جداً */
+@media (max-width: 360px) {
+  .mainContent,
+  .sidebar {
+    width: 90%;
+  }
+  
+  .container {
+    padding: 0 1rem;
   }
 }
 

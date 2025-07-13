@@ -85,7 +85,7 @@ export default function AlumniSection() {
         setError(null);
 
         console.log(`Fetching featured alumni from API with language: ${language}...`);
-        const response = await fetch(`/api/api_pages/alumni?lang=${language}&featured=true&limit=4`);
+        const response = await fetch(`/api/api_pages/alumni?lang=${language}&featured=true&limit=5`);
         
         if (!response.ok) {
           const errorText = await response.text();
@@ -161,20 +161,9 @@ export default function AlumniSection() {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + alumniData.length) % alumniData.length);
   };
 
-  // عرض حالة التحميل
+  // لا نعرض مؤشر التحميل هنا، بل نستخدم المؤشر الموحد
   if (loading) {
-    return (
-      <section className={styles.alumniSection}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>{t('sectionTitle')}</h2>
-          <p className={styles.sectionSubtitle}>{t('sectionSubtitle')}</p>
-          <div className={styles.loading}>
-            <div className={styles.loadingSpinner}></div>
-            <p>{t('loading')}</p>
-          </div>
-        </div>
-      </section>
-    );
+    return null;
   }
 
   // عرض رسالة الخطأ

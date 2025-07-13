@@ -1,3 +1,4 @@
+/* أنماط صفحة تسجيل الدخول */
 .authPageContainer {
   min-height: 100vh;
   display: flex;
@@ -191,6 +192,60 @@
   border-color: #e5e5e5;
   background-color: #fafafa;
   color: #111;
+}
+
+.securityInfo,
+.securityWarning,
+.lastLoginInfo {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.securityInfo {
+  background-color: rgba(79, 209, 122, 0.1);
+  color: #2e7d32;
+  border: 1px solid rgba(79, 209, 122, 0.3);
+}
+
+.securityWarning {
+  background-color: rgba(255, 87, 34, 0.1);
+  color: #d84315;
+  border: 1px solid rgba(255, 87, 34, 0.3);
+}
+
+.lastLoginInfo {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: #1976d2;
+  border: 1px solid rgba(33, 150, 243, 0.3);
+  font-size: 0.8rem;
+}
+
+:global(.dark-mode) .securityInfo {
+  background-color: rgba(79, 209, 122, 0.15);
+  color: #4caf50;
+  border-color: rgba(79, 209, 122, 0.4);
+}
+
+:global(.dark-mode) .securityWarning {
+  background-color: rgba(255, 87, 34, 0.15);
+  color: #ff5722;
+  border-color: rgba(255, 87, 34, 0.4);
+}
+
+:global(.dark-mode) .lastLoginInfo {
+  background-color: rgba(33, 150, 243, 0.15);
+  color: #2196f3;
+  border-color: rgba(33, 150, 243, 0.4);
+}
+
+.securityIcon {
+  margin-right: 0.5rem;
 }
 
 .homeButtonContainer {

@@ -77,7 +77,7 @@ export default function AlumniList({ majorId, collegeId }: AlumniListProps) {
       if (collegeId) params.append('collegeId', collegeId.toString());
 
       console.log('Fetching alumni stories with params:', params.toString());
-      const response = await fetch(`/api/api_news/alumni?${params}`);
+      const response = await fetch(`/api/api_pages/alumni?${params}`);
       
       if (!response.ok) {
         const errorText = await response.text();

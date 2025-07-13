@@ -243,6 +243,44 @@
 .readMore:hover {
   color: #003d7a;
   background-color: rgba(0, 86, 179, 0.15);
+  text-decoration: none;
+}
+
+/* تحسينات الوضع الليلي */
+[data-theme="dark"] .newsCard {
+  background-color: var(--surface-primary);
+  border-color: var(--border-secondary);
+}
+
+[data-theme="dark"] .newsCard:hover {
+  border-color: var(--interactive-primary);
+}
+
+[data-theme="dark"] .newsTitle a {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .newsTitle a:hover {
+  color: var(--interactive-primary);
+}
+
+[data-theme="dark"] .newsSummary {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .newsDate,
+[data-theme="dark"] .viewsCount {
+  color: var(--text-tertiary);
+}
+
+[data-theme="dark"] .readMore {
+  color: var(--interactive-primary);
+  background-color: rgba(var(--color-primary-500-rgb), 0.1);
+}
+
+[data-theme="dark"] .readMore:hover {
+  color: var(--interactive-primary-hover);
+  background-color: rgba(var(--color-primary-500-rgb), 0.2);
 }
 
 .pagination {
